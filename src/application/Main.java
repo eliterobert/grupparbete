@@ -16,8 +16,11 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		
-			System.out.println("alexander");
+			System.out.println("jonathan");
 			System.out.println("Ajmal");
+			
+			
+			System.out.println("Hej hej jonathan testet här");
 	}
 	
 	public static void main(String[] args) {
