@@ -1,6 +1,6 @@
 package application;
 
-public class Game {
+public class ScoreAndTime {
 
 	/*
 	 *Metoder:
