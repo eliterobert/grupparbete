@@ -11,5 +11,21 @@ public class Card extends StackPane{
 			
 		}
 		
+		public boolean isOpen() {
+			return false;
+			
+		}
 		
+		public boolean isOfSameKind() {
+			return false;
+			
+		}
+		
+		public void open() {
+			
+		}
+		
+		public void close() {
+			
+		}
 }
