@@ -21,6 +21,8 @@ public class Main extends Application {
 			
 			
 			System.out.println("Hej hej jonathan testet här");
+			
+			System.out.println("torlrlolo");
 	}
 	
 	public static void main(String[] args) {
