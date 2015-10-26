@@ -1,7 +1,5 @@
 package application;
 
-import org.omg.Messaging.SyncScopeHelper;
-
 public class Turns {
 
 	/*
