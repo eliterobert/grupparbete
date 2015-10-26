@@ -16,7 +16,7 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		
-			System.out.println("Text");
+			System.out.println("alexander");
 	}
 	
 	public static void main(String[] args) {
