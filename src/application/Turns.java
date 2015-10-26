@@ -9,7 +9,7 @@ public class Turns {
 	 * en spelare vänder två kort de är int lika vilket leder till en runda,
 	 * om han däremot får rätt ska en extra runda läggas till då han får spela nästa runda också.
 	 * 
-	 * Player turn: Ska bestämma vilken spelares tur det är, den ska 
+	 * Player turn: Ska bestämma vilken spelares tur det är, den ska ha nån typ av true/false alt. en modulusliknande operator
 	 * 
 	 */
 
