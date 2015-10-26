@@ -11,6 +11,14 @@ public class Player {
 		this.score = score;
 	}
 
+	void increaseScore() {
+
+	}
+
+	void setCurrent(boolean isCurrent) {
+
+	}
+
 	public String getName() {
 		return name;
 	}
