@@ -16,22 +16,34 @@ public class StartPage extends VBox {
 	ToggleGroup tg;
 	RadioButton r1, r2, r3;
 	Spinner spin;
-	HBox hbox;
+	HBox radioButtonBox;
+	HBox boxLabel;
 
-	//		Label topLabel=new Label("Memory Game");
-	//		Label antalSpelare = new Label("Antal Spelare");
+	// Label topLabel=new Label("Memory Game");
+	// Label antalSpelare = new Label("Antal Spelare");
 
-	public StartPage(){
+	public StartPage() {
 		topLabel = new Label("Memory Game");
-		antalSpelare= new Label("Antal Spelare");
-		startButton=new Button("Start");
+		antalSpelare = new Label("Antal Spelare");
+		startButton = new Button("Start");
+		spin=new Spinner(1, 2, 1, 1);
+		
+		r1 = new RadioButton("8 Cards");
+		r2 = new RadioButton("16 Cards");
+		r3 = new RadioButton("32 Cards");
+		tg = new ToggleGroup();
+		r1.setToggleGroup(tg);
+		r2.setToggleGroup(tg);
+		r2.setSelected(true);
+		r3.setToggleGroup(tg);
 
-		hbox=new HBox(hbox);
+		radioButtonBox = new HBox();
+		radioButtonBox.getChildren().addAll(r1,r2,r3);
+		
+		boxLabel=new HBox();
+		boxLabel.getChildren().addAll(antalSpelare,spin);
+	
+        
 	}
-
-
-
-
-
 
 }
