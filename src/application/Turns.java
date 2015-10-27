@@ -32,8 +32,12 @@ public class Turns {
 		numOfTurns -= numOfTurns;
 	}
 
+	int turnAdd()
+	{
+		return pTurn++;
+	}
 	boolean playerTurn() {
-		pTurn++;
+		
 		if (pTurn % 2 == 0) {
 			return true;
 		} else {
