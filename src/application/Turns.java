@@ -21,9 +21,7 @@ public class Turns {
 	int pTurn;
 
 	int totalTurns() {
-
 		numOfTurns++;
-
 		return numOfTurns;
 	}
 
@@ -32,19 +30,15 @@ public class Turns {
 	// kallas av den funktion som återställer spelet till ett nytt spel
 	void resetTurns() {
 		numOfTurns -= numOfTurns;
-
 	}
 
-	boolean playerTurn(int turn) {
-
+	boolean playerTurn() {
 		pTurn++;
 		if (pTurn % 2 == 0) {
 			return true;
-		}
-		else{
+		} else {
 			return false;
 		}
-
 	}
 
 }
