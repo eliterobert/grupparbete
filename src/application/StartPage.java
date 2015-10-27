@@ -1,5 +1,6 @@
 package application;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -23,6 +24,8 @@ public class StartPage extends VBox {
 	// Label antalSpelare = new Label("Antal Spelare");
 
 	public StartPage() {
+		setAlignment(Pos.CENTER);
+		
 		topLabel = new Label("Memory Game");
 		antalSpelare = new Label("Antal Spelare");
 		startButton = new Button("Start");
@@ -39,8 +42,9 @@ public class StartPage extends VBox {
 
 		radioButtonBox = new HBox();
 		radioButtonBox.getChildren().addAll(r1,r2,r3);
-		
+		radioButtonBox.setAlignment(Pos.CENTER);
 		boxLabel=new HBox();
+		boxLabel.setAlignment(Pos.CENTER);
 		boxLabel.getChildren().addAll(antalSpelare,spin);
 	
         getChildren().addAll(topLabel,radioButtonBox,boxLabel,startButton);
