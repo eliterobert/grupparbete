@@ -15,8 +15,11 @@ public class Turns {
 	 * true/false
 	 * 
 	 */
-	// Sätter antalet spelade rundor plus ett och retunerar antalet spelade rundor för utskrift.
+	// Sätter antalet spelade rundor plus ett och retunerar antalet spelade
+	// rundor för utskrift
 	int numOfTurns;
+	int pTurn;
+
 	int totalTurns() {
 
 		numOfTurns++;
@@ -29,11 +32,19 @@ public class Turns {
 	// kallas av den funktion som återställer spelet till ett nytt spel
 	void resetTurns() {
 		numOfTurns -= numOfTurns;
+
 	}
 
-	boolean playerTurn() {
+	boolean playerTurn(int turn) {
 
-		return false;
+		pTurn++;
+		if (pTurn % 2 == 0) {
+			return true;
+		}
+		else{
+			return false;
+		}
+
 	}
 
 }
