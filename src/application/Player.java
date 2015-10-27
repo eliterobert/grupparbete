@@ -5,14 +5,13 @@ public class Player {
 	private String name;
 	private int score;
 
-	public Player(String name, int score) {
+	public Player(String name) {
 		super();
 		this.name = name;
-		this.score = score;
 	}
 
 	void increaseScore() {
-
+		score += 1;
 	}
 
 	void setCurrent(boolean isCurrent) {
