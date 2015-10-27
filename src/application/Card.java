@@ -34,8 +34,8 @@ public class Card extends StackPane{
 			
 		}
 		
-		public boolean isOfSameKind() {
-			return false;
+		public boolean isOfSameKind(Card otherCard) {
+			return this.faceView.getImage().equals(otherCard.faceView.getImage());
 			
 		}
 		
