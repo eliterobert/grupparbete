@@ -30,7 +30,7 @@ public class Card extends StackPane{
 		}
 		
 		public boolean isOpen() {
-			return false;
+			return getRotate() > 0;
 			
 		}
 		
