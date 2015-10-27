@@ -8,6 +8,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 public class StartPage extends VBox {
 
@@ -25,8 +26,11 @@ public class StartPage extends VBox {
 
 	public StartPage() {
 		setAlignment(Pos.CENTER);
+		setSpacing(200);
 		
 		topLabel = new Label("Memory Game");
+		topLabel.setFont(new Font(80));
+		
 		antalSpelare = new Label("Antal Spelare");
 		startButton = new Button("Start");
 		spin=new Spinner<>(1, 2, 1, 1);
