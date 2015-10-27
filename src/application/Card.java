@@ -58,6 +58,18 @@ public class Card extends StackPane{
 		}
 		
 		public void close() {
-			
+			FadeTransition faceOpacity = new FadeTransition(Duration.millis(1), faceView);
+			faceOpacity.setToValue(0);
+			faceOpacity.setDelay(Duration.millis(1000));
+			faceOpacity.play();
+
+			FadeTransition backOpacity = new FadeTransition(Duration.millis(1), backView);
+			backOpacity.setToValue(1);
+			backOpacity.setDelay(Duration.millis(1000));
+			backOpacity.play();
+
+			RotateTransition rotateBackward = new RotateTransition(Duration.millis(2000), this);
+			rotateBackward.setToAngle(0);
+			rotateBackward.play();	
 		}
 }

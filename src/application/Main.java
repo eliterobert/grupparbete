@@ -2,13 +2,10 @@ package application;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
 
 public class Main extends Application {
 	private StartPage startPage;
@@ -23,7 +20,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		startPage = new StartPage();
 		startScene = new Scene(startPage, 800, 800);
-		
+
 		startScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(startScene);
 		primaryStage.show();
