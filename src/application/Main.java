@@ -11,6 +11,7 @@ public class Main extends Application {
 	private StartPage startPage;
 	private ArrayList<Image> imageList;
 	private Scene startScene, gameScene;
+	private Card selectedCard = null;
 
 	public static void main(String[] args) {
 		launch(args);
