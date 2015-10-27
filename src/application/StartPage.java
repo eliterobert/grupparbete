@@ -15,7 +15,7 @@ public class StartPage extends VBox {
 	Button startButton;
 	ToggleGroup tg;
 	RadioButton r1, r2, r3;
-	Spinner spin;
+	Spinner<Integer> spin;
 	HBox radioButtonBox;
 	HBox boxLabel;
 
@@ -26,7 +26,7 @@ public class StartPage extends VBox {
 		topLabel = new Label("Memory Game");
 		antalSpelare = new Label("Antal Spelare");
 		startButton = new Button("Start");
-		spin=new Spinner(1, 2, 1, 1);
+		spin=new Spinner<>(1, 2, 1, 1);
 		
 		r1 = new RadioButton("8 Cards");
 		r2 = new RadioButton("16 Cards");
