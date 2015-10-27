@@ -11,8 +11,9 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 
 public class Main extends Application {
-
+	private StartPage startPage;
 	private ArrayList<Image> imageList;
+	private Scene startScene, gameScene;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -20,11 +21,11 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-
-		BorderPane root = new BorderPane();
-		Scene scene = new Scene(root, 400, 400);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		primaryStage.setScene(scene);
+		startPage = new StartPage();
+		startScene = new Scene(startPage, 800, 800);
+		
+		startScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		primaryStage.setScene(startScene);
 		primaryStage.show();
 
 	}
