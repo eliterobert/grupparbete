@@ -6,9 +6,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.effect.Reflection;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 public class StartPage extends VBox {
 
@@ -29,7 +32,13 @@ public class StartPage extends VBox {
 		setSpacing(200);
 		
 		topLabel = new Label("Memory Game");
-		topLabel.setFont(new Font(80));
+		topLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 80));
+		topLabel.setTextFill(Color.RED);
+		Reflection r = new Reflection();
+		r.setFraction(0.7f);
+		topLabel.setEffect(r);		 
+		
+		
 		
 		antalSpelare = new Label("Antal Spelare");
 		startButton = new Button("Start");
