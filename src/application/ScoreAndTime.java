@@ -11,31 +11,39 @@ package application;
  *
  */
 
-
 public class ScoreAndTime {
 
-		int score;
-		
-	
-		
-		// Constructor 
+	int score;
+
+	// Constructor
 
 	public ScoreAndTime(int score) {
-			super();
-			this.score = score;
+		super();
+		this.score = score;
 	}
-		
-		// Getters och setters 
+
+	// Getters och setters
 
 	public int getScore() {
-			return score;
+		return score;
 	}
 
 	public void setScore(int score) {
-			this.score = score;
+		this.score = score;
 	}
-	
-			
-			
-		
+
+//	int calcScore(boolean isSameKind, Player player) {
+
+//		int scores = 0;
+
+//		if (isSameKind == true && player.getName().isTurn()) {
+
+//			scores = player.getName().getScore() + 1;
+
+//		}
+
+//		return scores;
+
+//	}
+
 }
