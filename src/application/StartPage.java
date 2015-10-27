@@ -43,7 +43,7 @@ public class StartPage extends VBox {
 		boxLabel=new HBox();
 		boxLabel.getChildren().addAll(antalSpelare,spin);
 	
-        
+        getChildren().addAll(topLabel,radioButtonBox,boxLabel,startButton);
 	}
 
 }
