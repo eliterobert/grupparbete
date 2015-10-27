@@ -5,12 +5,40 @@ public class Turns {
 	/*
 	 * Metoder:
 	 * 
-	 * Total Turns: beräknar totala antalet rundor som har spelats. ex.
-	 * en spelare vänder två kort de är int lika vilket leder till en runda,
-	 * om han däremot får rätt ska en extra runda läggas till då han får spela nästa runda också.
+	 * Total Turns: berÃ¤knar totala antalet rundor som har spelats. ex. en
+	 * spelare vÃ¤nder tvÃ¥ kort de Ã¤r int lika vilket leder till en runda, om han
+	 * dÃ¤remot fÃ¶r rÃ¤tt ska en extra runda lÃ¤ggas till dÃ¥ han fÃ¥r spela nÃ¤sta
+	 * runda ocksÃ¥.
 	 * 
-	 * Player turn: Ska bestämma vilken spelares tur det är, den ska ha nån typ av true/false alt. en modulusliknande operator
+	 * Player turn: Ska bestÃ¤mma vilken spelares tur det Ã¤r, den ska ha nÃ¥n typ
+	 * av true/false alt. en modulusliknande operator som i sin tur ger
+	 * true/false
 	 * 
 	 */
+	// SÃ¤tter antalet spelade rundor plus ett och retunerar antalet spelade
+	// rundor fÃ¶r utskrift
+	int numOfTurns;
+	int pTurn;
+
+	int totalTurns() {
+		numOfTurns++;
+		return numOfTurns;
+	}
+
+	// Ã…terstÃ¤ller antalet spelade rundor om man t.ex. startar om spelet.
+	// BÃ¶r
+	// kallas av den funktion som Ã¥terstÃ¤ller spelet till ett nytt spel
+	void resetTurns() {
+		numOfTurns -= numOfTurns;
+	}
+
+	boolean playerTurn() {
+		pTurn++;
+		if (pTurn % 2 == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 }

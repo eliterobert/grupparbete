@@ -1,18 +1,49 @@
 package application;
 
+/*
+ *Metoder:
+ *Time lapsed: ränkar hur länge spelet pågått,
+ *Score: lägger till poäng till den aktiva spelaren,
+ *
+ *instansvariabler:
+ *Score: poängen som skickas till spelaren,
+ *Time: en nummervariabel
+ *
+ */
+
 public class ScoreAndTime {
 
-	/*
-	 *Metoder:
-	 *Time lapsed: ränkar hur länge spelet pågått,
-	 *Score: lägger till poäng till den aktiva spelaren,
-	 *Player Turn: metod som bestämmer vilken spelares tur att spelare det är. 
-	 *Which turn: räknar ut vilken total runda det är.
-	 *
-	 *instansvariabler:
-	 *Score: poängen som skickas till spelaren,
-	 *Time: en nummervariabel
-	 */
-	
-	
+	int score;
+
+	// Constructor
+
+	public ScoreAndTime(int score) {
+		super();
+		this.score = score;
+	}
+
+	// Getters och setters
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+//	int calcScore(boolean isSameKind, Player player) {
+
+//		int scores = 0;
+
+//		if (isSameKind == true && player.getName().isTurn()) {
+
+//			scores = player.getName().getScore() + 1;
+
+//		}
+
+//		return scores;
+
+//	}
+
 }
