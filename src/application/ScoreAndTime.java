@@ -1,17 +1,23 @@
 package application;
 
+import java.util.Timer;
+
 /*
  *Metoder:
- *Time lapsed: ränkar hur länge spelet pågått,
+ *Time lapsed: ränkar hur länge spelet pågått. Sprängsvårt
  *Score: lägger till poäng till den aktiva spelaren,
  *
  *instansvariabler:
  *Score: poängen som skickas till spelaren,
  *Time: en nummervariabel
  *
+ *ScoreAndTime och Turns kommer antagligen slås ihop
+ *
  */
 
 public class ScoreAndTime {
+
+	Timer timer = new Timer();
 
 	int score;
 
@@ -32,18 +38,20 @@ public class ScoreAndTime {
 		this.score = score;
 	}
 
-//	int calcScore(boolean isSameKind, Player player) {
+	// Utkast av metod.
 
-//		int scores = 0;
+	int calcScore(boolean isSameKind, Player player) {
 
-//		if (isSameKind == true && player.getName().isTurn()) {
+		int scores = 0;
 
-//			scores = player.getName().getScore() + 1;
+		if (isSameKind == true && player.isTurn()) {
 
-//		}
+			scores = player.getScore() + 1;
 
-//		return scores;
+		}
 
-//	}
+		return scores;
+
+	}
 
 }
