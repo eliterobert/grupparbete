@@ -14,10 +14,17 @@ public class Player {
 		this.isTurn = isTurn;
 	}
 
-	public Player(String name, int score) {
+	public Player(String name) {
 		super();
 		this.name = name;
-		this.score = score;
+	}
+
+	void increaseScore() {
+		score += 1;
+	}
+
+	void setCurrent(boolean isCurrent) {
+
 	}
 
 	public String getName() {
