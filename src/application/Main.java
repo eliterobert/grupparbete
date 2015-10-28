@@ -13,8 +13,7 @@ public class Main extends Application {
 	private Board board;
 	private ArrayList<Image> imageList;
 	private Scene startScene, gameScene, boardScene;
-	//private Scene startScene, gameScene;
-//	public static Card selectedCard = null;
+	public static Card selectedCard = null;
 
 	public static void main(String[] args) {
 		launch(args);
