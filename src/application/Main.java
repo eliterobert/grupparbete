@@ -2,6 +2,7 @@ package application;
 
 import java.io.File;
 import java.util.ArrayList;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -9,8 +10,10 @@ import javafx.scene.image.Image;
 
 public class Main extends Application {
 	private StartPage startPage;
+	private Board board;
 	private ArrayList<Image> imageList;
-	private Scene startScene, gameScene;
+	private Scene startScene, gameScene, boardScene;
+	//private Scene startScene, gameScene;
 //	public static Card selectedCard = null;
 
 	public static void main(String[] args) {
@@ -20,9 +23,13 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		startPage = new StartPage();
+		board = new Board();
 		startScene = new Scene(startPage, 800, 800);
+		boardScene = new Scene(board, 470, 766);
 
 		startScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		primaryStage.setScene(boardScene);
 		primaryStage.setScene(startScene);
 		primaryStage.show();
 
