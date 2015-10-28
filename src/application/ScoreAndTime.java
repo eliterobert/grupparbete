@@ -17,6 +17,8 @@ import java.util.Timer;
 
 public class ScoreAndTime {
 
+	
+		// stopwatch på google. Label 
 	Timer timer = new Timer();
 
 	int score;
