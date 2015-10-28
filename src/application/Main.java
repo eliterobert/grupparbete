@@ -24,18 +24,23 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		startPage = new StartPage();
 		board = new Board();
-		startScene = new Scene(startPage, 800, 800);
+		startScene = new Scene(startPage, 470, 766);
 		boardScene = new Scene(board, 470, 766);
 		
 		startScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		
 		primaryStage.setMinHeight(766);
+		primaryStage.setMaxHeight(766);
+		primaryStage.setMinWidth(470);
+		primaryStage.setMaxWidth(470);
 		primaryStage.setScene(boardScene);
 		
 
 		primaryStage.setScene(startScene);
 		primaryStage.show();
+		
+		startPage.startButton.setOnAction((a) -> primaryStage.setScene(boardScene));
 
 	}
 
