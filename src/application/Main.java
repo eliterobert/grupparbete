@@ -24,13 +24,13 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		startPage = new StartPage();
 		board = new Board();
-		//startScene = new Scene(startPage, 800, 800);
+		startScene = new Scene(startPage, 800, 800);
 		boardScene = new Scene(board, 470, 766);
 
-		//startScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		startScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(boardScene);
-		//primaryStage.setScene(startScene);
+		primaryStage.setScene(startScene);
 		primaryStage.show();
 
 	}
