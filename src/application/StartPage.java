@@ -1,12 +1,19 @@
 package application;
 
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.Reflection;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -61,6 +68,12 @@ public class StartPage extends VBox {
 		boxLabel.getChildren().addAll(antalSpelare,spin);
 	
         getChildren().addAll(topLabel,radioButtonBox,boxLabel,startButton);
+        
+        BackgroundImage pic = new BackgroundImage(new Image("/Backgroundpictures/starwars.jpg",1000,1000,true,false),
+        BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+        BackgroundSize.DEFAULT);
+        
+       this.setBackground(new Background(pic));
 	}
 
 }
