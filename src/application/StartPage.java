@@ -40,7 +40,7 @@
 			setSpacing(200);
 			
 			topLabel = new Label("Memory Game");
-			topLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 80));
+			topLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 40));
 			topLabel.setTextFill(Color.RED);
 			Reflection r = new Reflection();
 			r.setFraction(0.7f);
@@ -83,6 +83,8 @@
 	        BackgroundSize.DEFAULT);
 	        
 	       this.setBackground(new Background(pic));
+	       
+	       
 		}
 
 	}
