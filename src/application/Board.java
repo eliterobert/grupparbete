@@ -38,10 +38,10 @@ public class Board extends VBox {
 	Label menu = new Label("Menu");
 	
 	
-	BackgroundImage backgroundImage = new BackgroundImage(new Image("Pictures/javaStarwarsBackground1.jpg", 470, 766,false,true),
+	BackgroundImage backgroundImage = new BackgroundImage(new Image("Backgroundpictures/javaStarwarsBackground1.jpg", 470, 766,false,true),
 	        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 	
-	Image image = new Image("Pictures/backgroundCard.png", 90, 90, false, false);
+	Image image = new Image("Backgroundpictures/backgroundCard.png", 90, 90, false, false);
 	
 	public Board(){
 		
