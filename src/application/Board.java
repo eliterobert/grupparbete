@@ -35,7 +35,7 @@ public class Board extends VBox {
 	
 	
 	BackgroundImage backgroundImage = new BackgroundImage(new Image("Pictures/javaStarwarsBackground1.jpg", 470, 766,false,true),
-	        BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+	        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 	
 	Image image = new Image("Pictures/backgroundCard.png", 90, 90, false, false);
 	
