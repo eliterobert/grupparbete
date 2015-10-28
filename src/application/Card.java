@@ -33,16 +33,16 @@ public class Card extends StackPane{
 		if (isOpen()) 
 			return; 
 		
-		if(selectedCard == null) {
-			selectedCard = this;
+		if(Main.selectedCard == null) {
+			Main.selectedCard = this;
 			open(() -> {});
 		}
 		else { open(() -> {
-			if(!isOfSameKind(selectedCard)) {
-				selectedCard.close();
+			if(!isOfSameKind(Main.selectedCard)) {
+				Main.selectedCard.close();
 				this.close();
 			}
-			selectedCard = null;
+			Main.selectedCard = null;
 		});
 		}
 	}
