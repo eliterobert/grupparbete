@@ -25,27 +25,27 @@ public class Card extends StackPane{
 		setRotationAxis(Rotate.Y_AXIS);
 		getChildren().addAll(faceView, backView);
 
-//		setOnMouseClicked(this::handleMouseClick);
+		setOnMouseClicked(this::handleMouseClick);
 
 	}
 	
-//	private void handleMouseClick(MouseEvent event) {
-//		if (isOpen()) 
-//			return; 
-//		
-//		if(selectedCard == null) {
-//			selectedCard = this;
-//			open(() -> {});
-//		}
-//		else { open(() -> {
-//			if(!isOfSameKind(selectedCard)) {
-//				selectedCard.close();
-//				this.close();
-//			}
-//			Main.selectedCard = null;
-//		});
-//		}
-//	}
+	private void handleMouseClick(MouseEvent event) {
+		if (isOpen()) 
+			return; 
+		
+		if(selectedCard == null) {
+			selectedCard = this;
+			open(() -> {});
+		}
+		else { open(() -> {
+			if(!isOfSameKind(selectedCard)) {
+				selectedCard.close();
+				this.close();
+			}
+			selectedCard = null;
+		});
+		}
+	}
 
 	public boolean isOpen() {
 		return getRotate() > 0;
