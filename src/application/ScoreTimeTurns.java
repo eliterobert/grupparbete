@@ -15,11 +15,11 @@ import java.util.Timer;
  *
  */
 
-public class ScoreAndTime {
+public class ScoreTimeTurns {
 
 	int score;
 
-	public ScoreAndTime(int score) {
+	public ScoreTimeTurns(int score) {
 		super();
 		this.score = score;
 	}
@@ -77,4 +77,33 @@ public class ScoreAndTime {
 
 	}
 
+	// Player turn
+	int numOfTurns;
+	int pTurn;
+
+	int totalTurns() {
+		numOfTurns++;
+		return numOfTurns;
+	}
+
+	// Återställer antalet spelade rundor om man t.ex. startar om spelet.
+	// Bör
+	// kallas av den funktion som återställer spelet till ett nytt spel
+	void resetTurns() {
+		numOfTurns -= numOfTurns;
+	}
+
+	int turnAdd() {
+		return pTurn++;
+	}
+
+	boolean playerTurn() {
+
+		if (pTurn % 2 == 0) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
 }

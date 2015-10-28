@@ -14,8 +14,7 @@ public class Main extends Application {
 	private Board board;
 	private ArrayList<Image> imageList;
 	private Scene startScene, gameScene, boardScene;
-	//private Scene startScene, gameScene;
-	private Card selectedCard = null;
+	public static Card selectedCard = null;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -25,16 +24,17 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		startPage = new StartPage();
 		board = new Board();
-		//startScene = new Scene(startPage, 800, 800);
+		startScene = new Scene(startPage, 800, 800);
 		boardScene = new Scene(board, 470, 766);
 		
-		//startScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		startScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		
 		primaryStage.setMinHeight(766);
 		primaryStage.setScene(boardScene);
 		
 
+		primaryStage.setScene(startScene);
 		primaryStage.show();
 
 	}
@@ -48,7 +48,5 @@ public class Main extends Application {
 		for (int i = 0; i < directoryList.length; i++) {
 			imageList.add(new Image("Pictures/" + directoryList[i]));
 		}
-
 	}
-
 }
