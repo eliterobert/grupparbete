@@ -11,7 +11,7 @@ public class Main extends Application {
 	private StartPage startPage;
 	private ArrayList<Image> imageList;
 	private Scene startScene, gameScene;
-	private Card selectedCard = null;
+//	public static Card selectedCard = null;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -37,7 +37,5 @@ public class Main extends Application {
 		for (int i = 0; i < directoryList.length; i++) {
 			imageList.add(new Image("Pictures/" + directoryList[i]));
 		}
-
 	}
-
 }
