@@ -37,20 +37,18 @@ public class StartPage extends VBox {
 	public StartPage() {
 		setAlignment(Pos.CENTER);
 		setSpacing(200);
-		
+
 		topLabel = new Label("Memory Game");
 		topLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 80));
 		topLabel.setTextFill(Color.RED);
 		Reflection r = new Reflection();
 		r.setFraction(0.7f);
-		topLabel.setEffect(r);		 
-		
-		
-		
+		topLabel.setEffect(r);
+
 		antalSpelare = new Label("Antal Spelare");
 		startButton = new Button("Start");
-		spin=new Spinner<>(1, 2, 1, 1);
-		
+		spin = new Spinner<>(1, 2, 1, 1);
+
 		r1 = new RadioButton("8 Cards");
 		r2 = new RadioButton("16 Cards");
 		r3 = new RadioButton("32 Cards");
@@ -61,19 +59,19 @@ public class StartPage extends VBox {
 		r3.setToggleGroup(tg);
 
 		radioButtonBox = new HBox();
-		radioButtonBox.getChildren().addAll(r1,r2,r3);
+		radioButtonBox.getChildren().addAll(r1, r2, r3);
 		radioButtonBox.setAlignment(Pos.CENTER);
-		boxLabel=new HBox();
+		boxLabel = new HBox();
 		boxLabel.setAlignment(Pos.CENTER);
-		boxLabel.getChildren().addAll(antalSpelare,spin);
-	
-        getChildren().addAll(topLabel,radioButtonBox,boxLabel,startButton);
-        
-        BackgroundImage pic = new BackgroundImage(new Image("/Backgroundpictures/starwars.jpg",1000,1000,true,false),
-        BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-        BackgroundSize.DEFAULT);
-        
-       this.setBackground(new Background(pic));
+		boxLabel.getChildren().addAll(antalSpelare, spin);
+
+		getChildren().addAll(topLabel, radioButtonBox, boxLabel, startButton);
+
+//		BackgroundImage pic = new BackgroundImage(
+//				new Image("/Backgroundpictures/starwars.jpg", 1000, 1000, true, false), BackgroundRepeat.REPEAT,
+//				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+//
+//		this.setBackground(new Background(pic));
 	}
 
 }
