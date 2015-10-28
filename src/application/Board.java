@@ -2,6 +2,7 @@ package application;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -20,6 +21,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import application.Card;
 
 public class Board extends VBox {
 	private ArrayList<Image> imageList;
@@ -38,12 +40,24 @@ public class Board extends VBox {
 	Label menu = new Label("Menu");
 	
 	
+	
 	BackgroundImage backgroundImage = new BackgroundImage(new Image("Backgroundpictures/javaStarwarsBackground1.jpg", 470, 766,false,true),
 	        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 	
-	Image image = new Image("Backgroundpictures/backgroundCard.png", 90, 90, false, false);
+	Image image = new Image("Backgroundpictures/backgroundCard.png", 90, 90, true, true);
 	
 	public Board(){
+		
+		getPictures();
+		Collections.shuffle(imageList);
+		
+		ArrayList<Card> cardsArray = new ArrayList<>();		
+		
+		for( Image i:imageList){
+			cardsArray.add(new Card( i, image));
+		}
+		
+		
 		
 		setSpacing(5);
 		
@@ -67,11 +81,11 @@ public class Board extends VBox {
 		gridpane.setHgap(10);
 		gridpane.setVgap(30);
 		
-		
+		int cnt = 0;
 		for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 5; j++) {
-            	ImageView view = new ImageView(image);
-            	gridpane.add(view, i, j);
+            	gridpane.add(new Card(imageList.get(cnt), image), i, j);
+            	cnt++;
             }
         }
 		
@@ -94,8 +108,9 @@ public class Board extends VBox {
 		String[] directoryList = imageDirectory.list();
 
 		for (int i = 0; i < directoryList.length; i++) {
-			imageList.add(new Image("Pictures/" + directoryList[i]));
-			imageList.add(new Image("Pictures/" + directoryList[i]));
+			imageList.add(new Image("Pictures/" + directoryList[i], 90, 90, true, true));
+			imageList.add(new Image("Pictures/" + directoryList[i], 90, 90, true, true));
+			
 		}
 	}
 }
