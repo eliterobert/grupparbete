@@ -52,6 +52,7 @@ public class Main extends Application {
 
 		for (int i = 0; i < directoryList.length; i++) {
 			imageList.add(new Image("Pictures/" + directoryList[i]));
+			imageList.add(new Image("Pictures/" + directoryList[i]));
 		}
 	}
 }
