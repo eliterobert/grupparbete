@@ -17,18 +17,12 @@ import java.util.Timer;
 
 public class ScoreAndTime {
 
-	Timer timer = new Timer();
-
 	int score;
-
-	// Constructor
 
 	public ScoreAndTime(int score) {
 		super();
 		this.score = score;
 	}
-
-	// Getters och setters
 
 	public int getScore() {
 		return score;
@@ -37,8 +31,6 @@ public class ScoreAndTime {
 	public void setScore(int score) {
 		this.score = score;
 	}
-
-	// Utkast av metod.
 
 	int calcScore(boolean isSameKind, Player player) {
 
@@ -51,6 +43,37 @@ public class ScoreAndTime {
 		}
 
 		return scores;
+
+	}
+
+	// Klockan skriver endast ut till konsoll i dagsläget.
+	// La upp den för allas beskådning om man vill tipsa och trixa.
+	// Stäm av innan med resten av gruppen om ni kommit på eller hittat något!
+
+	void clock() {
+
+		long startTime = System.currentTimeMillis() / 1000;
+
+		while (true) {
+
+			long currentTime = System.currentTimeMillis() / 1000 - startTime;
+
+			long remainingMinutes = currentTime / 60;
+
+			long minutes = remainingMinutes % 60;
+
+			long hours = minutes / 60;
+
+			long remainingsSeconds = currentTime % 60;
+
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+			System.out.println(hours + ":" + minutes + ":" + remainingsSeconds);
+		}
 
 	}
 
