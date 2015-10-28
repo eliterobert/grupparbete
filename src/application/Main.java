@@ -12,7 +12,6 @@ import javafx.scene.image.Image;
 public class Main extends Application {
 	private StartPage startPage;
 	private Board board;
-	private ArrayList<Image> imageList;
 	private Scene startScene, gameScene, boardScene;
 	public static Card selectedCard = null;
 
@@ -42,17 +41,5 @@ public class Main extends Application {
 		
 		startPage.startButton.setOnAction((a) -> primaryStage.setScene(boardScene));
 
-	}
-
-	private void getPictures() {
-		imageList = new ArrayList<>();
-
-		File imageDirectory = new File("src/Pictures");
-		String[] directoryList = imageDirectory.list();
-
-		for (int i = 0; i < directoryList.length; i++) {
-			imageList.add(new Image("Pictures/" + directoryList[i]));
-			imageList.add(new Image("Pictures/" + directoryList[i]));
-		}
 	}
 }

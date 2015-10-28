@@ -1,5 +1,8 @@
 package application;
 
+import java.io.File;
+import java.util.ArrayList;
+
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -19,6 +22,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 public class Board extends VBox {
+	private ArrayList<Image> imageList;
 	
 	HBox hBox1 = new HBox();
 	HBox hBox2 = new HBox();
@@ -81,5 +85,17 @@ public class Board extends VBox {
 		getChildren().addAll(gridpane, hBox1, hBox2);
 		//getChildren().addAll(hBox1, hBox2);
 
+	}
+	
+	private void getPictures() {
+		imageList = new ArrayList<>();
+
+		File imageDirectory = new File("src/Pictures");
+		String[] directoryList = imageDirectory.list();
+
+		for (int i = 0; i < directoryList.length; i++) {
+			imageList.add(new Image("Pictures/" + directoryList[i]));
+			imageList.add(new Image("Pictures/" + directoryList[i]));
+		}
 	}
 }
