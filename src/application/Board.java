@@ -24,7 +24,7 @@ public class Board extends VBox {
 	HBox hBox2 = new HBox();
 	
 	
-	//GridPane gridpane = new GridPane();
+	GridPane gridpane = new GridPane();
 	
 	Label player1 = new Label("Player 1");
 	Label player2 = new Label("Player 2");
@@ -34,16 +34,16 @@ public class Board extends VBox {
 	Label menu = new Label("Menu");
 	
 	
-	/*BackgroundImage backgroundImage = new BackgroundImage(new Image("Pictures/javaStarwarsBackground1.jpg", 470, 766,false,true),
+	BackgroundImage backgroundImage = new BackgroundImage(new Image("Pictures/javaStarwarsBackground1.jpg", 470, 766,false,true),
 	        BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 	
 	Image image = new Image("Pictures/backgroundCard.png", 90, 90, false, false);
-	*/
+	
 	public Board(){
 		
 		setSpacing(5);
 		
-		//setBackground(new Background(backgroundImage));
+		setBackground(new Background(backgroundImage));
 		
 		player1.setTextFill(Color.AQUA);
 		player2.setTextFill(Color.AQUA);
@@ -60,26 +60,26 @@ public class Board extends VBox {
 		player2Score.setTranslateX(300);
 		menu.setTranslateX(175);
 		
-		//gridpane.setHgap(10);
-		//gridpane.setVgap(30);
+		gridpane.setHgap(10);
+		gridpane.setVgap(30);
 		
-		/*
+		
 		for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 5; j++) {
             	ImageView view = new ImageView(image);
             	gridpane.add(view, i, j);
             }
         }
-		*/
+		
 		
 		hBox1.getChildren().addAll(player1, turn, player2);
 		hBox1.setTranslateY(110);
 		hBox2.getChildren().addAll(player1Score, menu, player2Score);
 		hBox2.setTranslateY(120);
-		//gridpane.setTranslateX(40);
-		//gridpane.setTranslateY(60);
-		//getChildren().addAll(gridpane, hBox1, hBox2);
-		getChildren().addAll(hBox1, hBox2);
+		gridpane.setTranslateX(40);
+		gridpane.setTranslateY(60);
+		getChildren().addAll(gridpane, hBox1, hBox2);
+		//getChildren().addAll(hBox1, hBox2);
 
 	}
 }
