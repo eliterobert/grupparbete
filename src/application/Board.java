@@ -51,14 +51,6 @@ public class Board extends VBox {
 		getPictures();
 		Collections.shuffle(imageList);
 		
-		ArrayList<Card> cardsArray = new ArrayList<>();		
-		
-		for( Image i:imageList){
-			cardsArray.add(new Card( i, image));
-		}
-		
-		
-		
 		setSpacing(5);
 		
 		setBackground(new Background(backgroundImage));
