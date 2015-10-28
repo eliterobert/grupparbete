@@ -7,7 +7,8 @@
 	import javafx.scene.control.Label;
 	import javafx.scene.control.RadioButton;
 	import javafx.scene.control.Spinner;
-	import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 	import javafx.scene.effect.Reflection;
 	import javafx.scene.image.Image;
 	import javafx.scene.layout.Background;
@@ -28,9 +29,10 @@
 		Button startButton;
 		ToggleGroup tg;
 		RadioButton r1, r2, r3;
-		Spinner<Integer> spin;
 		HBox radioButtonBox;
 		HBox boxLabel;
+		TextField p1;
+		TextField p2;
 
 		// Label topLabel=new Label("Memory Game");
 		// Label antalSpelare = new Label("Antal Spelare");
@@ -50,7 +52,11 @@
 			
 			antalSpelare = new Label("Antal Spelare");
 			startButton = new Button("Start");
-			spin=new Spinner<>(1, 2, 1, 1);
+			
+			p1=new TextField("Player 1");
+			p2=new TextField("Player 2");
+
+			
 			
 			r1 = new RadioButton("8 Cards");
 			r2 = new RadioButton("16 Cards");
@@ -60,6 +66,7 @@
 			r2.setToggleGroup(tg);
 			r2.setSelected(true);
 			r3.setToggleGroup(tg);
+						
 			
 			r1.setTextFill(Color.AQUA);
 			r2.setTextFill(Color.AQUA);
@@ -74,7 +81,7 @@
 			radioButtonBox.setAlignment(Pos.CENTER);
 			boxLabel=new HBox();
 			boxLabel.setAlignment(Pos.CENTER);
-			boxLabel.getChildren().addAll(antalSpelare,spin);
+			boxLabel.getChildren().addAll(p1,p2);
 		
 	        getChildren().addAll(topLabel,radioButtonBox,boxLabel,startButton);
 	        
