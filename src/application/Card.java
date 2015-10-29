@@ -1,5 +1,6 @@
 package application;
 
+import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
@@ -13,6 +14,7 @@ import javafx.util.Duration;
 public class Card extends StackPane{
 
 	RotateTransition rotation;
+	FadeTransition fade;
 	ImageView faceView, backView;
 
 	//Constructor for Card
@@ -21,7 +23,12 @@ public class Card extends StackPane{
 		backView = new ImageView(backImg);
 		faceView.setRotationAxis(Rotate.Y_AXIS);
 		faceView.setRotate(180);
-
+		
+		setOpacity(0);
+		fade = new FadeTransition(Duration.millis(7000), this);
+		fade.setToValue(1);
+		fade.play();
+		
 		setAlignment(Pos.CENTER);
 		setRotationAxis(Rotate.Y_AXIS);
 		getChildren().addAll(faceView, backView);
