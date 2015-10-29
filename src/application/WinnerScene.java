@@ -55,7 +55,7 @@ public class WinnerScene extends Application {
 //		buttonImage.setFitWidth(20);
 //		Button returnButton = new Button(null, buttonImage);
 
-		BackgroundImage pic = new BackgroundImage(new Image("/Image/winner.gif", 1000, 1600, true, false),
+		BackgroundImage pic = new BackgroundImage(new Image("/Backgroundpictures/winner.gif", 1000, 1600, true, false),
 				BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
 				BackgroundSize.DEFAULT);
 
