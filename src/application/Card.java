@@ -107,7 +107,6 @@ public class Card extends StackPane{
 	}
 
 	public void close() {
-		rotation = new RotateTransition(Duration.millis(1000), this);
 		rotation.setToAngle(90);
 		rotation.play();
 		rotation.setOnFinished((a) -> {
