@@ -16,13 +16,9 @@ public class Card extends StackPane{
 	RotateTransition rotation;
 	FadeTransition fade;
 	ImageView faceView, backView;
-	
-	Image fi;
 
 	//Constructor for Card
-	public Card(Image faceImg, Image backImg) {
-		fi = faceImg;
-		
+	public Card(Image faceImg, Image backImg) {		
 		faceView = new ImageView(faceImg);
 		backView = new ImageView(backImg);
 		faceView.setRotationAxis(Rotate.Y_AXIS);
@@ -64,6 +60,7 @@ public class Card extends StackPane{
 	}
 
 	public boolean isOfSameKind(Card otherCard) {
+//		return this.faceView.getImage().equals(otherCard.faceView.getImage());
 		
 		PixelReader faceImg = faceView.getImage().getPixelReader();
 		PixelReader otherFaceImg = otherCard.faceView.getImage().getPixelReader();
