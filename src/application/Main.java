@@ -1,8 +1,13 @@
 package application;
 
+import java.io.File;
+import java.util.ArrayList;
+
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 
 public class Main extends Application {
 	private StartPage startPage;
