@@ -46,7 +46,7 @@ public class Card extends StackPane{
 			open(() -> {});
 		}
 		else { open(() -> {
-			if(!isOfSameKind(Main.selectedCard)) {
+			if(!this.isOfSameKind(Main.selectedCard)) {
 				Main.selectedCard.close();
 				this.close();
 			}
@@ -60,32 +60,32 @@ public class Card extends StackPane{
 	}
 
 	public boolean isOfSameKind(Card otherCard) {
-//		return this.faceView.getImage().equals(otherCard.faceView.getImage());
+		return this.faceView.getImage().equals(otherCard.faceView.getImage());
 		
-		PixelReader faceImg = faceView.getImage().getPixelReader();
-		PixelReader otherFaceImg = otherCard.faceView.getImage().getPixelReader();
-		int levelOfAcceptance = 90;
-		boolean isOfSameKind = false;
-
-		long machingPixels = 0;
-		long totalPixels = (long) ((faceView.getImage().getWidth())*(faceView.getImage().getHeight()));
-
-		try {
-			for (int i = 0; i < faceView.getImage().getHeight(); i++) {
-				for (int j = 0; j < faceView.getImage().getWidth(); j++) {
-					if (faceImg.getArgb(i, j) == otherFaceImg.getArgb(i, j))
-						machingPixels++;
-				}
-			}
-		}catch(NullPointerException e) {
-			System.out.println("NullPointerEx Occurred!!");
-		}
-
-		//Undvik division med noll samt kolla så acceptans nivån är över 90 %
-		if(((totalPixels == 0 ? -1 : machingPixels/totalPixels)*100)>levelOfAcceptance)
-			isOfSameKind = true;
-
-		return isOfSameKind;
+//		PixelReader faceImg = faceView.getImage().getPixelReader();
+//		PixelReader otherFaceImg = otherCard.faceView.getImage().getPixelReader();
+//		int levelOfAcceptance = 90;
+//		boolean isOfSameKind = false;
+//
+//		long machingPixels = 0;
+//		long totalPixels = (long) ((faceView.getImage().getWidth())*(faceView.getImage().getHeight()));
+//
+//		try {
+//			for (int i = 0; i < faceView.getImage().getHeight(); i++) {
+//				for (int j = 0; j < faceView.getImage().getWidth(); j++) {
+//					if (faceImg.getArgb(i, j) == otherFaceImg.getArgb(i, j))
+//						machingPixels++;
+//				}
+//			}
+//		}catch(NullPointerException e) {
+//			System.out.println("NullPointerEx Occurred!!");
+//		}
+//
+//		//Undvik division med noll samt kolla så acceptans nivån är över 90 %
+//		if(((totalPixels == 0 ? -1 : machingPixels/totalPixels)*100)>levelOfAcceptance)
+//			isOfSameKind = true;
+//
+//		return isOfSameKind;
 	}
 
 	public void open(Runnable action){
