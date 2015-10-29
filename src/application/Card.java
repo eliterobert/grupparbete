@@ -78,7 +78,7 @@ public class Card extends StackPane{
 				}
 			}
 		}catch(NullPointerException e) {
-			System.out.println("NullPointerException Occurred!!");
+			System.out.println("NullPointerEx Occurred!!");
 		}
 
 		//Undvik division med noll samt kolla så acceptans nivån är över 90 %
