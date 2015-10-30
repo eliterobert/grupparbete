@@ -58,6 +58,7 @@ public class StartPage extends VBox {
 		r1 = new RadioButton("8 Cards");
 		r2 = new RadioButton("16 Cards");
 		r3 = new RadioButton("32 Cards");
+		
 		tg = new ToggleGroup();
 		r1.setToggleGroup(tg);
 		r2.setToggleGroup(tg);
