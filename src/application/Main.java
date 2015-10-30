@@ -15,7 +15,7 @@ import javafx.scene.media.MediaPlayer;
 public class Main extends Application {
 	private StartPage startPage;
 	private Board board;
-	private Scene startScene, gameScene, boardScene;
+	private Scene startScene, boardScene;
 	public static Card selectedCard = null;
 
 	public static void main(String[] args) {
