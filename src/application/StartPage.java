@@ -49,6 +49,7 @@ public class StartPage extends VBox {
 		Reflection r = new Reflection();
 		r.setFraction(0.7f);
 		topLabel.setEffect(r);
+		
 
 		antalSpelare = new Label("Antal Spelare");
 		startButton = new Button("Start");

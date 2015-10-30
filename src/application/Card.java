@@ -12,28 +12,28 @@ import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
 /**
- * @author Ajmal Bahawodin
- * This class represents a playing card with a face and a back.
+ * @author Ajmal Bahawodin This class represents a playing card with a face and
+ *         a back.
  *
  */
-public class Card extends StackPane{
+public class Card extends StackPane {
 
 	RotateTransition rotation;
 	FadeTransition fade;
 	ImageView faceView, backView;
 
-	//Constructor for Card
-	public Card(Image faceImg, Image backImg) {		
+	// Constructor for Card
+	public Card(Image faceImg, Image backImg) {
 		faceView = new ImageView(faceImg);
 		backView = new ImageView(backImg);
 		faceView.setRotationAxis(Rotate.Y_AXIS);
 		faceView.setRotate(180);
-		
+
 		setOpacity(0);
 		fade = new FadeTransition(Duration.millis(7000), this);
 		fade.setToValue(1);
 		fade.play();
-		
+
 		setAlignment(Pos.CENTER);
 		setRotationAxis(Rotate.Y_AXIS);
 		getChildren().addAll(faceView, backView);
@@ -41,22 +41,26 @@ public class Card extends StackPane{
 		setOnMouseClicked(this::handleMouseClick);
 
 	}
-	
+
 	private void handleMouseClick(MouseEvent event) {
-		if (isOpen()) 
-			return; 
-		
-		if(Main.selectedCard == null) {
+		if (isOpen())
+			return;
+
+		if (Main.selectedCard == null) {
 			Main.selectedCard = this;
-			open(() -> {});
-		}
-		else { open(() -> {
-			if(!this.isOfSameKind(Main.selectedCard)) {
-				Main.selectedCard.close();
-				this.close();
-			}
-			Main.selectedCard = null;
-		});
+			open(() -> {
+			});
+		} else {
+			open(() -> {
+				if (!this.isOfSameKind(Main.selectedCard)) {
+					Main.selectedCard.close();
+					this.close();
+				} else if (this.isOfSameKind(Main.selectedCard)) {
+					Main.playerList.get(0).increaseScore();
+					Main.board.player1Score.setText(Main.playerList.get(0).getScore() + "");
+				}
+				Main.selectedCard = null;
+			});
 		}
 	}
 
@@ -65,15 +69,16 @@ public class Card extends StackPane{
 	}
 
 	public boolean isOfSameKind(Card otherCard) {
-//		return this.faceView.getImage().equals(otherCard.faceView.getImage());
-		
+		// return
+		// this.faceView.getImage().equals(otherCard.faceView.getImage());
+
 		PixelReader faceImg = faceView.getImage().getPixelReader();
 		PixelReader otherFaceImg = otherCard.faceView.getImage().getPixelReader();
 		int levelOfAcceptance = 90;
 		boolean isOfSameKind = false;
 
 		long machingPixels = 0;
-		long totalPixels = (long) ((faceView.getImage().getWidth())*(faceView.getImage().getHeight()));
+		long totalPixels = (long) ((faceView.getImage().getWidth()) * (faceView.getImage().getHeight()));
 
 		try {
 			for (int i = 0; i < faceView.getImage().getHeight(); i++) {
@@ -82,18 +87,18 @@ public class Card extends StackPane{
 						machingPixels++;
 				}
 			}
-		}catch(NullPointerException e) {
+		} catch (NullPointerException e) {
 			System.out.println("NullPointerEx Occurred!!");
 		}
 
-		//Undvik division med noll samt kolla så acceptans nivån är över 90 %
-		if(((totalPixels == 0 ? -1 : machingPixels/totalPixels)*100)>levelOfAcceptance)
+		// Undvik division med noll samt kolla så acceptans nivån är över 90
+		// %
+		if (((totalPixels == 0 ? -1 : machingPixels / totalPixels) * 100) > levelOfAcceptance)
 			isOfSameKind = true;
-
 		return isOfSameKind;
 	}
 
-	public void open(Runnable action){
+	public void open(Runnable action) {
 		rotation = new RotateTransition(Duration.millis(500), this);
 		rotation.setToAngle(90);
 		rotation.play();
@@ -107,8 +112,10 @@ public class Card extends StackPane{
 		getChildren().addAll(backView, faceView);
 		rotation.setToAngle(180);
 		rotation.play();
-		rotation.setOnFinished((a) -> { action.run(); });
-		
+		rotation.setOnFinished((a) -> {
+			action.run();
+		});
+
 	}
 
 	public void close() {

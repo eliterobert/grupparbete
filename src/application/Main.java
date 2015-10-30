@@ -16,17 +16,19 @@ import javafx.scene.media.MediaPlayer;
 
 public class Main extends Application {
 	private StartPage startPage;
-	private Board board;
+	public static Board board;
 	private Scene startScene, boardScene;
 	public static Card selectedCard = null;
 
-	public LinkedList<Player> playerList;
+	public static LinkedList<Player> playerList;
 
+	
 	public static void main(String[] args) {
 		sound();
 		launch(args);
 	}
 
+	
 	@Override
 	public void start(Stage primaryStage) {
 
@@ -39,7 +41,6 @@ public class Main extends Application {
 		primaryStage.setMaxHeight(1080 * 0.73);
 		primaryStage.setMinWidth(1920 * 0.7);
 		primaryStage.setMaxWidth(1920 * 0.7);
-		primaryStage.setScene(boardScene);
 
 		primaryStage.setScene(startScene);
 		primaryStage.show();
@@ -59,7 +60,6 @@ public class Main extends Application {
 			boardScene = new Scene(board, 1920 * 0.7, 1080 * 0.7);
 			boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(boardScene);
-			primaryStage.show();
 		});
 
 	}
