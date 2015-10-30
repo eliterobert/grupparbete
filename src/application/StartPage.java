@@ -40,7 +40,7 @@ public class StartPage extends VBox {
 		setBackground(new Background(pic));
 		
 		setAlignment(Pos.CENTER);
-		setSpacing(200);
+		setSpacing(50);
 
 		topLabel = new Label("Memory Game");
 		topLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 40));
