@@ -34,7 +34,6 @@ public class Main extends Application {
 		primaryStage.setMaxHeight(1080 * 0.73);
 		primaryStage.setMinWidth(1920 * 0.7);
 		primaryStage.setMaxWidth(1920 * 0.7);
-		primaryStage.setScene(boardScene);
 
 		primaryStage.setScene(startScene);
 		primaryStage.show();
@@ -54,7 +53,6 @@ public class Main extends Application {
 			boardScene = new Scene(board, 1920 * 0.7, 1080 * 0.7);
 			boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(boardScene);
-			primaryStage.show();
 		});
 
 	}
