@@ -22,6 +22,8 @@ public class Board extends VBox {
        
         HBox hBox1 = new HBox();
         HBox hBox2 = new HBox();
+        VBox vBox1 = new VBox();
+        VBox vBox2 = new VBox();
        
        
         GridPane gridpane = new GridPane();
@@ -35,10 +37,10 @@ public class Board extends VBox {
        
        
        
-        BackgroundImage backgroundImage = new BackgroundImage(new Image("Backgroundpictures/javaStarwarsBackground1.jpg", 470, 766,false,true),
+        BackgroundImage backgroundImage = new BackgroundImage(new Image("Backgroundpictures/javaNewBackground.jpg", 1920*0.7, 1080*0.7,false,true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
        
-        Image image = new Image("Backgroundpictures/backgroundCard.png", 90, 90, true, true);
+        Image image = new Image("Backgroundpictures/backgroundCard.png", 120, 120, true, true);
        
         public Board(){
                
@@ -56,33 +58,47 @@ public class Board extends VBox {
                 player1Score.setTextFill(Color.AQUA);
                 player2Score.setTextFill(Color.AQUA);
                
-                player1.setTranslateX(50);
+              /*  player1.setTranslateX(50);
                 player2.setTranslateX(300);
                 turn.setTranslateX(175);
                
                 player1Score.setTranslateX(50);
                 player2Score.setTranslateX(300);
-                menu.setTranslateX(175);
+                menu.setTranslateX(175);*/
                
-                gridpane.setHgap(10);
+                gridpane.setHgap(30);
                 gridpane.setVgap(30);
                
                 int cnt = 0;
-                for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 5; j++) {
+                for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 4; j++) {
                 gridpane.add(new Card(imageList.get(cnt), image), i, j);
                 cnt++;
             }
         }
                
+                vBox1.getChildren().addAll(player1, player1Score);
+                vBox2.getChildren().addAll(player2, player2Score);
+                hBox1.getChildren().addAll(vBox1, gridpane, vBox2);
+                hBox2.getChildren().add(menu);
+                
+                hBox1.setTranslateY(75);
+                hBox1.setTranslateX(80);
+                hBox1.setSpacing(195);
+                hBox2.setTranslateX(1920*0.7/2-10);
+                hBox2.setTranslateY(130);
+                
+                
+                getChildren().addAll(hBox1, hBox2);
+                
                
-                hBox1.getChildren().addAll(player1, turn, player2);
+               /* hBox1.getChildren().addAll(player1, turn, player2);
                 hBox1.setTranslateY(110);
                 hBox2.getChildren().addAll(player1Score, menu, player2Score);
                 hBox2.setTranslateY(120);
-                gridpane.setTranslateX(40);
-                gridpane.setTranslateY(60);
-                getChildren().addAll(gridpane, hBox1, hBox2);
+                gridpane.setTranslateX(320);
+                gridpane.setTranslateY(75);
+                getChildren().addAll(gridpane, hBox1, hBox2);*/
                 //getChildren().addAll(hBox1, hBox2);
  
         }
@@ -94,8 +110,8 @@ public class Board extends VBox {
                 String[] directoryList = imageDirectory.list();
  
                 for (int i = 0; i < directoryList.length; i++) {
-                        imageList.add(new Image("Pictures/" + directoryList[i], 90, 90, true, true));
-                        imageList.add(new Image("Pictures/" + directoryList[i], 90, 90, true, true));
+                        imageList.add(new Image("Pictures/" + directoryList[i], 120, 120, true, true));
+                        imageList.add(new Image("Pictures/" + directoryList[i], 120, 120, true, true));
                        
                 }
         }
