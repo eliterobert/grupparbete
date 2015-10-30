@@ -51,9 +51,12 @@ public class StartPage extends VBox {
 
 		antalSpelare = new Label("Antal Spelare");
 		startButton = new Button("Start");
+		startButton.setPrefSize(180, 80);
 
-		p1=new TextField("Player 1");
-		p2=new TextField("Player 2");
+		p1 = new TextField();
+		p1.setPromptText("Player 1");
+		p2 = new TextField();
+		p2.setPromptText("Player 2");
 
 		r1 = new RadioButton("8 Cards");
 		r2 = new RadioButton("16 Cards");
@@ -76,8 +79,10 @@ public class StartPage extends VBox {
 		radioButtonBox = new HBox();
 		radioButtonBox.getChildren().addAll(r1,r2,r3);
 		radioButtonBox.setAlignment(Pos.CENTER);
+		
 		boxLabel=new HBox();
 		boxLabel.setAlignment(Pos.CENTER);
+		boxLabel.setSpacing(20);
 		boxLabel.getChildren().addAll(p1,p2);
 
 		getChildren().addAll(topLabel,radioButtonBox,boxLabel,startButton);
