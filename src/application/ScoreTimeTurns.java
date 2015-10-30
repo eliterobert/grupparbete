@@ -1,7 +1,5 @@
 package application;
 
-import java.util.Timer;
-
 /*
  *Metoder:
  *Time lapsed: ränkar hur länge spelet pågått. Sprängsvårt
