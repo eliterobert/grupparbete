@@ -11,6 +11,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
+/**
+ * @author Ajmal Bahawodin
+ * This class represents a playing card with a face and a back.
+ *
+ */
 public class Card extends StackPane{
 
 	RotateTransition rotation;
