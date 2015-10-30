@@ -1,6 +1,7 @@
 package application;
 
 import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 
 import javafx.application.Application;
@@ -8,6 +9,8 @@ import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class Main extends Application {
 	private StartPage startPage;
@@ -16,11 +19,13 @@ public class Main extends Application {
 	public static Card selectedCard = null;
 
 	public static void main(String[] args) {
+		sound();
 		launch(args);
 	}
 
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) {		
+		
 		startPage = new StartPage();
 		board = new Board();
 		startScene = new Scene(startPage, 1920*0.7, 1080*0.7);
@@ -42,4 +47,13 @@ public class Main extends Application {
 		startPage.startButton.setOnAction((a) -> primaryStage.setScene(boardScene));
 
 	}
+	
+	public static void sound(){
+		
+		String musicFile = "Sound/testSound1.mp3"; 
+		Media sound = new Media(new File(musicFile).toURI().toString());
+		MediaPlayer mediaPlayer = new MediaPlayer(sound);
+		mediaPlayer.play();
+	}
+	
 }
