@@ -31,14 +31,15 @@ public class StartPage extends VBox {
 	HBox boxLabel;
 	TextField p1;
 	TextField p2;
+	String testp1;
 
 	public StartPage() {
-		BackgroundImage pic = new BackgroundImage(new Image("/Backgroundpictures/starwars.jpg",1000,1000,true,false),
-				BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-				BackgroundSize.DEFAULT);
-		
+		BackgroundImage pic = new BackgroundImage(
+				new Image("/Backgroundpictures/starwars.jpg", 1000, 1000, true, false), BackgroundRepeat.REPEAT,
+				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+
 		setBackground(new Background(pic));
-		
+
 		setAlignment(Pos.CENTER);
 		setSpacing(50);
 
@@ -47,7 +48,7 @@ public class StartPage extends VBox {
 		topLabel.setTextFill(Color.RED);
 		Reflection r = new Reflection();
 		r.setFraction(0.7f);
-		topLabel.setEffect(r);		 
+		topLabel.setEffect(r);
 
 		antalSpelare = new Label("Antal Spelare");
 		startButton = new Button("Start");
@@ -61,7 +62,7 @@ public class StartPage extends VBox {
 		r1 = new RadioButton("8 Cards");
 		r2 = new RadioButton("16 Cards");
 		r3 = new RadioButton("32 Cards");
-		
+
 		tg = new ToggleGroup();
 		r1.setToggleGroup(tg);
 		r2.setToggleGroup(tg);
@@ -77,16 +78,23 @@ public class StartPage extends VBox {
 		startButton.setTextFill(Color.BLACK);
 
 		radioButtonBox = new HBox();
-		radioButtonBox.getChildren().addAll(r1,r2,r3);
+		radioButtonBox.getChildren().addAll(r1, r2, r3);
 		radioButtonBox.setAlignment(Pos.CENTER);
-		
-		boxLabel=new HBox();
+
+		boxLabel = new HBox();
 		boxLabel.setAlignment(Pos.CENTER);
 		boxLabel.setSpacing(20);
-		boxLabel.getChildren().addAll(p1,p2);
+		boxLabel.getChildren().addAll(p1, p2);
 
-		getChildren().addAll(topLabel,radioButtonBox,boxLabel,startButton);
+		getChildren().addAll(topLabel, radioButtonBox, boxLabel, startButton);
+	}
+
+	public String getTestp1() {
+		return testp1;
+	}
+
+	public void setTestp1(String testp1) {
+		this.testp1 = testp1;
 	}
 
 }
-
