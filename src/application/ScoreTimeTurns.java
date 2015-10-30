@@ -17,32 +17,15 @@ import java.util.Timer;
 
 public class ScoreTimeTurns {
 
-	int score;
 
-	public ScoreTimeTurns(int score) {
-		super();
-		this.score = score;
-	}
+	void calcScore(Player player) {
 
-	public int getScore() {
-		return score;
-	}
+		if (player.isTurn()==true) {
 
-	public void setScore(int score) {
-		this.score = score;
-	}
-
-	int calcScore(boolean isSameKind, Player player) {
-
-		int scores = 0;
-
-		if (isSameKind == true && player.isTurn()) {
-
-			scores = player.getScore() + 1;
+			player.setScore(+1);
 
 		}
 
-		return scores;
 
 	}
 
