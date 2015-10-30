@@ -12,9 +12,7 @@ import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
 /**
- * @author Ajmal Bahawodin This class represents a playing card with a face and
- *         a back.
- *
+ * @author Ajmal Bahawodin This class represents a playing card with a face and a back.
  */
 public class Card extends StackPane {
 
@@ -30,7 +28,7 @@ public class Card extends StackPane {
 		faceView.setRotate(180);
 
 		setOpacity(0);
-		fade = new FadeTransition(Duration.millis(7000), this);
+		fade = new FadeTransition(Duration.millis(2000), this);
 		fade.setToValue(1);
 		fade.play();
 
