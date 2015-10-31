@@ -12,43 +12,40 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 public class Main extends Application {
+
 	private StartPage startPage;
 	public static Board board;
-	private Scene startScene, boardScene;
+	private Scene startScene, boardScene, phantasyStarScene;
 	public static Card selectedCard = null;
-	
+	public static PhantasyStarBoard phantasyStarBoard;
 
 	Screen screen = Screen.getPrimary();
-    Rectangle2D bounds = screen.getVisualBounds();
-
+	Rectangle2D bounds = screen.getVisualBounds();
 	public static LinkedList<Player> playerList;
 
-	
 	public static void main(String[] args) {
 		sound();
 		launch(args);
 	}
 
-	
 	@Override
 	public void start(Stage primaryStage) {
 
 		startPage = new StartPage();
-		startScene = new Scene(startPage, bounds.getWidth()*0.7,  bounds.getHeight()* 0.7);
+		startScene = new Scene(startPage, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 
 		startScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
-//		primaryStage.setMinHeight(1080 * 0.73);
-//		primaryStage.setMaxHeight(1080 * 0.73);
-//		primaryStage.setMinWidth(1920 * 0.7);
-//		primaryStage.setMaxWidth(1920 * 0.7);
-//		primaryStage.setScene(boardScene);
-		
-		primaryStage.setMinHeight(bounds.getHeight()* 0.7+25);
-		primaryStage.setMaxHeight(bounds.getHeight()* 0.7+25);
-		primaryStage.setMinWidth(bounds.getWidth()*0.7);
-		primaryStage.setMaxWidth(bounds.getWidth()*0.7);
-		
+		// primaryStage.setMinHeight(1080 * 0.73);
+		// primaryStage.setMaxHeight(1080 * 0.73);
+		// primaryStage.setMinWidth(1920 * 0.7);
+		// primaryStage.setMaxWidth(1920 * 0.7);
+		// primaryStage.setScene(boardScene);
+
+		primaryStage.setMinHeight(bounds.getHeight() * 0.7 + 25);
+		primaryStage.setMaxHeight(bounds.getHeight() * 0.7 + 25);
+		primaryStage.setMinWidth(bounds.getWidth() * 0.7);
+		primaryStage.setMaxWidth(bounds.getWidth() * 0.7);
 
 		primaryStage.setScene(startScene);
 		primaryStage.show();
@@ -65,10 +62,14 @@ public class Main extends Application {
 			board.player1Score.setText(playerList.get(0).getScore() + "");
 			board.player2Score.setText(playerList.get(1).getScore() + "");
 
-			//boardScene = new Scene(board, 1920 * 0.7, 1080 * 0.7);
-			boardScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
-			boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(boardScene);
+			// boardScene = new Scene(board, 1920 * 0.7, 1080 * 0.7);
+//			boardScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
+//			boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			phantasyStarBoard = new PhantasyStarBoard();
+			phantasyStarScene = new Scene(phantasyStarBoard, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
+			phantasyStarScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+
+			primaryStage.setScene(phantasyStarScene);
 		});
 
 	}
@@ -78,7 +79,6 @@ public class Main extends Application {
 		String musicFile = "Sound/testSound1.mp3";
 		Media sound = new Media(new File(musicFile).toURI().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(sound);
-		mediaPlayer.play();
 	}
 
 }
