@@ -74,7 +74,7 @@ public class StartPage extends VBox {
 		cardsChoise16.setSelected(true);
 		cardsChoise32.setToggleGroup(tg);
 		
-		theme1 = new ToggleButton("Theme 1");
+		theme1 = new ToggleButton("PSII Theme");
 		theme1.setPrefSize(100, 50);
 		theme1.setSelected(true);
 		theme2 = new ToggleButton("Theme 2");

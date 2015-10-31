@@ -50,28 +50,57 @@ public class Main extends Application {
 
 		primaryStage.setScene(startScene);
 		primaryStage.show();
-		
+
 		startPage.startButton.setOnAction(event -> {
-			playerList = new LinkedList<>();
 
-			playerList.add(new Player(startPage.player1.getText()));
-			playerList.add(new Player(startPage.player2.getText()));
+			if (startPage.theme1.isSelected()) {
+				playerList = new LinkedList<>();
 
-			board = new Board();
-			board.player1.setText(playerList.get(0).getName());
-			board.player2.setText(playerList.get(1).getName());
+				playerList.add(new Player(startPage.player1.getText()));
+				playerList.add(new Player(startPage.player2.getText()));
 
-			board.player1Score.setText(playerList.get(0).getScore() + "");
-			board.player2Score.setText(playerList.get(1).getScore() + "");
 
-			// boardScene = new Scene(board, 1920 * 0.7, 1080 * 0.7);
-//			boardScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
-//			boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			phantasyStarBoard = new PhantasyStarBoard();
-			phantasyStarScene = new Scene(phantasyStarBoard, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
-			phantasyStarScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				phantasyStarBoard = new PhantasyStarBoard();
+				phantasyStarBoard.player1.setText(playerList.get(0).getName());
+				phantasyStarBoard.player2.setText(playerList.get(1).getName());
 
-			primaryStage.setScene(phantasyStarScene);
+				phantasyStarBoard.player1Score.setText(playerList.get(0).getScore() + "");
+				phantasyStarBoard.player2Score.setText(playerList.get(1).getScore() + "");
+
+				// boardScene = new Scene(board, 1920 * 0.7, 1080 * 0.7);
+				// boardScene = new Scene(board, bounds.getWidth() * 0.7,
+				// bounds.getHeight() * 0.7);
+				// boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				phantasyStarBoard = new PhantasyStarBoard();
+				phantasyStarScene = new Scene(phantasyStarBoard, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
+				phantasyStarScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+
+				primaryStage.setScene(phantasyStarScene);
+			}
+
+			else if (startPage.theme2.isSelected()) {
+				playerList = new LinkedList<>();
+
+				playerList.add(new Player(startPage.player1.getText()));
+				playerList.add(new Player(startPage.player2.getText()));
+				System.out.println(playerList.size());
+
+				board = new Board();
+				board.player1.setText(playerList.get(0).getName());
+				board.player2.setText(playerList.get(1).getName());
+
+				board.player1Score.setText(playerList.get(0).getScore() + "");
+				board.player2Score.setText(playerList.get(1).getScore() + "");
+
+				// boardScene = new Scene(board, 1920 * 0.7, 1080 * 0.7);
+				// boardScene = new Scene(board, bounds.getWidth() * 0.7,
+				// bounds.getHeight() * 0.7);
+				// boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				boardScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
+				boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+
+				primaryStage.setScene(boardScene);
+			}
 		});
 
 	}

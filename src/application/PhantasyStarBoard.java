@@ -54,7 +54,6 @@ public class PhantasyStarBoard extends VBox {
 
 	Image image = new Image("Backgroundpictures/phantasyBackCard.png", bounds.getWidth() * 0.06,
 			bounds.getWidth() * 0.06, true, true);
-	
 
 	public PhantasyStarBoard() {
 
@@ -131,11 +130,13 @@ public class PhantasyStarBoard extends VBox {
 
 		}
 	}
+
 	public static void sound() {
 
 		String musicFile = "Sound/DeathPlace.mp3";
 		Media sound = new Media(new File(musicFile).toURI().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(sound);
+		mediaPlayer.setCycleCount(10);
 		mediaPlayer.play();
 	}
 }
