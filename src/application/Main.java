@@ -67,11 +67,6 @@ public class Main extends Application {
 				phantasyStarBoard.player1Score.setText(playerList.get(0).getScore() + "");
 				phantasyStarBoard.player2Score.setText(playerList.get(1).getScore() + "");
 
-				// boardScene = new Scene(board, 1920 * 0.7, 1080 * 0.7);
-				// boardScene = new Scene(board, bounds.getWidth() * 0.7,
-				// bounds.getHeight() * 0.7);
-				// boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-				phantasyStarBoard = new PhantasyStarBoard();
 				phantasyStarScene = new Scene(phantasyStarBoard, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 				phantasyStarScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
