@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.LinkedList;
 
 import javafx.application.Application;
+import javafx.geometry.Rectangle2D;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.media.Media;
@@ -14,6 +16,10 @@ public class Main extends Application {
 	private Board board;
 	private Scene startScene, boardScene;
 	public static Card selectedCard = null;
+	
+
+	Screen screen = Screen.getPrimary();
+    Rectangle2D bounds = screen.getVisualBounds();
 
 	public LinkedList<Player> playerList;
 
@@ -26,15 +32,22 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 
 		startPage = new StartPage();
-		startScene = new Scene(startPage, 1920 * 0.7, 1080 * 0.7);
+		startScene = new Scene(startPage, bounds.getWidth()*0.7,  bounds.getHeight()* 0.7);
 
 		startScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
-		primaryStage.setMinHeight(1080 * 0.73);
-		primaryStage.setMaxHeight(1080 * 0.73);
-		primaryStage.setMinWidth(1920 * 0.7);
-		primaryStage.setMaxWidth(1920 * 0.7);
+//		primaryStage.setMinHeight(1080 * 0.73);
+//		primaryStage.setMaxHeight(1080 * 0.73);
+//		primaryStage.setMinWidth(1920 * 0.7);
+//		primaryStage.setMaxWidth(1920 * 0.7);
+//		primaryStage.setScene(boardScene);
+		
+		primaryStage.setMinHeight(bounds.getHeight()* 0.7+25);
+		primaryStage.setMaxHeight(bounds.getHeight()* 0.7+25);
+		primaryStage.setMinWidth(bounds.getWidth()*0.7);
+		primaryStage.setMaxWidth(bounds.getWidth()*0.7);
 		primaryStage.setScene(boardScene);
+		
 
 		primaryStage.setScene(startScene);
 		primaryStage.show();
@@ -51,7 +64,8 @@ public class Main extends Application {
 			board.player1Score.setText(playerList.get(0).getScore() + "");
 			board.player2Score.setText(playerList.get(1).getScore() + "");
 
-			boardScene = new Scene(board, 1920 * 0.7, 1080 * 0.7);
+			//boardScene = new Scene(board, 1920 * 0.7, 1080 * 0.7);
+			boardScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 			boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(boardScene);
 			primaryStage.show();
