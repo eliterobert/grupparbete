@@ -46,14 +46,16 @@ public class Main extends Application {
 		primaryStage.setMaxHeight(bounds.getHeight() * 0.7 + 25);
 		primaryStage.setMinWidth(bounds.getWidth() * 0.7);
 		primaryStage.setMaxWidth(bounds.getWidth() * 0.7);
+		primaryStage.setTitle("Mamory Game");
 
 		primaryStage.setScene(startScene);
 		primaryStage.show();
+		
 		startPage.startButton.setOnAction(event -> {
 			playerList = new LinkedList<>();
 
-			playerList.add(new Player(startPage.p1.getText(), 0));
-			playerList.add(new Player(startPage.p2.getText(), 0));
+			playerList.add(new Player(startPage.p1.getText()));
+			playerList.add(new Player(startPage.p2.getText()));
 
 			board = new Board();
 			board.player1.setText(playerList.get(0).getName());

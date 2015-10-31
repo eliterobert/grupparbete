@@ -14,10 +14,9 @@ public class Player {
 		this.isTurn = isTurn;
 	}
 
-	public Player(String name, int score) {
-		super();
+	public Player(String name) {
 		this.name = name;
-		this.score = score;
+		score = 0;
 	}
 
 	void increaseScore() {
