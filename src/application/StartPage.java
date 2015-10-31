@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.Reflection;
 import javafx.scene.image.Image;
@@ -25,12 +26,12 @@ public class StartPage extends VBox {
 	Label topLabel;
 	Label antalSpelare;
 	Button startButton;
-	ToggleGroup tg;
-	RadioButton r1, r2, r3;
-	HBox radioButtonBox;
+	ToggleGroup tg, themeGroup;
+	ToggleButton cardsChoise8, cardsChoise16, cardsChoise32;
+	ToggleButton theme1, theme2;
+	HBox toggleButtonBox, themeGroupBox;
 	HBox boxLabel;
-	TextField p1;
-	TextField p2;
+	TextField player1, player2;
 	String testp1;
 
 	public StartPage() {
@@ -55,39 +56,53 @@ public class StartPage extends VBox {
 		startButton = new Button("Start");
 		startButton.setPrefSize(180, 80);
 
-		p1 = new TextField();
-		p1.setPromptText("Player 1");
-		p2 = new TextField();
-		p2.setPromptText("Player 2");
+		player1 = new TextField();
+		player1.setPromptText("Player 1");
+		player2 = new TextField();
+		player2.setPromptText("Player 2");
 
-		r1 = new RadioButton("8 Cards");
-		r2 = new RadioButton("16 Cards");
-		r3 = new RadioButton("32 Cards");
+		cardsChoise8 = new ToggleButton("8 Cards");
+		cardsChoise8.setPrefSize(100, 50);
+		cardsChoise16 = new ToggleButton("16 Cards");
+		cardsChoise16.setPrefSize(100, 50);
+		cardsChoise32 = new ToggleButton("32 Cards");
+		cardsChoise32.setPrefSize(100, 50);
 
 		tg = new ToggleGroup();
-		r1.setToggleGroup(tg);
-		r2.setToggleGroup(tg);
-		r2.setSelected(true);
-		r3.setToggleGroup(tg);
-
-		r1.setTextFill(Color.AQUA);
-		r2.setTextFill(Color.AQUA);
-		r3.setTextFill(Color.AQUA);
+		cardsChoise8.setToggleGroup(tg);
+		cardsChoise16.setToggleGroup(tg);
+		cardsChoise16.setSelected(true);
+		cardsChoise32.setToggleGroup(tg);
+		
+		theme1 = new ToggleButton("Theme 1");
+		theme1.setPrefSize(100, 50);
+		theme2 = new ToggleButton("Theme 2");
+		theme2.setPrefSize(100, 50);
+		
+		themeGroup = new ToggleGroup();
+		theme1.setToggleGroup(themeGroup);
+		theme2.setToggleGroup(themeGroup);
+		
+		themeGroupBox = new HBox();
+		themeGroupBox.setSpacing(20);
+		themeGroupBox.setAlignment(Pos.CENTER);
+		themeGroupBox.getChildren().addAll(theme1, theme2);
 
 		antalSpelare.setTextFill(Color.AQUA);
 
 		startButton.setTextFill(Color.BLACK);
 
-		radioButtonBox = new HBox();
-		radioButtonBox.getChildren().addAll(r1, r2, r3);
-		radioButtonBox.setAlignment(Pos.CENTER);
+		toggleButtonBox = new HBox();
+		toggleButtonBox.setSpacing(20);
+		toggleButtonBox.setAlignment(Pos.CENTER);
+		toggleButtonBox.getChildren().addAll(cardsChoise8, cardsChoise16, cardsChoise32);
 
 		boxLabel = new HBox();
 		boxLabel.setAlignment(Pos.CENTER);
 		boxLabel.setSpacing(20);
-		boxLabel.getChildren().addAll(p1, p2);
+		boxLabel.getChildren().addAll(player1, player2);
 
-		getChildren().addAll(topLabel, radioButtonBox, boxLabel, startButton);
+		getChildren().addAll(topLabel, toggleButtonBox, themeGroupBox, boxLabel, startButton);
 	}
 
 	public String getTestp1() {

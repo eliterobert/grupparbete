@@ -54,8 +54,8 @@ public class Main extends Application {
 		startPage.startButton.setOnAction(event -> {
 			playerList = new LinkedList<>();
 
-			playerList.add(new Player(startPage.p1.getText()));
-			playerList.add(new Player(startPage.p2.getText()));
+			playerList.add(new Player(startPage.player1.getText()));
+			playerList.add(new Player(startPage.player2.getText()));
 
 			board = new Board();
 			board.player1.setText(playerList.get(0).getName());

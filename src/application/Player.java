@@ -6,6 +6,11 @@ public class Player {
 	private int score;
 	private boolean isTurn;
 
+	public Player(String name) {
+		this.name = name;
+		score = 0;
+	}
+	
 	public boolean isTurn() {
 		return isTurn;
 	}
@@ -14,33 +19,16 @@ public class Player {
 		this.isTurn = isTurn;
 	}
 
-	public Player(String name) {
-		this.name = name;
-		score = 0;
-	}
-
 	void increaseScore() {
-		this.score += 1;
-	}
-
-	void setCurrent(boolean isCurrent) {
-
+		this.score++;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public int getScore() {
 		return score;
-	}
-
-	public void setScore(int score) {
-		this.score = score;
 	}
 
 }
