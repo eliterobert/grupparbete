@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.Bloom;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.MotionBlur;
 import javafx.scene.effect.Shadow;
@@ -48,7 +49,7 @@ public class WinnerScene extends Application {
 		playerName.setFont(Font.font("Verdana", FontWeight.NORMAL, FontPosture.ITALIC, 80));
 		winner.setTextFill(Color.YELLOWGREEN);
 		winner.setFont(Font.font("Verdana", FontWeight.NORMAL, FontPosture.ITALIC, 80));
-//
+
 //		Image view = new Image("Image/winner.gif");
 //		ImageView buttonImage = new ImageView("Image/Namnlös.png");
 //		buttonImage.setFitHeight(20);
@@ -58,11 +59,17 @@ public class WinnerScene extends Application {
 		BackgroundImage pic = new BackgroundImage(new Image("/Backgroundpictures/winner.gif", 1000, 1600, true, false),
 				BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
 				BackgroundSize.DEFAULT);
+		
+		Image image = new Image("/Backgroundpictures/Disco.gif", 90, 90, false, false);
+		
+		ImageView im = new ImageView(image);
+		
+		
 
 		root.setBackground(new Background(pic));
 		root.add(winner, 0, 1);
 		root.add(playerName, 1, 2);
-//		root.add(returnButton, 2, 2);
+		root.add(im, 1, 0);
 
 		MotionBlur blur = new MotionBlur();
 
@@ -75,7 +82,8 @@ public class WinnerScene extends Application {
 		shadow.setRadius(10);
 		shadow.setWidth(3);
 		winner.setEffect(shadow);
-
+		
+	
 	}
 
 	public static void main(String[] args) {

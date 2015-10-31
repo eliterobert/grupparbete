@@ -16,17 +16,6 @@ package application;
 public class ScoreTimeTurns {
 
 
-	void calcScore(Player player) {
-
-		if (player.isTurn()==true) {
-
-			player.setScore(+1);
-
-		}
-
-
-	}
-
 	// Klockan skriver endast ut till konsoll i dagsläget.
 	// La upp den för allas beskådning om man vill tipsa och trixa.
 	// Stäm av innan med resten av gruppen om ni kommit på eller hittat något!
