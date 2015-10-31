@@ -43,7 +43,7 @@ public class PhantasyStarBoard extends VBox {
 	Label menu = new Label("Menu");
 
 	// BackgroundImage backgroundImage = new BackgroundImage(new
-	// Image("Backgroundpictures/javaNewBackground.jpg", 1920*0.7,
+	// Image("Background pictures/javaNewBackground.jpg", 1920*0.7,
 	// 1080*0.7,false,true),
 	// BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
 	// BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
