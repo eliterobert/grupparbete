@@ -16,6 +16,8 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import application.Card;
@@ -52,11 +54,13 @@ public class PhantasyStarBoard extends VBox {
 
 	Image image = new Image("Backgroundpictures/phantasyBackCard.png", bounds.getWidth() * 0.06,
 			bounds.getWidth() * 0.06, true, true);
+	
 
 	public PhantasyStarBoard() {
 
 		getPictures();
 		Collections.shuffle(imageList);
+		sound();
 
 		setSpacing(5);
 
@@ -126,5 +130,12 @@ public class PhantasyStarBoard extends VBox {
 					bounds.getWidth() * 0.06, true, true));
 
 		}
+	}
+	public static void sound() {
+
+		String musicFile = "Sound/DeathPlace.mp3";
+		Media sound = new Media(new File(musicFile).toURI().toString());
+		MediaPlayer mediaPlayer = new MediaPlayer(sound);
+		mediaPlayer.play();
 	}
 }
