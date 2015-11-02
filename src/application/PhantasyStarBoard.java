@@ -42,11 +42,6 @@ public class PhantasyStarBoard extends VBox {
 	Label player2Score = new Label("Score: 10");
 	Label menu = new Label("Menu");
 
-	// BackgroundImage backgroundImage = new BackgroundImage(new
-	// Image("Background pictures/javaNewBackground.jpg", 1920*0.7,
-	// 1080*0.7,false,true),
-	// BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-	// BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 	BackgroundImage backgroundImage = new BackgroundImage(
 			new Image("Backgroundpictures/backgroud.jpg", bounds.getWidth() * 0.7, bounds.getHeight() * 0.7, false,
 					true),
@@ -72,14 +67,6 @@ public class PhantasyStarBoard extends VBox {
 		player1Score.setTextFill(Color.AQUA);
 		player2Score.setTextFill(Color.AQUA);
 
-		/*
-		 * player1.setTranslateX(50); player2.setTranslateX(300);
-		 * turn.setTranslateX(175);
-		 * 
-		 * player1Score.setTranslateX(50); player2Score.setTranslateX(300);
-		 * menu.setTranslateX(175);
-		 */
-
 		gridpane.setHgap(bounds.getWidth() * 0.02);
 		gridpane.setVgap(bounds.getHeight() * 0.03);
 
@@ -102,17 +89,6 @@ public class PhantasyStarBoard extends VBox {
 		hBox1.setSpacing(bounds.getWidth() * 0.11);
 		hBox2.setTranslateX(bounds.getWidth() * 0.7 / 2);
 		hBox2.setTranslateY(bounds.getHeight() * 0.10);
-
-		getChildren().addAll(hBox1, hBox2);
-
-		/*
-		 * hBox1.getChildren().addAll(player1, turn, player2);
-		 * hBox1.setTranslateY(110); hBox2.getChildren().addAll(player1Score,
-		 * menu, player2Score); hBox2.setTranslateY(120);
-		 * gridpane.setTranslateX(320); gridpane.setTranslateY(75);
-		 * getChildren().addAll(gridpane, hBox1, hBox2);
-		 */
-		// getChildren().addAll(hBox1, hBox2);
 
 	}
 
