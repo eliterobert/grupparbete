@@ -89,6 +89,8 @@ public class PhantasyStarBoard extends VBox {
 		hBox1.setSpacing(bounds.getWidth() * 0.11);
 		hBox2.setTranslateX(bounds.getWidth() * 0.7 / 2);
 		hBox2.setTranslateY(bounds.getHeight() * 0.10);
+		
+		getChildren().addAll(hBox1, hBox2);
 
 	}
 
