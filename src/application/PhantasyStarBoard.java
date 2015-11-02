@@ -19,6 +19,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Screen;
 import application.Card;
 
@@ -54,6 +57,7 @@ public class PhantasyStarBoard extends VBox {
 	public PhantasyStarBoard() {
 
 		getPictures();
+		
 		Collections.shuffle(imageList);
 		sound();
 
@@ -90,7 +94,7 @@ public class PhantasyStarBoard extends VBox {
 		hBox1.setSpacing(bounds.getWidth() * 0.11);
 		hBox2.setTranslateX(bounds.getWidth() * 0.7 / 2);
 		hBox2.setTranslateY(bounds.getHeight() * 0.10);
-		
+
 		getChildren().addAll(hBox1, hBox2);
 
 	}
@@ -109,6 +113,8 @@ public class PhantasyStarBoard extends VBox {
 
 		}
 	}
+
+
 
 	public static void sound() {
 
