@@ -17,7 +17,7 @@ public class Main extends Application {
 
 	private StartPage startPage;
 	public static Board board;
-	private Scene startScene, boardScene, phantasyStarScene, LOTRscene; // Lägg till LOTR Scene här
+	private Scene startScene, boardScene, phantasyStarScene, LOTRscene; 
 	public static Card selectedCard = null;
 	public static PhantasyStarBoard phantasyStarBoard;
 	public static LOTRBoard LOTRboard;
@@ -29,7 +29,7 @@ public class Main extends Application {
 	public static Pane currentTheme;
 
 	public static void main(String[] args) {
-		sound();
+		//sound();
 		launch(args);
 	}
 
@@ -63,6 +63,9 @@ public class Main extends Application {
 			playerList.add(new Player(startPage.player2.getText(), 2));
 			
 			if (startPage.theme1.isSelected()) {
+				
+				sound("Sound/DeathPlace.mp3");
+				
 
 				phantasyStarBoard = new PhantasyStarBoard();
 				phantasyStarBoard.player1.setText(playerList.get(0).getName());
@@ -78,6 +81,9 @@ public class Main extends Application {
 			}
 
 			else if (startPage.theme2.isSelected()) {
+				
+				sound("Sound/testSound1.mp3");
+				
 
 				board = new Board();
 				board.player1.setText(playerList.get(0).getName());
@@ -90,15 +96,34 @@ public class Main extends Application {
 				
 				primaryStage.setScene(boardScene);
 			}
+			
+			else if (startPage.theme3.isSelected()) {
+				
+				sound("Sound/LOTR.mp3");
+				
+
+				LOTRboard = new LOTRBoard();
+				LOTRboard.player1.setText(playerList.get(0).getName());
+				LOTRboard.player2.setText(playerList.get(1).getName());
+
+				LOTRscene = new Scene(LOTRboard, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
+				LOTRscene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+
+				currentPlayer = playerList.poll();
+				
+				primaryStage.setScene(LOTRscene);
+			}
 		});
 
 	}
 
-	public static void sound() {
+	public static void sound(String music) {
 
-		String musicFile = "Sound/testSound1.mp3";
+		//String musicFile = "Sound/testSound1.mp3";
+		String musicFile = music;
 		Media sound = new Media(new File(musicFile).toURI().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(sound);
+		mediaPlayer.setCycleCount(10);
 		mediaPlayer.play();
 	}
 

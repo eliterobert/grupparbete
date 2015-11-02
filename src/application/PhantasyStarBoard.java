@@ -59,7 +59,7 @@ public class PhantasyStarBoard extends VBox {
 		getPictures();
 		
 		Collections.shuffle(imageList);
-		sound();
+		//sound();
 
 		setSpacing(5);
 
@@ -116,12 +116,12 @@ public class PhantasyStarBoard extends VBox {
 
 
 
-	public static void sound() {
+	/*public static void sound() {
 
 		String musicFile = "Sound/DeathPlace.mp3";
 		Media sound = new Media(new File(musicFile).toURI().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(sound);
 		mediaPlayer.setCycleCount(10);
 		mediaPlayer.play();
-	}
+	}*/
 }

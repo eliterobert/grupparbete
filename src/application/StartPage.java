@@ -27,7 +27,7 @@ public class StartPage extends VBox {
 	Button startButton;
 	ToggleGroup tg, themeGroup;
 	ToggleButton cardsChoise8, cardsChoise16, cardsChoise32;
-	ToggleButton theme1, theme2;
+	ToggleButton theme1, theme2, theme3;
 	HBox toggleButtonBox, themeGroupBox;
 	HBox boxLabel;
 	TextField player1, player2;
@@ -76,17 +76,22 @@ public class StartPage extends VBox {
 		theme1 = new ToggleButton("PSII Theme");
 		theme1.setPrefSize(100, 50);
 		theme1.setSelected(true);
-		theme2 = new ToggleButton("Theme 2");
+		
+		theme2 = new ToggleButton("Star Wars");
 		theme2.setPrefSize(100, 50);
+		
+		theme3 = new ToggleButton("LOTR");
+		theme3.setPrefSize(100, 50);
 		
 		themeGroup = new ToggleGroup();
 		theme1.setToggleGroup(themeGroup);
 		theme2.setToggleGroup(themeGroup);
+		theme3.setToggleGroup(themeGroup);
 		
 		themeGroupBox = new HBox();
 		themeGroupBox.setSpacing(20);
 		themeGroupBox.setAlignment(Pos.CENTER);
-		themeGroupBox.getChildren().addAll(theme1, theme2);
+		themeGroupBox.getChildren().addAll(theme1, theme2, theme3);
 
 		antalSpelare.setTextFill(Color.AQUA);
 
