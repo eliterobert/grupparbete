@@ -24,6 +24,7 @@ import application.Card;
 
 public class LOTRBoard extends VBox {
 	private ArrayList<Image> imageList;
+	public boolean isSelectedTheme;
 
 	Screen screen = Screen.getPrimary();
 	Rectangle2D bounds = screen.getVisualBounds();
@@ -38,8 +39,8 @@ public class LOTRBoard extends VBox {
 	Label player1 = new Label("Player 1");
 	Label player2 = new Label("Player 2");
 	Label turn = new Label("Turn: 15");
-	Label player1Score = new Label("Score: 5");
-	Label player2Score = new Label("Score: 10");
+	Label player1Score = new Label("Score: 0");
+	Label player2Score = new Label("Score: 0");
 	Label menu = new Label("Menu");
 
 	BackgroundImage backgroundImage = new BackgroundImage(
@@ -54,7 +55,7 @@ public class LOTRBoard extends VBox {
 
 		getPictures();
 		Collections.shuffle(imageList);
-		sound();
+	//	sound();
 
 		setSpacing(5);
 
@@ -97,7 +98,7 @@ public class LOTRBoard extends VBox {
 
 	private void getPictures() {
 		imageList = new ArrayList<>();
-
+		
 		File imageDirectory = new File("src/LOTRThemePics");
 		String[] directoryList = imageDirectory.list();
 
@@ -110,12 +111,12 @@ public class LOTRBoard extends VBox {
 		}
 	}
 
-	public static void sound() {
-
-		String musicFile = "Sound/LOTR.mp3";
-		Media sound = new Media(new File(musicFile).toURI().toString());
-		MediaPlayer mediaPlayer = new MediaPlayer(sound);
-		mediaPlayer.setCycleCount(10);
-		mediaPlayer.play();
-	}
+//	public static void sound() {
+//
+//		String musicFile = "Sound/LOTR.mp3";
+//		Media sound = new Media(new File(musicFile).toURI().toString());
+//		MediaPlayer mediaPlayer = new MediaPlayer(sound);
+//		mediaPlayer.setCycleCount(10);
+//		mediaPlayer.play();
+//	}
 }

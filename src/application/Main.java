@@ -17,7 +17,7 @@ public class Main extends Application {
 
 	private StartPage startPage;
 	public static Board board;
-	private Scene startScene, boardScene, phantasyStarScene, LOTRscene; // Lägg till LOTR Scene här
+	private Scene startScene, boardScene, phantasyStarScene, LOTRscene; 
 	public static Card selectedCard = null;
 	public static PhantasyStarBoard phantasyStarBoard;
 	public static LOTRBoard LOTRboard;
@@ -95,6 +95,23 @@ public class Main extends Application {
 				currentPlayer = playerList.poll();
 				
 				primaryStage.setScene(boardScene);
+			}
+			
+			else if (startPage.theme3.isSelected()) {
+				
+				sound("Sound/LOTR.mp3");
+				
+
+				LOTRboard = new LOTRBoard();
+				LOTRboard.player1.setText(playerList.get(0).getName());
+				LOTRboard.player2.setText(playerList.get(1).getName());
+
+				LOTRscene = new Scene(LOTRboard, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
+				LOTRscene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+
+				currentPlayer = playerList.poll();
+				
+				primaryStage.setScene(LOTRscene);
 			}
 		});
 
