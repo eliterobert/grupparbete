@@ -15,7 +15,7 @@ public class Main extends Application {
 
 	private StartPage startPage;
 	public static Board board;
-	private Scene startScene, boardScene, phantasyStarScene;
+	private Scene startScene, boardScene, phantasyStarScene; // Lägg till LOTR Scene här
 	public static Card selectedCard = null;
 	public static PhantasyStarBoard phantasyStarBoard;
 
