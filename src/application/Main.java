@@ -53,12 +53,12 @@ public class Main extends Application {
 
 		startPage.startButton.setOnAction(event -> {
 
+			playerList = new LinkedList<>();
+
+			playerList.add(new Player(startPage.player1.getText()));
+			playerList.add(new Player(startPage.player2.getText()));
+			
 			if (startPage.theme1.isSelected()) {
-				playerList = new LinkedList<>();
-
-				playerList.add(new Player(startPage.player1.getText()));
-				playerList.add(new Player(startPage.player2.getText()));
-
 
 				phantasyStarBoard = new PhantasyStarBoard();
 				phantasyStarBoard.player1.setText(playerList.get(0).getName());
@@ -74,11 +74,6 @@ public class Main extends Application {
 			}
 
 			else if (startPage.theme2.isSelected()) {
-				playerList = new LinkedList<>();
-
-				playerList.add(new Player(startPage.player1.getText()));
-				playerList.add(new Player(startPage.player2.getText()));
-				System.out.println(playerList.size());
 
 				board = new Board();
 				board.player1.setText(playerList.get(0).getName());
