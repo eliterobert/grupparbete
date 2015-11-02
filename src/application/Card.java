@@ -77,7 +77,6 @@ public class Card extends StackPane {
 						Main.currentTheme.highligtPlayer2();
 						Main.currentTheme.setScorePlayer2(Main.currentPlayer.getScore() + "");
 					}
-
 				}
 				Main.selectedCard = null;
 			});
@@ -110,10 +109,10 @@ public class Card extends StackPane {
 			System.out.println("NullPointerEx Occurred!!");
 		}
 
-		// Undvik division med noll samt kolla så acceptans nivån är över 90
-		// %
+		// Undvik division med noll samt kolla så acceptans nivån är över 90 %
 		if (((totalPixels == 0 ? -1 : machingPixels / totalPixels) * 100) > levelOfAcceptance)
 			isOfSameKind = true;
+		
 		return isOfSameKind;
 	}
 
