@@ -25,7 +25,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Screen;
 import application.Card;
 
-public class PhantasyStarBoard extends VBox implements Selectable{
+public class PhantasyStarBoard extends VBox implements Selectable {
 	private ArrayList<Image> imageList;
 	public boolean isSelectedTheme;
 
@@ -57,9 +57,9 @@ public class PhantasyStarBoard extends VBox implements Selectable{
 	public PhantasyStarBoard() {
 
 		getPictures();
-		
+
 		Collections.shuffle(imageList);
-		//sound();
+		// sound();
 
 		setSpacing(5);
 
@@ -75,14 +75,6 @@ public class PhantasyStarBoard extends VBox implements Selectable{
 		gridpane.setHgap(bounds.getWidth() * 0.02);
 		gridpane.setVgap(bounds.getHeight() * 0.03);
 
-		int cnt = 0;
-		for (int i = 0; i < 5; i++) {
-			for (int j = 0; j < 4; j++) {
-				gridpane.add(new Card(imageList.get(cnt), image), i, j);
-				cnt++;
-			}
-		}
-
 		vBox1.getChildren().addAll(player1, player1Score);
 		vBox2.getChildren().addAll(player2, player2Score);
 		hBox1.getChildren().addAll(vBox1, gridpane, vBox2);
@@ -96,17 +88,33 @@ public class PhantasyStarBoard extends VBox implements Selectable{
 		hBox2.setTranslateY(bounds.getHeight() * 0.10);
 
 		highligtPlayer1();
-		
+
 		getChildren().addAll(hBox1, hBox2);
 
 	}
 
-	private void getPictures() {
+	public void getPictures() {
 		imageList = new ArrayList<>();
 
 		File imageDirectory = new File("src/PhantasyStarTheme");
 		String[] directoryList = imageDirectory.list();
 
+		if (Main.startPage.cardsChoise8.isSelected()) {
+			for (int i = 0; i < 10; i++) {
+				imageList.add(new Image("PhantasyStarTheme/" + directoryList[i], bounds.getWidth() * 0.06,
+						bounds.getWidth() * 0.06, true, true));
+				imageList.add(new Image("PhantasyStarTheme/" + directoryList[i], bounds.getWidth() * 0.06,
+						bounds.getWidth() * 0.06, true, true));
+			}
+			int cnt = 0;
+			for (int i = 0; i < 5; i++) {
+				for (int j = 0; j < 4; j++) {
+					gridpane.add(new Card(imageList.get(cnt), image), i, j);
+					cnt++;
+				}
+			}
+
+		}
 		for (int i = 0; i < directoryList.length; i++) {
 			imageList.add(new Image("PhantasyStarTheme/" + directoryList[i], bounds.getWidth() * 0.06,
 					bounds.getWidth() * 0.06, true, true));
@@ -114,7 +122,39 @@ public class PhantasyStarBoard extends VBox implements Selectable{
 					bounds.getWidth() * 0.06, true, true));
 
 		}
+		
+		
+		
+//		
+		if (Main.startPage.cardsChoise16.isSelected()) {
+			for (int i = 0; i < 10; i++) {
+				imageList.add(new Image("PhantasyStarTheme/" + directoryList[i], bounds.getWidth() * 0.06,
+						bounds.getWidth() * 0.06, true, true));
+				imageList.add(new Image("PhantasyStarTheme/" + directoryList[i], bounds.getWidth() * 0.06,
+						bounds.getWidth() * 0.06, true, true));
+			}
+			int cnt = 0;
+			for (int i = 0; i < 5; i++) {
+				for (int j = 0; j < 4; j++) {
+					gridpane.add(new Card(imageList.get(cnt), image), i, j);
+					cnt++;
+				}
+			}
+
+		}
+		for (int i = 0; i < directoryList.length; i++) {
+			imageList.add(new Image("PhantasyStarTheme/" + directoryList[i], bounds.getWidth() * 0.06,
+					bounds.getWidth() * 0.06, true, true));
+			imageList.add(new Image("PhantasyStarTheme/" + directoryList[i], bounds.getWidth() * 0.06,
+					bounds.getWidth() * 0.06, true, true));
+
+		}
+		
+		
+
 	}
+	
+	
 
 	@Override
 	public void highligtPlayer1() {
@@ -126,28 +166,25 @@ public class PhantasyStarBoard extends VBox implements Selectable{
 	public void highligtPlayer2() {
 		player2.setFont(Font.font("Verdant", FontWeight.BOLD, 20));
 		player1.setFont(Font.font("Verdant", FontWeight.NORMAL, 20));
-		
+
 	}
 
 	@Override
 	public void setScorePlayer1(String score) {
-		player1Score.setText("Score: "+score);
+		player1Score.setText("Score: " + score);
 	}
 
 	@Override
 	public void setScorePlayer2(String score) {
-		player2Score.setText("Score: "+score);
-		
+		player2Score.setText("Score: " + score);
+
 	}
 
-
-
-	/*public static void sound() {
-
-		String musicFile = "Sound/DeathPlace.mp3";
-		Media sound = new Media(new File(musicFile).toURI().toString());
-		MediaPlayer mediaPlayer = new MediaPlayer(sound);
-		mediaPlayer.setCycleCount(10);
-		mediaPlayer.play();
-	}*/
+	/*
+	 * public static void sound() {
+	 * 
+	 * String musicFile = "Sound/DeathPlace.mp3"; Media sound = new Media(new
+	 * File(musicFile).toURI().toString()); MediaPlayer mediaPlayer = new
+	 * MediaPlayer(sound); mediaPlayer.setCycleCount(10); mediaPlayer.play(); }
+	 */
 }
