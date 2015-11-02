@@ -15,7 +15,7 @@ import javafx.scene.media.MediaPlayer;
 
 public class Main extends Application {
 
-	private StartPage startPage;
+	public static StartPage startPage;
 	public static Board board;
 	private Scene startScene, boardScene, phantasyStarScene, LOTRscene; 
 	public static Card selectedCard = null;
