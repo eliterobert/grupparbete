@@ -25,7 +25,7 @@ public class Main extends Application {
 	public static LinkedList<Player> playerList;
 
 	public static void main(String[] args) {
-		sound();
+		//sound();
 		launch(args);
 	}
 
@@ -55,6 +55,9 @@ public class Main extends Application {
 		startPage.startButton.setOnAction(event -> {
 
 			if (startPage.theme1.isSelected()) {
+				
+				sound("Sound/DeathPlace.mp3");
+				
 				playerList = new LinkedList<>();
 
 				playerList.add(new Player(startPage.player1.getText()));
@@ -75,6 +78,9 @@ public class Main extends Application {
 			}
 
 			else if (startPage.theme2.isSelected()) {
+				
+				sound("Sound/testSound1.mp3");
+				
 				playerList = new LinkedList<>();
 
 				playerList.add(new Player(startPage.player1.getText()));
@@ -101,9 +107,10 @@ public class Main extends Application {
 
 	}
 
-	public static void sound() {
+	public static void sound(String music) {
 
-		String musicFile = "Sound/testSound1.mp3";
+		//String musicFile = "Sound/testSound1.mp3";
+		String musicFile = music;
 		Media sound = new Media(new File(musicFile).toURI().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(sound);
 		mediaPlayer.play();
