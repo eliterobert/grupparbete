@@ -46,16 +46,17 @@ public class Card extends StackPane {
 
 		if (Main.selectedCard == null) {
 			Main.selectedCard = this;
-			open(() -> {
-			});
+			open(() -> {});
 		} else {
 			open(() -> {
 				if (!this.isOfSameKind(Main.selectedCard)) {
 					Main.selectedCard.close();
 					this.close();
-				} else if (this.isOfSameKind(Main.selectedCard)) {
-					Main.playerList.get(0).increaseScore();
-					Main.board.player1Score.setText(Main.playerList.get(0).getScore() + "");
+					Main.playerList.add(Main.currentPlayer);
+					Main.currentPlayer = Main.playerList.poll();
+				} else {
+					Main.currentPlayer.increaseScore();
+					Main.phantasyStarBoard.player1Score.setText(Main.currentPlayer.getScore() + "");
 				}
 				Main.selectedCard = null;
 			});

@@ -22,6 +22,7 @@ public class Main extends Application {
 	Screen screen = Screen.getPrimary();
 	Rectangle2D bounds = screen.getVisualBounds();
 	public static LinkedList<Player> playerList;
+	public static Player currentPlayer;
 
 	public static void main(String[] args) {
 		sound();
@@ -54,7 +55,6 @@ public class Main extends Application {
 		startPage.startButton.setOnAction(event -> {
 
 			playerList = new LinkedList<>();
-
 			playerList.add(new Player(startPage.player1.getText()));
 			playerList.add(new Player(startPage.player2.getText()));
 			
@@ -64,12 +64,11 @@ public class Main extends Application {
 				phantasyStarBoard.player1.setText(playerList.get(0).getName());
 				phantasyStarBoard.player2.setText(playerList.get(1).getName());
 
-				phantasyStarBoard.player1Score.setText(playerList.get(0).getScore() + "");
-				phantasyStarBoard.player2Score.setText(playerList.get(1).getScore() + "");
-
 				phantasyStarScene = new Scene(phantasyStarBoard, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 				phantasyStarScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
+				currentPlayer = playerList.poll();
+				
 				primaryStage.setScene(phantasyStarScene);
 			}
 
@@ -89,6 +88,8 @@ public class Main extends Application {
 				boardScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 				boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
+				currentPlayer = playerList.poll();
+				
 				primaryStage.setScene(boardScene);
 			}
 		});
