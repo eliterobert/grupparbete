@@ -9,6 +9,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.Reflection;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -49,7 +50,6 @@ public class StartPage extends VBox {
 		Reflection r = new Reflection();
 		r.setFraction(0.7f);
 		topLabel.setEffect(r);
-		
 
 		antalSpelare = new Label("Antal Spelare");
 		startButton = new Button("Start");
@@ -72,22 +72,34 @@ public class StartPage extends VBox {
 		cardsChoise16.setToggleGroup(tg);
 		cardsChoise16.setSelected(true);
 		cardsChoise32.setToggleGroup(tg);
-		
-		theme1 = new ToggleButton("PSII Theme");
+
+		ImageView phantasyStartButton = new ImageView(new Image("Backgroundpictures/phantStartButt.png"));
+		phantasyStartButton.setFitHeight(75);
+		phantasyStartButton.setFitWidth(75);
+		theme1 = new ToggleButton("", phantasyStartButton);
+		theme1.setStyle("-fx-background-color: rgba(0%,0%,0%,0)}");
 		theme1.setPrefSize(100, 50);
 		theme1.setSelected(true);
-		
-		theme2 = new ToggleButton("Star Wars");
+
+		ImageView starWarsButton = new ImageView(new Image("Backgroundpictures/starwarsbutton.png"));
+		starWarsButton.setFitHeight(75);
+		starWarsButton.setFitWidth(75);
+		theme2 = new ToggleButton("", starWarsButton);
+		theme2.setStyle("-fx-background-color: rgba(0%,0%,0%,0)}");
 		theme2.setPrefSize(100, 50);
-		
-		theme3 = new ToggleButton("LOTR");
-		theme3.setPrefSize(100, 50);
-		
+
+		ImageView lotrButton = new ImageView(new Image("Backgroundpictures/lotrbutton.png"));
+		lotrButton.setFitHeight(75);
+		lotrButton.setFitWidth(75);
+		theme3 = new ToggleButton("", lotrButton);
+		theme3.setStyle("-fx-background-color: rgba(0%,0%,0%,0)}");
+		theme2.setPrefSize(100, 50);
+
 		themeGroup = new ToggleGroup();
 		theme1.setToggleGroup(themeGroup);
 		theme2.setToggleGroup(themeGroup);
 		theme3.setToggleGroup(themeGroup);
-		
+
 		themeGroupBox = new HBox();
 		themeGroupBox.setSpacing(20);
 		themeGroupBox.setAlignment(Pos.CENTER);
