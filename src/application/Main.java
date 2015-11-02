@@ -118,7 +118,7 @@ public class Main extends Application {
 
 	}
 
-	public static void sound(String music) {
+	private void sound(String music) {
 
 		//String musicFile = "Sound/testSound1.mp3";
 		String musicFile = music;
