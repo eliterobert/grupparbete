@@ -76,7 +76,7 @@ public class StartPage extends VBox {
 		theme1 = new ToggleButton("PSII Theme");
 		theme1.setPrefSize(100, 50);
 		theme1.setSelected(true);
-		theme2 = new ToggleButton("Theme 2");
+		theme2 = new ToggleButton("Star Wars");
 		theme2.setPrefSize(100, 50);
 		
 		themeGroup = new ToggleGroup();
