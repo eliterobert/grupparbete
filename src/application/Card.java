@@ -90,8 +90,6 @@ public class Card extends StackPane {
 	}
 
 	public boolean isOfSameKind(Card otherCard) {
-		// return
-		// this.faceView.getImage().equals(otherCard.faceView.getImage());
 
 		PixelReader faceImg = faceView.getImage().getPixelReader();
 		PixelReader otherFaceImg = otherCard.faceView.getImage().getPixelReader();
