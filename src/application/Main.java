@@ -77,6 +77,7 @@ public class Main extends Application {
 				currentTheme = phantasyStarBoard;
 				
 				primaryStage.setScene(phantasyStarScene);
+				phantasyStarBoard.menu.setOnMouseClicked((a) -> primaryStage.setScene(startScene));
 			}
 
 			else if (startPage.theme2.isSelected()) {
@@ -94,6 +95,7 @@ public class Main extends Application {
 				currentTheme = board;
 				
 				primaryStage.setScene(boardScene);
+				board.menu.setOnMouseClicked((a) -> primaryStage.setScene(startScene));
 			}
 			
 			else if (startPage.theme3.isSelected()) {
@@ -112,6 +114,7 @@ public class Main extends Application {
 				currentTheme = LOTRboard;
 				
 				primaryStage.setScene(LOTRscene);
+				LOTRboard.menu.setOnMouseClicked((a) -> primaryStage.setScene(startScene));
 			}
 		});
 
