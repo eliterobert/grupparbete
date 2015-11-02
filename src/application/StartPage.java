@@ -4,7 +4,6 @@ package application;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
@@ -36,7 +35,7 @@ public class StartPage extends VBox {
 
 	public StartPage() {
 		BackgroundImage pic = new BackgroundImage(
-				new Image("/Backgroundpictures/starwars.jpg", 1000, 1000, true, false), BackgroundRepeat.REPEAT,
+				new Image("/Backgroundpictures/starwars.jpg", 1325, 750, false, false), BackgroundRepeat.REPEAT,
 				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
 		setBackground(new Background(pic));
