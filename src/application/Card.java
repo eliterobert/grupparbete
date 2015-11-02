@@ -3,16 +3,21 @@ package application;
 import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.transform.Rotate;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
- * @author Ajmal Bahawodin This class represents a playing card with a face and a back.
+ * @author Ajmal Bahawodin This class represents a playing card with a face and
+ *         a back.
  */
 public class Card extends StackPane {
 
@@ -46,24 +51,51 @@ public class Card extends StackPane {
 
 		if (Main.selectedCard == null) {
 			Main.selectedCard = this;
-			open(() -> {});
+			open(() -> {
+			});
 		} else {
 			open(() -> {
 				if (!this.isOfSameKind(Main.selectedCard)) {
+					highLigtPlayer1(Main.phantasyStarBoard);
 					Main.selectedCard.close();
 					this.close();
 					Main.playerList.add(Main.currentPlayer);
 					Main.currentPlayer = Main.playerList.poll();
 				} else {
 					Main.currentPlayer.increaseScore();
-					if (Main.currentPlayer.getPlayerNr() == 1) {
-						Main.phantasyStarBoard.player1Score.setText(Main.currentPlayer.getScore() + "");
-					}
-					else { Main.phantasyStarBoard.player2Score.setText(Main.currentPlayer.getScore() + ""); }
-					
+					highLigtPlayer2(Main.phantasyStarBoard);
+
 				}
 				Main.selectedCard = null;
 			});
+		}
+	}
+
+	private <Scene> void highLigtPlayer1(Scene scene) {
+		if (scene.equals(Main.phantasyStarBoard)) {
+			if (Main.currentPlayer.getPlayerNr() == 1) {
+				Main.phantasyStarBoard.player2.setFont(Font.font("Verdant", FontWeight.BOLD, 20));
+				Main.phantasyStarBoard.player1.setFont((Font.font("Verdant", FontWeight.NORMAL, 15)));
+				Main.phantasyStarBoard.player1Score.setText(Main.currentPlayer.getScore() + "");
+			} else {
+				Main.phantasyStarBoard.player2.setFont(Font.font("Verdant", FontWeight.NORMAL, 15));
+				Main.phantasyStarBoard.player1.setFont((Font.font("Verdant", FontWeight.BOLD, 20)));
+				Main.phantasyStarBoard.player2Score.setText(Main.currentPlayer.getScore() + "");
+			}
+		}
+	}
+
+	private <Scene> void highLigtPlayer2(Scene scene) {
+		if (scene.equals(Main.phantasyStarBoard)) {
+			if (Main.currentPlayer.getPlayerNr() == 1) {
+				Main.phantasyStarBoard.player2.setFont(Font.font("Verdant", FontWeight.NORMAL, 15));
+				Main.phantasyStarBoard.player1.setFont((Font.font("Verdant", FontWeight.BOLD, 20)));
+				Main.phantasyStarBoard.player1Score.setText(Main.currentPlayer.getScore() + "");
+			} else {
+				Main.phantasyStarBoard.player2.setFont(Font.font("Verdant", FontWeight.BOLD, 20));
+				Main.phantasyStarBoard.player1.setFont((Font.font("Verdant", FontWeight.NORMAL, 15)));
+				Main.phantasyStarBoard.player2Score.setText(Main.currentPlayer.getScore() + "");
+			}
 		}
 	}
 
@@ -131,4 +163,17 @@ public class Card extends StackPane {
 			rotation.play();
 		});
 	}
+
+	public void playerBold(Player player) {
+
+		if (Main.currentPlayer.getPlayerNr() == 0) {
+			Main.phantasyStarBoard.player1.setFont(Font.font("Verdant", FontWeight.BOLD, 20));
+			Main.phantasyStarBoard.player2.setFont((Font.font("Verdant", FontWeight.NORMAL, 20)));
+		} else if (Main.currentPlayer.getPlayerNr() == 1) {
+			Main.phantasyStarBoard.player1.setFont(Font.font("Verdant", FontWeight.NORMAL, 20));
+			Main.phantasyStarBoard.player2.setFont((Font.font("Verdant", FontWeight.BOLD, 20)));
+		}
+
+	}
+
 }
