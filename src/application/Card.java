@@ -56,14 +56,26 @@ public class Card extends StackPane {
 		} else {
 			open(() -> {
 				if (!this.isOfSameKind(Main.selectedCard)) {
-					highLigtPlayer1(Main.phantasyStarBoard);
 					Main.selectedCard.close();
 					this.close();
 					Main.playerList.add(Main.currentPlayer);
 					Main.currentPlayer = Main.playerList.poll();
+					
+					if (Main.currentPlayer.getPlayerNr() == 1) {
+						Main.currentTheme.highligtPlayer1();
+					} else {
+						Main.currentTheme.highligtPlayer2();
+					}
+					
 				} else {
 					Main.currentPlayer.increaseScore();
-					highLigtPlayer2(Main.phantasyStarBoard);
+					if (Main.currentPlayer.getPlayerNr() == 1) {
+						Main.currentTheme.highligtPlayer1();
+						Main.currentTheme.setScorePlayer1(Main.currentPlayer.getScore() + "");
+					} else {
+						Main.currentTheme.highligtPlayer2();
+						Main.currentTheme.setScorePlayer2(Main.currentPlayer.getScore() + "");
+					}
 
 				}
 				Main.selectedCard = null;
@@ -71,33 +83,6 @@ public class Card extends StackPane {
 		}
 	}
 
-	private <Scene> void highLigtPlayer1(Scene scene) {
-		if (scene.equals(Main.phantasyStarBoard)) {
-			if (Main.currentPlayer.getPlayerNr() == 1) {
-				Main.phantasyStarBoard.player2.setFont(Font.font("Verdant", FontWeight.BOLD, 20));
-				Main.phantasyStarBoard.player1.setFont((Font.font("Verdant", FontWeight.NORMAL, 15)));
-				Main.phantasyStarBoard.player1Score.setText(Main.currentPlayer.getScore() + "");
-			} else {
-				Main.phantasyStarBoard.player2.setFont(Font.font("Verdant", FontWeight.NORMAL, 15));
-				Main.phantasyStarBoard.player1.setFont((Font.font("Verdant", FontWeight.BOLD, 20)));
-				Main.phantasyStarBoard.player2Score.setText(Main.currentPlayer.getScore() + "");
-			}
-		}
-	}
-
-	private <Scene> void highLigtPlayer2(Scene scene) {
-		if (scene.equals(Main.phantasyStarBoard)) {
-			if (Main.currentPlayer.getPlayerNr() == 1) {
-				Main.phantasyStarBoard.player2.setFont(Font.font("Verdant", FontWeight.NORMAL, 15));
-				Main.phantasyStarBoard.player1.setFont((Font.font("Verdant", FontWeight.BOLD, 20)));
-				Main.phantasyStarBoard.player1Score.setText(Main.currentPlayer.getScore() + "");
-			} else {
-				Main.phantasyStarBoard.player2.setFont(Font.font("Verdant", FontWeight.BOLD, 20));
-				Main.phantasyStarBoard.player1.setFont((Font.font("Verdant", FontWeight.NORMAL, 15)));
-				Main.phantasyStarBoard.player2Score.setText(Main.currentPlayer.getScore() + "");
-			}
-		}
-	}
 
 	public boolean isOpen() {
 		return getRotate() > 0;
