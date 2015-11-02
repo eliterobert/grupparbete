@@ -15,9 +15,10 @@ public class Main extends Application {
 
 	private StartPage startPage;
 	public static Board board;
-	private Scene startScene, boardScene, phantasyStarScene; // Lägg till LOTR Scene här
+	private Scene startScene, boardScene, phantasyStarScene, LOTRscene; // Lägg till LOTR Scene här
 	public static Card selectedCard = null;
 	public static PhantasyStarBoard phantasyStarBoard;
+	public static LOTRBoard LOTRboard;
 
 	Screen screen = Screen.getPrimary();
 	Rectangle2D bounds = screen.getVisualBounds();
@@ -105,6 +106,7 @@ public class Main extends Application {
 		String musicFile = "Sound/testSound1.mp3";
 		Media sound = new Media(new File(musicFile).toURI().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(sound);
+		mediaPlayer.play();
 	}
 
 }
