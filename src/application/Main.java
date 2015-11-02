@@ -7,7 +7,9 @@ import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -23,6 +25,8 @@ public class Main extends Application {
 	Screen screen = Screen.getPrimary();
 	Rectangle2D bounds = screen.getVisualBounds();
 	public static LinkedList<Player> playerList;
+	public static Player currentPlayer;
+	public static Pane currentTheme;
 
 	public static void main(String[] args) {
 		//sound();
@@ -54,26 +58,25 @@ public class Main extends Application {
 
 		startPage.startButton.setOnAction(event -> {
 
+			playerList = new LinkedList<>();
+			playerList.add(new Player(startPage.player1.getText(), 1));
+			playerList.add(new Player(startPage.player2.getText(), 2));
+			
 			if (startPage.theme1.isSelected()) {
 				
 				sound("Sound/DeathPlace.mp3");
 				
-				playerList = new LinkedList<>();
-
-				playerList.add(new Player(startPage.player1.getText()));
-				playerList.add(new Player(startPage.player2.getText()));
-
 
 				phantasyStarBoard = new PhantasyStarBoard();
 				phantasyStarBoard.player1.setText(playerList.get(0).getName());
 				phantasyStarBoard.player2.setText(playerList.get(1).getName());
 
-				phantasyStarBoard.player1Score.setText(playerList.get(0).getScore() + "");
-				phantasyStarBoard.player2Score.setText(playerList.get(1).getScore() + "");
-
+				
 				phantasyStarScene = new Scene(phantasyStarBoard, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 				phantasyStarScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
+				currentPlayer = playerList.poll();
+				
 				primaryStage.setScene(phantasyStarScene);
 			}
 
@@ -81,26 +84,16 @@ public class Main extends Application {
 				
 				sound("Sound/testSound1.mp3");
 				
-				playerList = new LinkedList<>();
-
-				playerList.add(new Player(startPage.player1.getText()));
-				playerList.add(new Player(startPage.player2.getText()));
-				System.out.println(playerList.size());
 
 				board = new Board();
 				board.player1.setText(playerList.get(0).getName());
 				board.player2.setText(playerList.get(1).getName());
 
-				board.player1Score.setText(playerList.get(0).getScore() + "");
-				board.player2Score.setText(playerList.get(1).getScore() + "");
-
-				// boardScene = new Scene(board, 1920 * 0.7, 1080 * 0.7);
-				// boardScene = new Scene(board, bounds.getWidth() * 0.7,
-				// bounds.getHeight() * 0.7);
-				// boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				boardScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 				boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
+				currentPlayer = playerList.poll();
+				
 				primaryStage.setScene(boardScene);
 			}
 		});
@@ -113,6 +106,7 @@ public class Main extends Application {
 		String musicFile = music;
 		Media sound = new Media(new File(musicFile).toURI().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(sound);
+		mediaPlayer.setCycleCount(10);
 		mediaPlayer.play();
 	}
 
