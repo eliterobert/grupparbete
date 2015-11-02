@@ -23,7 +23,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Screen;
 import application.Card;
  
-public class Board extends VBox implements Selectable{
+public class StarWarsBoard extends VBox implements Selectable{
         private ArrayList<Image> imageList;
         public boolean isSelectedTheme;
         
@@ -54,7 +54,7 @@ public class Board extends VBox implements Selectable{
        
         Image image = new Image("Backgroundpictures/backgroundCard.png", bounds.getWidth()*0.06, bounds.getWidth()*0.06, true, true);
        
-        public Board(){
+        public StarWarsBoard(){
                
                 getPictures();
                 Collections.shuffle(imageList);

@@ -16,7 +16,7 @@ import javafx.scene.media.MediaPlayer;
 public class Main extends Application {
 
 	public static StartPage startPage;
-	public static Board board;
+	public static StarWarsBoard starWarsBoard;
 	private Scene startScene, boardScene, phantasyStarScene, LOTRscene; 
 	public static Card selectedCard = null;
 	public static PhantasyStarBoard phantasyStarBoard;
@@ -84,18 +84,18 @@ public class Main extends Application {
 				
 				sound("Sound/testSound1.mp3");
 				
-				board = new Board();
-				board.player1.setText(playerList.get(0).getName());
-				board.player2.setText(playerList.get(1).getName());
+				starWarsBoard = new StarWarsBoard();
+				starWarsBoard.player1.setText(playerList.get(0).getName());
+				starWarsBoard.player2.setText(playerList.get(1).getName());
 
-				boardScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
+				boardScene = new Scene(starWarsBoard, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 				boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
 				currentPlayer = playerList.poll();
-				currentTheme = board;
+				currentTheme = starWarsBoard;
 				
 				primaryStage.setScene(boardScene);
-				board.menu.setOnMouseClicked((a) -> primaryStage.setScene(startScene));
+				starWarsBoard.menu.setOnMouseClicked((a) -> primaryStage.setScene(startScene));
 			}
 			
 			else if (startPage.theme3.isSelected()) {
