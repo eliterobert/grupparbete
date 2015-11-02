@@ -60,11 +60,11 @@ public class StartPage extends VBox {
 		player2 = new TextField();
 		player2.setPromptText("Player 2");
 
-		cardsChoise8 = new ToggleButton("8 Cards");
+		cardsChoise8 = new ToggleButton("12 Cards");
 		cardsChoise8.setPrefSize(100, 50);
 		cardsChoise16 = new ToggleButton("16 Cards");
 		cardsChoise16.setPrefSize(100, 50);
-		cardsChoise32 = new ToggleButton("32 Cards");
+		cardsChoise32 = new ToggleButton("20 Cards");
 		cardsChoise32.setPrefSize(100, 50);
 
 		tg = new ToggleGroup();

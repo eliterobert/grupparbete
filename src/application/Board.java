@@ -80,14 +80,6 @@ public class Board extends VBox implements Selectable{
                 gridpane.setHgap(bounds.getWidth()*0.02);
                 gridpane.setVgap(bounds.getHeight()*0.03);
                
-                int cnt = 0;
-                for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 4; j++) {
-                gridpane.add(new Card(imageList.get(cnt), image), i, j);
-                cnt++;
-            }
-        }
-               
                 vBox1.getChildren().addAll(player1, player1Score);
                 vBox2.getChildren().addAll(player2, player2Score);
                 hBox1.getChildren().addAll(vBox1, gridpane, vBox2);
@@ -117,17 +109,68 @@ public class Board extends VBox implements Selectable{
         }
        
         private void getPictures() {
-                imageList = new ArrayList<>();
- 
-                File imageDirectory = new File("src/Pictures");
-                String[] directoryList = imageDirectory.list();
- 
-                for (int i = 0; i < directoryList.length; i++) {
-                        imageList.add(new Image("Pictures/" + directoryList[i], bounds.getWidth()*0.06, bounds.getWidth()*0.06, true, true));
-                        imageList.add(new Image("Pictures/" + directoryList[i], bounds.getWidth()*0.06, bounds.getWidth()*0.06, true, true));
-                       
-                }
-        }
+    		imageList = new ArrayList<>();
+
+    		File imageDirectory = new File("src/Pictures");
+    		String[] directoryList = imageDirectory.list();
+
+    		if (Main.startPage.cardsChoise8.isSelected()) {
+    			for (int i = 0; i < 6; i++) {
+    				imageList.add(new Image("Pictures/" + directoryList[i], bounds.getWidth() * 0.06,
+    						bounds.getWidth() * 0.06, true, true));
+    				imageList.add(new Image("Pictures/" + directoryList[i], bounds.getWidth() * 0.06,
+    						bounds.getWidth() * 0.06, true, true));
+    			}
+    			Collections.shuffle(imageList);
+    			int cnt = 0;
+    			for (int i = 0; i < 3; i++) {
+    				for (int j = 0; j < 4; j++) {
+    					gridpane.add(new Card(imageList.get(cnt), image), i, j);
+    					cnt++;
+    				}
+    			}
+
+    		}
+
+    		if (Main.startPage.cardsChoise16.isSelected()) {
+
+    			for (int i = 0; i < 8; i++) {
+    				imageList.add(new Image("Pictures/" + directoryList[i], bounds.getWidth() * 0.06,
+    						bounds.getWidth() * 0.06, true, true));
+    				imageList.add(new Image("Pictures/" + directoryList[i], bounds.getWidth() * 0.06,
+    						bounds.getWidth() * 0.06, true, true));
+    			}
+    			Collections.shuffle(imageList);
+    			int cnt = 0;
+    			for (int i = 0; i < 4; i++) {
+    				for (int j = 0; j < 4; j++) {
+    					gridpane.add(new Card(imageList.get(cnt), image), i, j);
+    					cnt++;
+    				}
+    			}
+
+    		}
+
+    		if (Main.startPage.cardsChoise32.isSelected()) {
+
+    			for (int i = 0; i < 10; i++) {
+    				imageList.add(new Image("Pictures/" + directoryList[i], bounds.getWidth() * 0.06,
+    						bounds.getWidth() * 0.06, true, true));
+    				imageList.add(new Image("Pictures/" + directoryList[i], bounds.getWidth() * 0.06,
+    						bounds.getWidth() * 0.06, true, true));
+    			}
+    			Collections.shuffle(imageList);
+    			int cnt = 0;
+    			for (int i = 0; i < 5; i++) {
+    				for (int j = 0; j < 4; j++) {
+    					gridpane.add(new Card(imageList.get(cnt), image), i, j);
+    					cnt++;
+    				}
+    			}
+
+    		}
+
+    	}
         
         @Override
     	public void highligtPlayer1() {

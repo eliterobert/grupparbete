@@ -57,8 +57,6 @@ public class PhantasyStarBoard extends VBox implements Selectable {
 	public PhantasyStarBoard() {
 
 		getPictures();
-
-		Collections.shuffle(imageList);
 		// sound();
 
 		setSpacing(5);
@@ -100,14 +98,15 @@ public class PhantasyStarBoard extends VBox implements Selectable {
 		String[] directoryList = imageDirectory.list();
 
 		if (Main.startPage.cardsChoise8.isSelected()) {
-			for (int i = 0; i < 10; i++) {
+			for (int i = 0; i < 6; i++) {
 				imageList.add(new Image("PhantasyStarTheme/" + directoryList[i], bounds.getWidth() * 0.06,
 						bounds.getWidth() * 0.06, true, true));
 				imageList.add(new Image("PhantasyStarTheme/" + directoryList[i], bounds.getWidth() * 0.06,
 						bounds.getWidth() * 0.06, true, true));
 			}
+			Collections.shuffle(imageList);
 			int cnt = 0;
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < 3; i++) {
 				for (int j = 0; j < 4; j++) {
 					gridpane.add(new Card(imageList.get(cnt), image), i, j);
 					cnt++;
@@ -115,24 +114,36 @@ public class PhantasyStarBoard extends VBox implements Selectable {
 			}
 
 		}
-		for (int i = 0; i < directoryList.length; i++) {
-			imageList.add(new Image("PhantasyStarTheme/" + directoryList[i], bounds.getWidth() * 0.06,
-					bounds.getWidth() * 0.06, true, true));
-			imageList.add(new Image("PhantasyStarTheme/" + directoryList[i], bounds.getWidth() * 0.06,
-					bounds.getWidth() * 0.06, true, true));
 
-		}
-		
-		
-		
-//		
+		//
 		if (Main.startPage.cardsChoise16.isSelected()) {
+
+			for (int i = 0; i < 8; i++) {
+				imageList.add(new Image("PhantasyStarTheme/" + directoryList[i], bounds.getWidth() * 0.06,
+						bounds.getWidth() * 0.06, true, true));
+				imageList.add(new Image("PhantasyStarTheme/" + directoryList[i], bounds.getWidth() * 0.06,
+						bounds.getWidth() * 0.06, true, true));
+			}
+			Collections.shuffle(imageList);
+			int cnt = 0;
+			for (int i = 0; i < 4; i++) {
+				for (int j = 0; j < 4; j++) {
+					gridpane.add(new Card(imageList.get(cnt), image), i, j);
+					cnt++;
+				}
+			}
+
+		}
+
+		if (Main.startPage.cardsChoise32.isSelected()) {
+
 			for (int i = 0; i < 10; i++) {
 				imageList.add(new Image("PhantasyStarTheme/" + directoryList[i], bounds.getWidth() * 0.06,
 						bounds.getWidth() * 0.06, true, true));
 				imageList.add(new Image("PhantasyStarTheme/" + directoryList[i], bounds.getWidth() * 0.06,
 						bounds.getWidth() * 0.06, true, true));
 			}
+			Collections.shuffle(imageList);
 			int cnt = 0;
 			for (int i = 0; i < 5; i++) {
 				for (int j = 0; j < 4; j++) {
@@ -142,19 +153,8 @@ public class PhantasyStarBoard extends VBox implements Selectable {
 			}
 
 		}
-		for (int i = 0; i < directoryList.length; i++) {
-			imageList.add(new Image("PhantasyStarTheme/" + directoryList[i], bounds.getWidth() * 0.06,
-					bounds.getWidth() * 0.06, true, true));
-			imageList.add(new Image("PhantasyStarTheme/" + directoryList[i], bounds.getWidth() * 0.06,
-					bounds.getWidth() * 0.06, true, true));
-
-		}
-		
-		
 
 	}
-	
-	
 
 	@Override
 	public void highligtPlayer1() {
