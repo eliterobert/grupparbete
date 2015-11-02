@@ -56,7 +56,11 @@ public class Card extends StackPane {
 					Main.currentPlayer = Main.playerList.poll();
 				} else {
 					Main.currentPlayer.increaseScore();
-					Main.phantasyStarBoard.player1Score.setText(Main.currentPlayer.getScore() + "");
+					if (Main.currentPlayer.getPlayerNr() == 1) {
+						Main.phantasyStarBoard.player1Score.setText(Main.currentPlayer.getScore() + "");
+					}
+					else { Main.phantasyStarBoard.player2Score.setText(Main.currentPlayer.getScore() + ""); }
+					
 				}
 				Main.selectedCard = null;
 			});

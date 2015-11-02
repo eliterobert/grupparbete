@@ -5,9 +5,11 @@ public class Player {
 	private String name;
 	private int score;
 	private boolean isTurn;
+	private int playerNr;
 
-	public Player(String name) {
+	public Player(String name, int playerNr) {
 		this.name = name;
+		this.playerNr = playerNr;
 		score = 0;
 	}
 	
@@ -31,4 +33,7 @@ public class Player {
 		return score;
 	}
 
+	public int getPlayerNr() {
+		return playerNr;
+	}
 }

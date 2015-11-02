@@ -24,6 +24,7 @@ import application.Card;
 
 public class PhantasyStarBoard extends VBox {
 	private ArrayList<Image> imageList;
+	public boolean isSelectedTheme;
 
 	Screen screen = Screen.getPrimary();
 	Rectangle2D bounds = screen.getVisualBounds();

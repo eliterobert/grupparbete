@@ -7,7 +7,9 @@ import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -23,6 +25,7 @@ public class Main extends Application {
 	Rectangle2D bounds = screen.getVisualBounds();
 	public static LinkedList<Player> playerList;
 	public static Player currentPlayer;
+	public static Pane currentTheme;
 
 	public static void main(String[] args) {
 		sound();
@@ -55,8 +58,8 @@ public class Main extends Application {
 		startPage.startButton.setOnAction(event -> {
 
 			playerList = new LinkedList<>();
-			playerList.add(new Player(startPage.player1.getText()));
-			playerList.add(new Player(startPage.player2.getText()));
+			playerList.add(new Player(startPage.player1.getText(), 1));
+			playerList.add(new Player(startPage.player2.getText(), 2));
 			
 			if (startPage.theme1.isSelected()) {
 
@@ -64,6 +67,7 @@ public class Main extends Application {
 				phantasyStarBoard.player1.setText(playerList.get(0).getName());
 				phantasyStarBoard.player2.setText(playerList.get(1).getName());
 
+				
 				phantasyStarScene = new Scene(phantasyStarBoard, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 				phantasyStarScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
@@ -78,13 +82,6 @@ public class Main extends Application {
 				board.player1.setText(playerList.get(0).getName());
 				board.player2.setText(playerList.get(1).getName());
 
-				board.player1Score.setText(playerList.get(0).getScore() + "");
-				board.player2Score.setText(playerList.get(1).getScore() + "");
-
-				// boardScene = new Scene(board, 1920 * 0.7, 1080 * 0.7);
-				// boardScene = new Scene(board, bounds.getWidth() * 0.7,
-				// bounds.getHeight() * 0.7);
-				// boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				boardScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 				boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
