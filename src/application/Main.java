@@ -26,7 +26,7 @@ public class Main extends Application {
 	Rectangle2D bounds = screen.getVisualBounds();
 	public static LinkedList<Player> playerList;
 	public static Player currentPlayer;
-	public static Pane currentTheme;
+	public static Selectable currentTheme;
 
 	public static void main(String[] args) {
 		//sound();
@@ -66,16 +66,15 @@ public class Main extends Application {
 				
 				sound("Sound/DeathPlace.mp3");
 				
-
 				phantasyStarBoard = new PhantasyStarBoard();
 				phantasyStarBoard.player1.setText(playerList.get(0).getName());
 				phantasyStarBoard.player2.setText(playerList.get(1).getName());
-
 				
 				phantasyStarScene = new Scene(phantasyStarBoard, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 				phantasyStarScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
 				currentPlayer = playerList.poll();
+				currentTheme = phantasyStarBoard;
 				
 				primaryStage.setScene(phantasyStarScene);
 			}
@@ -84,7 +83,6 @@ public class Main extends Application {
 				
 				sound("Sound/testSound1.mp3");
 				
-
 				board = new Board();
 				board.player1.setText(playerList.get(0).getName());
 				board.player2.setText(playerList.get(1).getName());
@@ -93,6 +91,7 @@ public class Main extends Application {
 				boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
 				currentPlayer = playerList.poll();
+				currentTheme = board;
 				
 				primaryStage.setScene(boardScene);
 			}
@@ -110,6 +109,7 @@ public class Main extends Application {
 				LOTRscene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
 				currentPlayer = playerList.poll();
+				currentTheme = LOTRboard;
 				
 				primaryStage.setScene(LOTRscene);
 			}

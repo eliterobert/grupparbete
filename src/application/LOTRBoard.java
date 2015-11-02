@@ -19,10 +19,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Screen;
 import application.Card;
 
-public class LOTRBoard extends VBox {
+public class LOTRBoard extends VBox implements Selectable{
 	private ArrayList<Image> imageList;
 	public boolean isSelectedTheme;
 
@@ -91,6 +93,8 @@ public class LOTRBoard extends VBox {
 		hBox2.setTranslateX(bounds.getWidth() * 0.7 / 2);
 		hBox2.setTranslateY(bounds.getHeight() * 0.10);
 
+		highligtPlayer1();
+		
 		getChildren().addAll(hBox1, hBox2);
 
 
@@ -109,6 +113,30 @@ public class LOTRBoard extends VBox {
 					bounds.getWidth() * 0.06, true, true));
 
 		}
+	}
+	
+	@Override
+	public void highligtPlayer1() {
+		player1.setFont(Font.font("Verdant", FontWeight.BOLD, 20));
+		player2.setFont(Font.font("Verdant", FontWeight.NORMAL, 20));
+	}
+
+	@Override
+	public void highligtPlayer2() {
+		player2.setFont(Font.font("Verdant", FontWeight.BOLD, 20));
+		player1.setFont(Font.font("Verdant", FontWeight.NORMAL, 20));
+		
+	}
+
+	@Override
+	public void setScorePlayer1(String score) {
+		player1Score.setText("Score: "+score);
+	}
+
+	@Override
+	public void setScorePlayer2(String score) {
+		player2Score.setText("Score: "+score);
+		
 	}
 
 //	public static void sound() {
