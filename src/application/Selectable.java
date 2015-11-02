@@ -1,7 +1,5 @@
 package application;
 
-import javafx.scene.control.Label;
-
 public interface Selectable {
 
 	public void highligtPlayer1();
