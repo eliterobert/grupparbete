@@ -4,6 +4,7 @@ import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.effect.Bloom;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
@@ -147,18 +148,6 @@ public class Card extends StackPane {
 			rotation.setToAngle(0);
 			rotation.play();
 		});
-	}
-
-	public void playerBold(Player player) {
-
-		if (Main.currentPlayer.getPlayerNr() == 0) {
-			Main.phantasyStarBoard.player1.setFont(Font.font("Verdant", FontWeight.BOLD, 20));
-			Main.phantasyStarBoard.player2.setFont((Font.font("Verdant", FontWeight.NORMAL, 20)));
-		} else if (Main.currentPlayer.getPlayerNr() == 1) {
-			Main.phantasyStarBoard.player1.setFont(Font.font("Verdant", FontWeight.NORMAL, 20));
-			Main.phantasyStarBoard.player2.setFont((Font.font("Verdant", FontWeight.BOLD, 20)));
-		}
-
 	}
 
 }

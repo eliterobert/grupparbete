@@ -7,6 +7,7 @@ import java.util.Collections;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Label;
+import javafx.scene.effect.Bloom;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -174,14 +175,22 @@ public class Board extends VBox implements Selectable{
         
         @Override
     	public void highligtPlayer1() {
+        	Bloom bloom = new Bloom();
+    		bloom.setThreshold(0.3);
     		player1.setFont(Font.font("Verdant", FontWeight.BOLD, 20));
     		player2.setFont(Font.font("Verdant", FontWeight.NORMAL, 20));
+    		player1.setEffect(bloom);
+    		player2.setEffect(null);
     	}
 
     	@Override
     	public void highligtPlayer2() {
-    		player2.setFont(Font.font("Verdant", FontWeight.BOLD, 20));
+    		Bloom bloom = new Bloom();
+    		bloom.setThreshold(0.3);
     		player1.setFont(Font.font("Verdant", FontWeight.NORMAL, 20));
+    		player2.setFont(Font.font("Verdant", FontWeight.BOLD, 20));
+    		player1.setEffect(null);
+    		player2.setEffect(bloom);
     		
     	}
 
