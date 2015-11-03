@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.effect.Bloom;
 import javafx.scene.effect.Reflection;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -80,7 +81,6 @@ public class StartPage extends VBox {
 		theme1 = new ToggleButton("", phantasyStartButton);
 		theme1.setStyle("-fx-background-color: rgba(0%,0%,0%,0)}");
 		theme1.setPrefSize(100, 50);
-		theme1.setSelected(true);
 
 		starWarsButton = new ImageView(new Image("Backgroundpictures/starwarsbutton.png"));
 		starWarsButton.setFitHeight(75);

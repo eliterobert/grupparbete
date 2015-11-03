@@ -8,6 +8,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.control.Toggle;
 import javafx.scene.effect.Bloom;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -53,6 +54,8 @@ public class Main extends Application {
 
 		primaryStage.setScene(startScene);
 		primaryStage.show();
+		
+		
 		startPage.theme1.setOnMouseClicked((evet) -> {
 			Bloom bloom = new Bloom();
 			bloom.setThreshold(0.2);
@@ -82,7 +85,28 @@ public class Main extends Application {
 			playerList = new LinkedList<>();
 			playerList.add(new Player(startPage.player1.getText(), 1));
 			playerList.add(new Player(startPage.player2.getText(), 2));
-
+			
+			int numOfCards = 0;
+			int row = 0;
+			int col = 0;
+			if(startPage.cardsChoise8.isSelected())
+			{
+				numOfCards = 6;
+				row = 4;
+				col = 3;
+			}
+			else if(startPage.cardsChoise16.isSelected())
+			{
+				numOfCards = 8;
+				row = 4;
+				col = 4;
+			}
+			else if(startPage.cardsChoise32.isSelected())
+			{
+				numOfCards = 10;
+				row = 5;
+				col = 4;
+			}
 			if (startPage.theme1.isSelected()) {
 
 				mediaPlayer.stop();
@@ -92,7 +116,7 @@ public class Main extends Application {
 				mediaPlayer.play();
 
 				board = new Board("src/PhantasyStarTheme", "PhantasyStarTheme/",
-						"/Backgroundpictures/phantasyBackCard.png", "/Backgroundpictures/backgroud.jpg", 8, 4, 4);
+						"/Backgroundpictures/phantasyBackCard.png", "/Backgroundpictures/backgroud.jpg", numOfCards, row, col);
 
 				gameScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 				gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -125,7 +149,7 @@ public class Main extends Application {
 				mediaPlayer.play();
 
 				board = new Board("src/Pictures", "Pictures/", "Backgroundpictures/backgroundCard.png",
-						"Backgroundpictures/javaNewBackground.jpg", 8, 4, 4);
+						"Backgroundpictures/javaNewBackground.jpg", numOfCards, row, col);
 
 				gameScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 				gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -158,7 +182,7 @@ public class Main extends Application {
 				mediaPlayer.play();
 
 				board = new Board("src/LOTRThemePics", "LOTRThemePics/", "Backgroundpictures/BackgroundCardLOTR.png",
-						"Backgroundpictures/BackgroundLOTR.jpg", 8, 4, 4);
+						"Backgroundpictures/BackgroundLOTR.jpg", numOfCards, row, col);
 
 				gameScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 				gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
