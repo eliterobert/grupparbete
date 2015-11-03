@@ -103,8 +103,7 @@ public class Board extends VBox {
 		File imageDirectory = new File(cardsPath);
 		String[] directoryList = imageDirectory.list();
 
-		if (Main.startPage.cardsChoise8.isSelected()) {
-			for (int i = 0; i < 6; i++) {
+			for (int i = 0; i < numOfPics; i++) {
 				imageList.add(new Image(cardsPath + directoryList[i], bounds.getWidth() * 0.06,
 						bounds.getWidth() * 0.06, true, true));
 				imageList.add(new Image(cardsPath + directoryList[i], bounds.getWidth() * 0.06,
@@ -112,53 +111,12 @@ public class Board extends VBox {
 			}
 			Collections.shuffle(imageList);
 			int cnt = 0;
-			for (int i = 0; i < 3; i++) {
-				for (int j = 0; j < 4; j++) {
+			for (int i = 0; i < col; i++) {
+				for (int j = 0; j < row; j++) {
 					gridpane.add(new Card(imageList.get(cnt), backImage), i, j);
 					cnt++;
 				}
 			}
-
-		}
-
-		if (Main.startPage.cardsChoise16.isSelected()) {
-
-			for (int i = 0; i < 8; i++) {
-				imageList.add(new Image("Pictures/" + directoryList[i], bounds.getWidth() * 0.06,
-						bounds.getWidth() * 0.06, true, true));
-				imageList.add(new Image("Pictures/" + directoryList[i], bounds.getWidth() * 0.06,
-						bounds.getWidth() * 0.06, true, true));
-			}
-			Collections.shuffle(imageList);
-			int cnt = 0;
-			for (int i = 0; i < 4; i++) {
-				for (int j = 0; j < 4; j++) {
-					gridpane.add(new Card(imageList.get(cnt), backImage), i, j);
-					cnt++;
-				}
-			}
-
-		}
-
-		if (Main.startPage.cardsChoise32.isSelected()) {
-
-			for (int i = 0; i < 10; i++) {
-				imageList.add(new Image("Pictures/" + directoryList[i], bounds.getWidth() * 0.06,
-						bounds.getWidth() * 0.06, true, true));
-				imageList.add(new Image("Pictures/" + directoryList[i], bounds.getWidth() * 0.06,
-						bounds.getWidth() * 0.06, true, true));
-			}
-			Collections.shuffle(imageList);
-			int cnt = 0;
-			for (int i = 0; i < 5; i++) {
-				for (int j = 0; j < 4; j++) {
-					gridpane.add(new Card(imageList.get(cnt), backImage), i, j);
-					cnt++;
-				}
-			}
-
-		}
-
 	}
 
 	public void highligtPlayer1() {
