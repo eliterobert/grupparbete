@@ -42,8 +42,10 @@ public class Card extends StackPane {
 	}
 
 	private void handleMouseClick(MouseEvent event) {
-		if (isOpen())
+		if (isOpen() && Main.clickCount != 0)
 			return;
+		
+		Main.clickCount--;
 
 		if (Main.selectedCard == null) {
 			Main.selectedCard = this;
@@ -74,6 +76,7 @@ public class Card extends StackPane {
 					}
 				}
 				Main.selectedCard = null;
+				Main.clickCount = 2;
 			});
 		}
 	}

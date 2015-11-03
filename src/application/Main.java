@@ -8,7 +8,6 @@ import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.control.Toggle;
 import javafx.scene.effect.Bloom;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -18,6 +17,7 @@ public class Main extends Application {
 	public static StartPage startPage;
 	private Scene startScene, gameScene;
 	public static Card selectedCard = null;
+	public static int clickCount = 2;
 
 	Screen screen = Screen.getPrimary();
 	Rectangle2D bounds = screen.getVisualBounds();
