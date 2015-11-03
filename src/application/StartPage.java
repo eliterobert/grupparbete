@@ -43,7 +43,7 @@ public class StartPage extends VBox {
 
 	public StartPage() {
 		BackgroundImage pic = new BackgroundImage(
-				new Image("/Backgroundpictures/starwars.jpg",bounds.getWidth() * 0.7, bounds.getHeight() * 0.7, false, false), BackgroundRepeat.NO_REPEAT,
+				new Image("/Backgroundpictures/startPageBackground.png",bounds.getWidth() * 0.7, bounds.getHeight() * 0.7, false, false), BackgroundRepeat.NO_REPEAT,
 				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
 		setBackground(new Background(pic));
