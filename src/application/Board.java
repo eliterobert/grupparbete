@@ -29,12 +29,12 @@ public class Board extends VBox {
 	Label player1, player2, turn, player1Score, player2Score, menu;
 	GridPane gridpane;
 	Image backImage;
-	private ArrayList<Image> imageList;
+	public ArrayList<Image> imageList;
 
 	Screen screen = Screen.getPrimary();
 	Rectangle2D bounds = screen.getVisualBounds();
 
-	public Board(String cardsPath, String imgBgPath, String bgPath, int numOfPics, int col, int row){
+	public Board(String cardsPath, String cardsPath2, String imgBgPath, String bgPath, int numOfPics, int col, int row){
 		hBox1 = new HBox();
 		hBox2 = new HBox();
 		vBox1 = new VBox();
@@ -53,10 +53,6 @@ public class Board extends VBox {
 				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
 		backImage = new Image(imgBgPath, bounds.getWidth()*0.06, bounds.getWidth()*0.06, true, true);
-
-
-		getPictures(cardsPath, numOfPics, col, row);
-		Collections.shuffle(imageList);
 
 		setSpacing(5);
 
@@ -95,18 +91,20 @@ public class Board extends VBox {
 		highligtPlayer1();
 
 		getChildren().addAll(hBox1, hBox2);
+		getPictures(cardsPath, cardsPath2, numOfPics, col, row);
+		Collections.shuffle(imageList);
 	}
 
-	private void getPictures(String cardsPath, int numOfPics, int col, int row) {
+	private void getPictures(String cardsPath, String cardsPath2, int numOfPics, int col, int row) {
 		imageList = new ArrayList<>();
 
 		File imageDirectory = new File(cardsPath);
 		String[] directoryList = imageDirectory.list();
 
 			for (int i = 0; i < numOfPics; i++) {
-				imageList.add(new Image(cardsPath + directoryList[i], bounds.getWidth() * 0.06,
+				imageList.add(new Image(cardsPath2 + directoryList[i], bounds.getWidth() * 0.06,
 						bounds.getWidth() * 0.06, true, true));
-				imageList.add(new Image(cardsPath + directoryList[i], bounds.getWidth() * 0.06,
+				imageList.add(new Image(cardsPath2 + directoryList[i], bounds.getWidth() * 0.06,
 						bounds.getWidth() * 0.06, true, true));
 			}
 			Collections.shuffle(imageList);

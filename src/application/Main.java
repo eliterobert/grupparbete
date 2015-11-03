@@ -3,35 +3,30 @@ package application;
 import java.io.File;
 import java.util.LinkedList;
 
-import javax.swing.SortingFocusTraversalPolicy;
-
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.effect.Bloom;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaPlayer.Status;
 
 public class Main extends Application {
 
 	public static StartPage startPage;
-	public static StarWarsBoard starWarsBoard;
-	private Scene startScene, boardScene, phantasyStarScene, LOTRscene; 
+	private Scene startScene, gameScene;
 	public static Card selectedCard = null;
-	public static PhantasyStarBoard phantasyStarBoard;
-	public static LOTRBoard LOTRboard;
 
 	Screen screen = Screen.getPrimary();
 	Rectangle2D bounds = screen.getVisualBounds();
 	public static LinkedList<Player> playerList;
 	public static Player currentPlayer;
-	public static Selectable currentTheme;
-	
+
 	public static Media musicToPlay;
-	public static String musicFile="";
+	public static String musicFile = "";
 	public static MediaPlayer mediaPlayer;
+	public static Board board;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -39,24 +34,16 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		
+
 		musicFile = "Sound/testSound3.mp3";
 		musicToPlay = new Media(new File(musicFile).toURI().toString());
 		mediaPlayer = new MediaPlayer(musicToPlay);
 		mediaPlayer.play();
 
-		
-		
 		startPage = new StartPage();
 		startScene = new Scene(startPage, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 
 		startScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-
-		// primaryStage.setMinHeight(1080 * 0.73);
-		// primaryStage.setMaxHeight(1080 * 0.73);
-		// primaryStage.setMinWidth(1920 * 0.7);
-		// primaryStage.setMaxWidth(1920 * 0.7);
-		// primaryStage.setScene(boardScene);
 
 		primaryStage.setMinHeight(bounds.getHeight() * 0.7 + 25);
 		primaryStage.setMaxHeight(bounds.getHeight() * 0.7 + 25);
@@ -66,125 +53,134 @@ public class Main extends Application {
 
 		primaryStage.setScene(startScene);
 		primaryStage.show();
+		startPage.theme1.setOnMouseClicked((evet) -> {
+			Bloom bloom = new Bloom();
+			bloom.setThreshold(0.2);
+			startPage.phantasyStartButton.setEffect(bloom);
+			startPage.starWarsButton.setEffect(null);
+			startPage.lotrButton.setEffect(null);
+
+		});
+		startPage.theme2.setOnMouseClicked((evet) -> {
+			Bloom bloom = new Bloom();
+			bloom.setThreshold(0.2);
+			startPage.starWarsButton.setEffect(bloom);
+			startPage.phantasyStartButton.setEffect(null);
+			startPage.lotrButton.setEffect(null);
+		});
+
+		startPage.theme3.setOnMouseClicked((evet) -> {
+			Bloom bloom = new Bloom();
+			bloom.setThreshold(0.2);
+			startPage.lotrButton.setEffect(bloom);
+			startPage.phantasyStartButton.setEffect(null);
+			startPage.starWarsButton.setEffect(null);
+		});
 
 		startPage.startButton.setOnAction(event -> {
 
 			playerList = new LinkedList<>();
 			playerList.add(new Player(startPage.player1.getText(), 1));
 			playerList.add(new Player(startPage.player2.getText(), 2));
-			
+
 			if (startPage.theme1.isSelected()) {
-							
+
 				mediaPlayer.stop();
 				musicFile = "Sound/DeathPlace.mp3";
 				musicToPlay = new Media(new File(musicFile).toURI().toString());
 				mediaPlayer = new MediaPlayer(musicToPlay);
 				mediaPlayer.play();
-				
-				phantasyStarBoard = new PhantasyStarBoard();
-				phantasyStarBoard.player1.setText(playerList.get(0).getName());
-				phantasyStarBoard.player2.setText(playerList.get(1).getName());
-				
-				phantasyStarScene = new Scene(phantasyStarBoard, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
-				phantasyStarScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+
+				board = new Board("src/PhantasyStarTheme", "PhantasyStarTheme/",
+						"/Backgroundpictures/phantasyBackCard.png", "/Backgroundpictures/backgroud.jpg", 8, 4, 4);
+
+				gameScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
+				gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				board.player1.setText(playerList.get(0).getName());
+				board.player2.setText(playerList.get(1).getName());
+
+				primaryStage.setScene(gameScene);
 
 				currentPlayer = playerList.poll();
-				currentTheme = phantasyStarBoard;
-				
-				primaryStage.setScene(phantasyStarScene);
-				phantasyStarBoard.menu.setOnMouseClicked((a) -> {
-					
+
+				primaryStage.setScene(gameScene);
+				board.menu.setOnMouseClicked((a) -> {
+
 					mediaPlayer.stop();
 					musicFile = "Sound/testSound3.mp3";
 					musicToPlay = new Media(new File(musicFile).toURI().toString());
 					mediaPlayer = new MediaPlayer(musicToPlay);
 					mediaPlayer.play();
-					
+
 					primaryStage.setScene(startScene);
-					});
+				});
 			}
 
 			else if (startPage.theme2.isSelected()) {
-				
+
 				mediaPlayer.stop();
 				musicFile = "Sound/TestSound1.mp3";
 				musicToPlay = new Media(new File(musicFile).toURI().toString());
 				mediaPlayer = new MediaPlayer(musicToPlay);
 				mediaPlayer.play();
-				
-				starWarsBoard = new StarWarsBoard();
-				starWarsBoard.player1.setText(playerList.get(0).getName());
-				starWarsBoard.player2.setText(playerList.get(1).getName());
 
-				boardScene = new Scene(starWarsBoard, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
-				boardScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				board = new Board("src/Pictures", "Pictures/", "Backgroundpictures/backgroundCard.png",
+						"Backgroundpictures/javaNewBackground.jpg", 8, 4, 4);
+
+				gameScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
+				gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				board.player1.setText(playerList.get(0).getName());
+				board.player2.setText(playerList.get(1).getName());
+
+				primaryStage.setScene(gameScene);
 
 				currentPlayer = playerList.poll();
-				currentTheme = starWarsBoard;
-				
-				primaryStage.setScene(boardScene);
-				starWarsBoard.menu.setOnMouseClicked((a) -> {
-					
+
+				primaryStage.setScene(gameScene);
+				board.menu.setOnMouseClicked((a) -> {
+
 					mediaPlayer.stop();
 					musicFile = "Sound/testSound3.mp3";
 					musicToPlay = new Media(new File(musicFile).toURI().toString());
 					mediaPlayer = new MediaPlayer(musicToPlay);
 					mediaPlayer.play();
-					
+
 					primaryStage.setScene(startScene);
 				});
 			}
-			
+
 			else if (startPage.theme3.isSelected()) {
-				
+
 				mediaPlayer.stop();
 				musicFile = "Sound/LOTR.mp3";
 				musicToPlay = new Media(new File(musicFile).toURI().toString());
 				mediaPlayer = new MediaPlayer(musicToPlay);
 				mediaPlayer.play();
-				
-				LOTRboard = new LOTRBoard();
-				LOTRboard.player1.setText(playerList.get(0).getName());
-				LOTRboard.player2.setText(playerList.get(1).getName());
 
-				LOTRscene = new Scene(LOTRboard, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
-				LOTRscene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				board = new Board("src/LOTRThemePics", "LOTRThemePics/", "Backgroundpictures/BackgroundCardLOTR.png",
+						"Backgroundpictures/BackgroundLOTR.jpg", 8, 4, 4);
+
+				gameScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
+				gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				board.player1.setText(playerList.get(0).getName());
+				board.player2.setText(playerList.get(1).getName());
+
+				primaryStage.setScene(gameScene);
 
 				currentPlayer = playerList.poll();
-				currentTheme = LOTRboard;
-				
-				primaryStage.setScene(LOTRscene);
-				LOTRboard.menu.setOnMouseClicked((a) -> {
-					
+				board.menu.setOnMouseClicked((a) -> {
+
 					mediaPlayer.stop();
 					musicFile = "Sound/testSound3.mp3";
 					musicToPlay = new Media(new File(musicFile).toURI().toString());
 					mediaPlayer = new MediaPlayer(musicToPlay);
 					mediaPlayer.play();
-					
-					primaryStage.setScene(startScene);});
+
+					primaryStage.setScene(startScene);
+				});
 			}
 		});
-		
-		
 
 	}
-
-//	private MediaPlayer sound(String music) {
-//
-//		//String musicFile = "Sound/testSound1.mp3";
-//		String musicFile = music;
-//		Media sound = new Media(new File(musicFile).toURI().toString());
-//		MediaPlayer mediaPlayer = new MediaPlayer(sound);
-//		mediaPlayer.setCycleCount(10);
-//		
-////		Status status = mediaPlayer.getStatus();
-//		
-////		if(status==Status.PLAYING){
-////			mediaPlayer.stop();
-////		}
-////		mediaPlayer.play();
-//		return mediaPlayer;
-//	}
 
 }

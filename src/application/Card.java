@@ -58,19 +58,19 @@ public class Card extends StackPane {
 					Main.currentPlayer = Main.playerList.poll();
 					
 					if (Main.currentPlayer.getPlayerNr() == 1) {
-						Main.currentTheme.highligtPlayer1();
+						Main.board.highligtPlayer1();
 					} else {
-						Main.currentTheme.highligtPlayer2();
+						Main.board.highligtPlayer2();
 					}
 					
 				} else {
 					Main.currentPlayer.increaseScore();
 					if (Main.currentPlayer.getPlayerNr() == 1) {
-						Main.currentTheme.highligtPlayer1();
-						Main.currentTheme.setScorePlayer1(Main.currentPlayer.getScore() + "");
+						Main.board.highligtPlayer1();
+						Main.board.setScorePlayer1(Main.currentPlayer.getScore() + "");
 					} else {
-						Main.currentTheme.highligtPlayer2();
-						Main.currentTheme.setScorePlayer2(Main.currentPlayer.getScore() + "");
+						Main.board.highligtPlayer2();
+						Main.board.setScorePlayer2(Main.currentPlayer.getScore() + "");
 					}
 				}
 				Main.selectedCard = null;

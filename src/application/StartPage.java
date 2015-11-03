@@ -33,6 +33,7 @@ public class StartPage extends VBox {
 	HBox boxLabel;
 	TextField player1, player2;
 	String testp1;
+	ImageView phantasyStartButton,starWarsButton,lotrButton;
 
 	public StartPage() {
 		BackgroundImage pic = new BackgroundImage(
@@ -73,7 +74,7 @@ public class StartPage extends VBox {
 		cardsChoise16.setSelected(true);
 		cardsChoise32.setToggleGroup(tg);
 
-		ImageView phantasyStartButton = new ImageView(new Image("Backgroundpictures/phantStartButt.png"));
+		phantasyStartButton = new ImageView(new Image("Backgroundpictures/phantStartButt.png"));
 		phantasyStartButton.setFitHeight(75);
 		phantasyStartButton.setFitWidth(75);
 		theme1 = new ToggleButton("", phantasyStartButton);
@@ -81,19 +82,19 @@ public class StartPage extends VBox {
 		theme1.setPrefSize(100, 50);
 		theme1.setSelected(true);
 
-		ImageView starWarsButton = new ImageView(new Image("Backgroundpictures/starwarsbutton.png"));
+		starWarsButton = new ImageView(new Image("Backgroundpictures/starwarsbutton.png"));
 		starWarsButton.setFitHeight(75);
 		starWarsButton.setFitWidth(75);
 		theme2 = new ToggleButton("", starWarsButton);
 		theme2.setStyle("-fx-background-color: rgba(0%,0%,0%,0)}");
 		theme2.setPrefSize(100, 50);
 
-		ImageView lotrButton = new ImageView(new Image("Backgroundpictures/lotrbutton.png"));
+		lotrButton = new ImageView(new Image("Backgroundpictures/lotrbutton.png"));
 		lotrButton.setFitHeight(75);
 		lotrButton.setFitWidth(75);
 		theme3 = new ToggleButton("", lotrButton);
 		theme3.setStyle("-fx-background-color: rgba(0%,0%,0%,0)}");
-		theme2.setPrefSize(100, 50);
+		theme3.setPrefSize(100, 50);
 
 		themeGroup = new ToggleGroup();
 		theme1.setToggleGroup(themeGroup);
