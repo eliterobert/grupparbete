@@ -14,6 +14,7 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -22,7 +23,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Screen;
 
-public class Board extends VBox {
+public class Board extends BorderPane {
 
 	HBox hBox1, hBox2;
 	VBox vBox1, vBox2;
@@ -54,7 +55,7 @@ public class Board extends VBox {
 
 		backImage = new Image(imgBgPath, bounds.getWidth()*0.06, bounds.getWidth()*0.06, true, true);
 
-		setSpacing(5);
+		//setSpacing(5);
 
 		setBackground(new Background(backgroundImage));
 
@@ -62,22 +63,29 @@ public class Board extends VBox {
 		player2.setTextFill(Color.AQUA);
 		turn.setTextFill(Color.AQUA);
 		menu.setTextFill(Color.AQUA);
+		this.setBottom(menu);
 		player1Score.setTextFill(Color.AQUA);
 		player2Score.setTextFill(Color.AQUA);
 
 		gridpane.setHgap(bounds.getWidth()*0.02);
 		gridpane.setVgap(bounds.getHeight()*0.03);
+		gridpane.setAlignment(Pos.CENTER);
+		//this.setCenter();
+		this.setCenter(gridpane);
 
 		vBox1.getChildren().addAll(player1, player1Score);
+		
+		this.setLeft(vBox1);
 		vBox2.getChildren().addAll(player2, player2Score);
-		hBox1.getChildren().addAll(vBox1, gridpane, vBox2);
+		this.setRight(vBox2);
+		//hBox1.getChildren().addAll(vBox1, gridpane, vBox2);
 		hBox2.getChildren().add(menu);
 
-		hBox1.setTranslateY(bounds.getHeight()*0.065);
-		hBox1.setAlignment(Pos.BASELINE_CENTER);
-		hBox1.setSpacing(bounds.getWidth()*0.11);
-		hBox2.setTranslateX(bounds.getWidth()*0.7/2);
-		hBox2.setTranslateY(bounds.getHeight()*0.10);
+//		hBox1.setTranslateY(bounds.getHeight()*0.065);
+//		hBox1.setAlignment(Pos.BASELINE_CENTER);
+//		hBox1.setSpacing(bounds.getWidth()*0.11);
+//		hBox2.setTranslateX(bounds.getWidth()*0.7/2);
+//		hBox2.setTranslateY(bounds.getHeight()*0.10);
 
 		menu.setOnMouseEntered((event)->{
 			Bloom bloom = new Bloom();
@@ -90,7 +98,7 @@ public class Board extends VBox {
 
 		highligtPlayer1();
 
-		getChildren().addAll(hBox1, hBox2);
+//		getChildren().addAll(hBox1, hBox2);
 		getPictures(cardsPath, cardsPath2, numOfPics, col, row);
 		Collections.shuffle(imageList);
 	}
