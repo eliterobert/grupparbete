@@ -66,6 +66,7 @@ public class WinnerPage extends BorderPane {
 		shadow.setRadius(10);
 		shadow.setWidth(3);
 		winner.setEffect(shadow);
+		
 
 	}
 	

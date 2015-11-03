@@ -15,7 +15,9 @@ import javafx.scene.media.MediaPlayer;
 public class Main extends Application {
 
 	public static StartPage startPage;
+	public static WinnerPage wp = new WinnerPage();
 	private Scene startScene, gameScene;
+	private Scene winnerScene = new Scene(wp);
 	public static Card selectedCard = null;
 	public static int clickCount = 2;
 
@@ -203,8 +205,6 @@ public class Main extends Application {
 			board.button1.setOnAction((a) -> {
 
 				if (turnTimer == numOfCards) {
-					WinnerPage wp = new WinnerPage();
-					gameScene = new Scene(wp, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 					int player1 = Integer.parseInt(board.player1Score.getText());
 					int player2 = Integer.parseInt(board.player2Score.getText());
 
@@ -216,7 +216,7 @@ public class Main extends Application {
 						wp.playerName.setText(board.player2.getText());
 					}
 
-					primaryStage.setScene(gameScene);
+					primaryStage.setScene(winnerScene);
 					primaryStage.setMaxHeight(450);
 					primaryStage.setMinHeight(450);
 					primaryStage.setMaxWidth(1000);
@@ -226,9 +226,20 @@ public class Main extends Application {
 					musicToPlay = new Media(new File(musicFile).toURI().toString());
 					mediaPlayer = new MediaPlayer(musicToPlay);
 					mediaPlayer.play();
+
 				}
 
 			});
+
+		});
+
+		wp.returnButton.setOnAction(event -> {
+
+			primaryStage.setScene(startScene);
+			primaryStage.setMinHeight(bounds.getHeight() * 0.7 + 25);
+			primaryStage.setMaxHeight(bounds.getHeight() * 0.7 + 25);
+			primaryStage.setMinWidth(bounds.getWidth() * 0.7);
+			primaryStage.setMaxWidth(bounds.getWidth() * 0.7);
 
 		});
 
