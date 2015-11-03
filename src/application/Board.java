@@ -22,131 +22,99 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Screen;
 
-public class Board extends VBox implements Selectable{
+public class Board extends VBox {
 
-	String imgPath,imgBgPath,soundPath,bgPath,imgSource;
+	HBox hBox1, hBox2;
+	VBox vBox1, vBox2;
+	Label player1, player2, turn, player1Score, player2Score, menu;
+	GridPane gridpane;
+	Image backImage;
+	private ArrayList<Image> imageList;
 
-	public Board(String imgPath, String imgBgPath, String soundPath, String bgPath,String imgSource) {
-		this.imgPath = imgPath;
-		this.imgBgPath = imgBgPath;
-		this.soundPath = soundPath;
-		this.bgPath = bgPath;
-		this.imgSource=imgSource;
+	Screen screen = Screen.getPrimary();
+	Rectangle2D bounds = screen.getVisualBounds();
+
+	public Board(String cardsPath, String imgBgPath, String bgPath, int numOfPics, int col, int row){
+		hBox1 = new HBox();
+		hBox2 = new HBox();
+		vBox1 = new VBox();
+		vBox2 = new VBox();
+
+		player1 = new Label("Player 1");
+		player2 = new Label("Player 2");
+		turn = new Label("Turn: 15");
+		player1Score = new Label("Score: 0");
+		player2Score = new Label("Score: 0");
+		menu = new Label("Menu");
+
+		gridpane = new GridPane();
+
+		BackgroundImage backgroundImage = new BackgroundImage(new Image(bgPath, bounds.getWidth()*0.7, bounds.getHeight()*0.7,false,true),
+				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+
+		backImage = new Image(imgBgPath, bounds.getWidth()*0.06, bounds.getWidth()*0.06, true, true);
+
+
+		getPictures(cardsPath, numOfPics, col, row);
+		Collections.shuffle(imageList);
+
+		setSpacing(5);
+
+		setBackground(new Background(backgroundImage));
+
+		player1.setTextFill(Color.AQUA);
+		player2.setTextFill(Color.AQUA);
+		turn.setTextFill(Color.AQUA);
+		menu.setTextFill(Color.AQUA);
+		player1Score.setTextFill(Color.AQUA);
+		player2Score.setTextFill(Color.AQUA);
+
+		gridpane.setHgap(bounds.getWidth()*0.02);
+		gridpane.setVgap(bounds.getHeight()*0.03);
+
+		vBox1.getChildren().addAll(player1, player1Score);
+		vBox2.getChildren().addAll(player2, player2Score);
+		hBox1.getChildren().addAll(vBox1, gridpane, vBox2);
+		hBox2.getChildren().add(menu);
+
+		hBox1.setTranslateY(bounds.getHeight()*0.065);
+		hBox1.setAlignment(Pos.BASELINE_CENTER);
+		hBox1.setSpacing(bounds.getWidth()*0.11);
+		hBox2.setTranslateX(bounds.getWidth()*0.7/2);
+		hBox2.setTranslateY(bounds.getHeight()*0.10);
+
+		menu.setOnMouseEntered((event)->{
+			Bloom bloom = new Bloom();
+			bloom.setThreshold(0.2);
+			menu.setEffect(bloom);
+		});
+		menu.setOnMouseExited((event)->{
+			menu.setEffect(null);
+		});
+
+		highligtPlayer1();
+
+		getChildren().addAll(hBox1, hBox2);
 	}
-	
 
-    private ArrayList<Image> imageList;
-    public boolean isSelectedTheme;
-    
-    Screen screen = Screen.getPrimary();
-    Rectangle2D bounds = screen.getVisualBounds();
-   
-    HBox hBox1 = new HBox();
-    HBox hBox2 = new HBox();
-    VBox vBox1 = new VBox();
-    VBox vBox2 = new VBox();
-   
-   
-    GridPane gridpane = new GridPane();
-   
-    Label player1 = new Label("Player 1");
-    Label player2 = new Label("Player 2");
-    Label turn = new Label("Turn: 15");
-    Label player1Score = new Label("Score: 0");
-    Label player2Score = new Label("Score: 0");
-    Label menu = new Label("Menu");
-   
-    
-   
-    //BackgroundImage backgroundImage = new BackgroundImage(new Image("Backgroundpictures/javaNewBackground.jpg", 1920*0.7, 1080*0.7,false,true),
-      //      BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-    BackgroundImage backgroundImage = new BackgroundImage(new Image(bgPath, bounds.getWidth()*0.7, bounds.getHeight()*0.7,false,true),
-                  BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-   
-    Image image = new Image(imgBgPath, bounds.getWidth()*0.06, bounds.getWidth()*0.06, true, true);
-   
-    public Board(){
-           
-            getPictures();
-            Collections.shuffle(imageList);
-           
-            setSpacing(5);
-           
-            setBackground(new Background(backgroundImage));
-           
-            player1.setTextFill(Color.AQUA);
-            player2.setTextFill(Color.AQUA);
-            turn.setTextFill(Color.AQUA);
-            menu.setTextFill(Color.AQUA);
-            player1Score.setTextFill(Color.AQUA);
-            player2Score.setTextFill(Color.AQUA);
-           
-          /*  player1.setTranslateX(50);
-            player2.setTranslateX(300);
-            turn.setTranslateX(175);
-           
-            player1Score.setTranslateX(50);
-            player2Score.setTranslateX(300);
-            menu.setTranslateX(175);*/
-           
-            gridpane.setHgap(bounds.getWidth()*0.02);
-            gridpane.setVgap(bounds.getHeight()*0.03);
-           
-            vBox1.getChildren().addAll(player1, player1Score);
-            vBox2.getChildren().addAll(player2, player2Score);
-            hBox1.getChildren().addAll(vBox1, gridpane, vBox2);
-            hBox2.getChildren().add(menu);
-            
-            hBox1.setTranslateY(bounds.getHeight()*0.065);
-           // hBox1.setTranslateX(bounds.getWidth()*0.03);
-            hBox1.setAlignment(Pos.BASELINE_CENTER);
-            hBox1.setSpacing(bounds.getWidth()*0.11);
-            hBox2.setTranslateX(bounds.getWidth()*0.7/2);
-            hBox2.setTranslateY(bounds.getHeight()*0.10);
-            
-            menu.setOnMouseEntered((event)->{
-    			Bloom bloom = new Bloom();
-    			bloom.setThreshold(0.2);
-    			menu.setEffect(bloom);
-    		});
-    		menu.setOnMouseExited((event)->{
-    			menu.setEffect(null);
-    		});
-            
-            highligtPlayer1();
-            
-            getChildren().addAll(hBox1, hBox2);
-            
-           
-           /* hBox1.getChildren().addAll(player1, turn, player2);
-            hBox1.setTranslateY(110);
-            hBox2.getChildren().addAll(player1Score, menu, player2Score);
-            hBox2.setTranslateY(120);
-            gridpane.setTranslateX(320);
-            gridpane.setTranslateY(75);
-            getChildren().addAll(gridpane, hBox1, hBox2);*/
-            //getChildren().addAll(hBox1, hBox2);
-
-    }
-   
-    private void getPictures() {
+	private void getPictures(String cardsPath, int numOfPics, int col, int row) {
 		imageList = new ArrayList<>();
 
-		File imageDirectory = new File(imgPath);
+		File imageDirectory = new File(cardsPath);
 		String[] directoryList = imageDirectory.list();
 
 		if (Main.startPage.cardsChoise8.isSelected()) {
 			for (int i = 0; i < 6; i++) {
-				imageList.add(new Image("Pictures/" + directoryList[i], bounds.getWidth() * 0.06,
+				imageList.add(new Image(cardsPath + directoryList[i], bounds.getWidth() * 0.06,
 						bounds.getWidth() * 0.06, true, true));
-				imageList.add(new Image("Pictures/" + directoryList[i], bounds.getWidth() * 0.06,
+				imageList.add(new Image(cardsPath + directoryList[i], bounds.getWidth() * 0.06,
 						bounds.getWidth() * 0.06, true, true));
 			}
 			Collections.shuffle(imageList);
 			int cnt = 0;
 			for (int i = 0; i < 3; i++) {
 				for (int j = 0; j < 4; j++) {
-					gridpane.add(new Card(imageList.get(cnt), image), i, j);
+					gridpane.add(new Card(imageList.get(cnt), backImage), i, j);
 					cnt++;
 				}
 			}
@@ -165,7 +133,7 @@ public class Board extends VBox implements Selectable{
 			int cnt = 0;
 			for (int i = 0; i < 4; i++) {
 				for (int j = 0; j < 4; j++) {
-					gridpane.add(new Card(imageList.get(cnt), image), i, j);
+					gridpane.add(new Card(imageList.get(cnt), backImage), i, j);
 					cnt++;
 				}
 			}
@@ -184,7 +152,7 @@ public class Board extends VBox implements Selectable{
 			int cnt = 0;
 			for (int i = 0; i < 5; i++) {
 				for (int j = 0; j < 4; j++) {
-					gridpane.add(new Card(imageList.get(cnt), image), i, j);
+					gridpane.add(new Card(imageList.get(cnt), backImage), i, j);
 					cnt++;
 				}
 			}
@@ -192,10 +160,9 @@ public class Board extends VBox implements Selectable{
 		}
 
 	}
-    
-    @Override
+
 	public void highligtPlayer1() {
-    	Bloom bloom = new Bloom();
+		Bloom bloom = new Bloom();
 		bloom.setThreshold(0.3);
 		player1.setFont(Font.font("Verdant", FontWeight.BOLD, 20));
 		player2.setFont(Font.font("Verdant", FontWeight.NORMAL, 20));
@@ -203,7 +170,6 @@ public class Board extends VBox implements Selectable{
 		player2.setEffect(null);
 	}
 
-	@Override
 	public void highligtPlayer2() {
 		Bloom bloom = new Bloom();
 		bloom.setThreshold(0.3);
@@ -211,18 +177,14 @@ public class Board extends VBox implements Selectable{
 		player2.setFont(Font.font("Verdant", FontWeight.BOLD, 20));
 		player1.setEffect(null);
 		player2.setEffect(bloom);
-		
+
 	}
 
-	@Override
 	public void setScorePlayer1(String score) {
 		player1Score.setText("Score: "+score);
 	}
 
-	@Override
 	public void setScorePlayer2(String score) {
-		player2Score.setText("Score: "+score);
-		
+		player2Score.setText("Score: "+score);		
 	}
-
 }
