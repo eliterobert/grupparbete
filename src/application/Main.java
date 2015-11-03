@@ -23,11 +23,13 @@ public class Main extends Application {
 	Rectangle2D bounds = screen.getVisualBounds();
 	public static LinkedList<Player> playerList;
 	public static Player currentPlayer;
+	public static int turnTimer;
+	public static int numOfCards;
 
 	private Media musicToPlay;
 	private String musicFile = "";
 	private MediaPlayer mediaPlayer;
-	public static Board board;
+	public static Board board, winnerBoard;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -54,8 +56,7 @@ public class Main extends Application {
 
 		primaryStage.setScene(startScene);
 		primaryStage.show();
-		
-		
+
 		startPage.theme1.setOnMouseClicked((evet) -> {
 			Bloom bloom = new Bloom();
 			bloom.setThreshold(0.2);
@@ -85,24 +86,19 @@ public class Main extends Application {
 			playerList = new LinkedList<>();
 			playerList.add(new Player(startPage.player1.getText(), 1));
 			playerList.add(new Player(startPage.player2.getText(), 2));
-			
-			int numOfCards = 0;
+
+			numOfCards = 0;
 			int row = 0;
 			int col = 0;
-			if(startPage.cardsChoise8.isSelected())
-			{
+			if (startPage.cardsChoise8.isSelected()) {
 				numOfCards = 6;
 				row = 4;
 				col = 3;
-			}
-			else if(startPage.cardsChoise16.isSelected())
-			{
+			} else if (startPage.cardsChoise16.isSelected()) {
 				numOfCards = 8;
 				row = 4;
 				col = 4;
-			}
-			else if(startPage.cardsChoise32.isSelected())
-			{
+			} else if (startPage.cardsChoise32.isSelected()) {
 				numOfCards = 10;
 				row = 5;
 				col = 4;
@@ -116,7 +112,8 @@ public class Main extends Application {
 				mediaPlayer.play();
 
 				board = new Board("src/PhantasyStarTheme", "PhantasyStarTheme/",
-						"/Backgroundpictures/phantasyBackCard.png", "/Backgroundpictures/backgroud.jpg", numOfCards, row, col);
+						"/Backgroundpictures/phantasyBackCard.png", "/Backgroundpictures/backgroud.jpg", numOfCards,
+						row, col);
 
 				gameScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 				gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -135,7 +132,6 @@ public class Main extends Application {
 					musicToPlay = new Media(new File(musicFile).toURI().toString());
 					mediaPlayer = new MediaPlayer(musicToPlay);
 					mediaPlayer.play();
-
 					primaryStage.setScene(startScene);
 				});
 			}
@@ -203,6 +199,37 @@ public class Main extends Application {
 					primaryStage.setScene(startScene);
 				});
 			}
+
+			board.button1.setOnAction((a) -> {
+
+				if (turnTimer == numOfCards) {
+					WinnerPage wp = new WinnerPage();
+					gameScene = new Scene(wp, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
+					int player1 = Integer.parseInt(board.player1Score.getText());
+					int player2 = Integer.parseInt(board.player2Score.getText());
+
+					if (player1 > player2) {
+						wp.playerName.setText(board.player1.getText());
+					} else if (player1 == player2) {
+						wp.playerName.setText(board.player1.getText() + "" + board.player2.getText());
+					} else if (player1 < player2) {
+						wp.playerName.setText(board.player2.getText());
+					}
+
+					primaryStage.setScene(gameScene);
+					primaryStage.setMaxHeight(450);
+					primaryStage.setMinHeight(450);
+					primaryStage.setMaxWidth(1000);
+					primaryStage.setMinWidth(1000);
+					mediaPlayer.stop();
+					musicFile = "Sound/winnerSong.mp3";
+					musicToPlay = new Media(new File(musicFile).toURI().toString());
+					mediaPlayer = new MediaPlayer(musicToPlay);
+					mediaPlayer.play();
+				}
+
+			});
+
 		});
 
 	}

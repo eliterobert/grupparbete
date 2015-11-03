@@ -6,6 +6,7 @@ import java.util.Collections;
 
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.Bloom;
 import javafx.scene.image.Image;
@@ -30,6 +31,7 @@ public class Board extends VBox {
 	GridPane gridpane;
 	Image backImage;
 	public ArrayList<Image> imageList;
+	Button button1;
 
 	Screen screen = Screen.getPrimary();
 	Rectangle2D bounds = screen.getVisualBounds();
@@ -43,9 +45,11 @@ public class Board extends VBox {
 		player1 = new Label("Player 1");
 		player2 = new Label("Player 2");
 		turn = new Label("Turn: 15");
-		player1Score = new Label("Score: 0");
-		player2Score = new Label("Score: 0");
+		player1Score = new Label("0");
+		player2Score = new Label("0");
 		menu = new Label("Menu");
+		
+		button1 = new Button("Done");
 
 		gridpane = new GridPane();
 
@@ -71,7 +75,7 @@ public class Board extends VBox {
 		vBox1.getChildren().addAll(player1, player1Score);
 		vBox2.getChildren().addAll(player2, player2Score);
 		hBox1.getChildren().addAll(vBox1, gridpane, vBox2);
-		hBox2.getChildren().add(menu);
+		hBox2.getChildren().addAll(menu,button1);
 
 		hBox1.setTranslateY(bounds.getHeight()*0.065);
 		hBox1.setAlignment(Pos.BASELINE_CENTER);
@@ -94,7 +98,7 @@ public class Board extends VBox {
 		getPictures(cardsPath, cardsPath2, numOfPics, col, row);
 		Collections.shuffle(imageList);
 	}
-
+	
 	private void getPictures(String cardsPath, String cardsPath2, int numOfPics, int col, int row) {
 		imageList = new ArrayList<>();
 
@@ -137,10 +141,10 @@ public class Board extends VBox {
 	}
 
 	public void setScorePlayer1(String score) {
-		player1Score.setText("Score: "+score);
+		player1Score.setText(score);
 	}
 
 	public void setScorePlayer2(String score) {
-		player2Score.setText("Score: "+score);		
+		player2Score.setText(score);		
 	}
 }
