@@ -2,6 +2,7 @@
 package application;
 
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -21,6 +22,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Screen;
 
 public class StartPage extends VBox {
 
@@ -35,10 +37,13 @@ public class StartPage extends VBox {
 	TextField player1, player2;
 	String testp1;
 	ImageView phantasyStartButton,starWarsButton,lotrButton;
+	
+	Screen screen = Screen.getPrimary();
+	Rectangle2D bounds = screen.getVisualBounds();
 
 	public StartPage() {
 		BackgroundImage pic = new BackgroundImage(
-				new Image("/Backgroundpictures/starwars.jpg", 1325, 750, false, false), BackgroundRepeat.REPEAT,
+				new Image("/Backgroundpictures/starwars.jpg",bounds.getWidth() * 0.7, bounds.getHeight() * 0.7, false, false), BackgroundRepeat.NO_REPEAT,
 				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
 		setBackground(new Background(pic));
