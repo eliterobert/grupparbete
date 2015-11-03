@@ -67,6 +67,7 @@ public class Card extends StackPane {
 					
 				} else {
 					Main.currentPlayer.increaseScore();
+					Main.turnTimer++;
 					if (Main.currentPlayer.getPlayerNr() == 1) {
 						Main.board.highligtPlayer1();
 						Main.board.setScorePlayer1(Main.currentPlayer.getScore() + "");
