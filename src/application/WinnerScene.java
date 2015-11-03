@@ -35,7 +35,7 @@ public class WinnerScene extends Application {
 		root.setAlignment(Pos.CENTER);
 		root.setPrefSize(100, 1000);
 		Scene scene = new Scene(root, 1000, 450);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		
 		primaryStage.setMaxHeight(450);
 		primaryStage.setMinHeight(450);
 		primaryStage.setMaxWidth(1000);
@@ -50,11 +50,6 @@ public class WinnerScene extends Application {
 		winner.setTextFill(Color.YELLOWGREEN);
 		winner.setFont(Font.font("Verdana", FontWeight.NORMAL, FontPosture.ITALIC, 80));
 
-//		Image view = new Image("Image/winner.gif");
-//		ImageView buttonImage = new ImageView("Image/Namnlös.png");
-//		buttonImage.setFitHeight(20);
-//		buttonImage.setFitWidth(20);
-//		Button returnButton = new Button(null, buttonImage);
 
 		BackgroundImage pic = new BackgroundImage(new Image("/Backgroundpictures/winner.gif", 1000, 1600, true, false),
 				BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
