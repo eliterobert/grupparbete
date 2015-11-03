@@ -93,6 +93,15 @@ public class StarWarsBoard extends VBox implements Selectable{
                 hBox2.setTranslateX(bounds.getWidth()*0.7/2);
                 hBox2.setTranslateY(bounds.getHeight()*0.10);
                 
+                menu.setOnMouseEntered((event)->{
+        			Bloom bloom = new Bloom();
+        			bloom.setThreshold(0.2);
+        			menu.setEffect(bloom);
+        		});
+        		menu.setOnMouseExited((event)->{
+        			menu.setEffect(null);
+        		});
+                
                 highligtPlayer1();
                 
                 getChildren().addAll(hBox1, hBox2);

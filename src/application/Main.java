@@ -3,6 +3,8 @@ package application;
 import java.io.File;
 import java.util.LinkedList;
 
+import javax.swing.SortingFocusTraversalPolicy;
+
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
@@ -10,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaPlayer.Status;
 
 public class Main extends Application {
 
@@ -25,15 +28,25 @@ public class Main extends Application {
 	public static LinkedList<Player> playerList;
 	public static Player currentPlayer;
 	public static Selectable currentTheme;
+	
+	public static Media musicToPlay;
+	public static String musicFile="";
+	public static MediaPlayer mediaPlayer;
 
 	public static void main(String[] args) {
-		//sound();
 		launch(args);
 	}
 
 	@Override
 	public void start(Stage primaryStage) {
+		
+		musicFile = "Sound/testSound3.mp3";
+		musicToPlay = new Media(new File(musicFile).toURI().toString());
+		mediaPlayer = new MediaPlayer(musicToPlay);
+		mediaPlayer.play();
 
+		
+		
 		startPage = new StartPage();
 		startScene = new Scene(startPage, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 
@@ -61,8 +74,12 @@ public class Main extends Application {
 			playerList.add(new Player(startPage.player2.getText(), 2));
 			
 			if (startPage.theme1.isSelected()) {
-				
-				sound("Sound/DeathPlace.mp3");
+							
+				mediaPlayer.stop();
+				musicFile = "Sound/DeathPlace.mp3";
+				musicToPlay = new Media(new File(musicFile).toURI().toString());
+				mediaPlayer = new MediaPlayer(musicToPlay);
+				mediaPlayer.play();
 				
 				phantasyStarBoard = new PhantasyStarBoard();
 				phantasyStarBoard.player1.setText(playerList.get(0).getName());
@@ -75,12 +92,25 @@ public class Main extends Application {
 				currentTheme = phantasyStarBoard;
 				
 				primaryStage.setScene(phantasyStarScene);
-				phantasyStarBoard.menu.setOnMouseClicked((a) -> primaryStage.setScene(startScene));
+				phantasyStarBoard.menu.setOnMouseClicked((a) -> {
+					
+					mediaPlayer.stop();
+					musicFile = "Sound/testSound3.mp3";
+					musicToPlay = new Media(new File(musicFile).toURI().toString());
+					mediaPlayer = new MediaPlayer(musicToPlay);
+					mediaPlayer.play();
+					
+					primaryStage.setScene(startScene);
+					});
 			}
 
 			else if (startPage.theme2.isSelected()) {
 				
-				sound("Sound/testSound1.mp3");
+				mediaPlayer.stop();
+				musicFile = "Sound/TestSound1.mp3";
+				musicToPlay = new Media(new File(musicFile).toURI().toString());
+				mediaPlayer = new MediaPlayer(musicToPlay);
+				mediaPlayer.play();
 				
 				starWarsBoard = new StarWarsBoard();
 				starWarsBoard.player1.setText(playerList.get(0).getName());
@@ -93,14 +123,26 @@ public class Main extends Application {
 				currentTheme = starWarsBoard;
 				
 				primaryStage.setScene(boardScene);
-				starWarsBoard.menu.setOnMouseClicked((a) -> primaryStage.setScene(startScene));
+				starWarsBoard.menu.setOnMouseClicked((a) -> {
+					
+					mediaPlayer.stop();
+					musicFile = "Sound/testSound3.mp3";
+					musicToPlay = new Media(new File(musicFile).toURI().toString());
+					mediaPlayer = new MediaPlayer(musicToPlay);
+					mediaPlayer.play();
+					
+					primaryStage.setScene(startScene);
+				});
 			}
 			
 			else if (startPage.theme3.isSelected()) {
 				
-				sound("Sound/LOTR.mp3");
+				mediaPlayer.stop();
+				musicFile = "Sound/LOTR.mp3";
+				musicToPlay = new Media(new File(musicFile).toURI().toString());
+				mediaPlayer = new MediaPlayer(musicToPlay);
+				mediaPlayer.play();
 				
-
 				LOTRboard = new LOTRBoard();
 				LOTRboard.player1.setText(playerList.get(0).getName());
 				LOTRboard.player2.setText(playerList.get(1).getName());
@@ -112,20 +154,37 @@ public class Main extends Application {
 				currentTheme = LOTRboard;
 				
 				primaryStage.setScene(LOTRscene);
-				LOTRboard.menu.setOnMouseClicked((a) -> primaryStage.setScene(startScene));
+				LOTRboard.menu.setOnMouseClicked((a) -> {
+					
+					mediaPlayer.stop();
+					musicFile = "Sound/testSound3.mp3";
+					musicToPlay = new Media(new File(musicFile).toURI().toString());
+					mediaPlayer = new MediaPlayer(musicToPlay);
+					mediaPlayer.play();
+					
+					primaryStage.setScene(startScene);});
 			}
 		});
+		
+		
 
 	}
 
-	private void sound(String music) {
-
-		//String musicFile = "Sound/testSound1.mp3";
-		String musicFile = music;
-		Media sound = new Media(new File(musicFile).toURI().toString());
-		MediaPlayer mediaPlayer = new MediaPlayer(sound);
-		mediaPlayer.setCycleCount(10);
-		mediaPlayer.play();
-	}
+//	private MediaPlayer sound(String music) {
+//
+//		//String musicFile = "Sound/testSound1.mp3";
+//		String musicFile = music;
+//		Media sound = new Media(new File(musicFile).toURI().toString());
+//		MediaPlayer mediaPlayer = new MediaPlayer(sound);
+//		mediaPlayer.setCycleCount(10);
+//		
+////		Status status = mediaPlayer.getStatus();
+//		
+////		if(status==Status.PLAYING){
+////			mediaPlayer.stop();
+////		}
+////		mediaPlayer.play();
+//		return mediaPlayer;
+//	}
 
 }
