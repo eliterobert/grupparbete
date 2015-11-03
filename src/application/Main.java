@@ -23,9 +23,9 @@ public class Main extends Application {
 	public static LinkedList<Player> playerList;
 	public static Player currentPlayer;
 
-	public static Media musicToPlay;
-	public static String musicFile = "";
-	public static MediaPlayer mediaPlayer;
+	private Media musicToPlay;
+	private String musicFile = "";
+	private MediaPlayer mediaPlayer;
 	public static Board board;
 
 	public static void main(String[] args) {
