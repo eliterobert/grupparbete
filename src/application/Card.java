@@ -67,7 +67,7 @@ public class Card extends StackPane {
 
 				} else {
 					Main.currentPlayer.increaseScore();
-					Main.turnTimer++;
+					Main.pointCount++;
 					if (Main.currentPlayer.getPlayerNr() == 1) {
 						Main.board.highligtPlayer1();
 						Main.board.setScorePlayer1(Main.currentPlayer.getScore() + "");
@@ -75,6 +75,12 @@ public class Card extends StackPane {
 						Main.board.highligtPlayer2();
 						Main.board.setScorePlayer2(Main.currentPlayer.getScore() + "");
 					}
+					
+				}
+				if (Main.pointCount == Main.numOfCards)
+				{
+					
+					Main.startWinnerScene();
 				}
 				Main.selectedCard = null;
 				Main.clickCount = 2;

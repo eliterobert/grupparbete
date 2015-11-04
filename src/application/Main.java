@@ -24,7 +24,8 @@ public class Main extends Application {
 
 	public static StartPage startPage;
 	public static WinnerPage wp = new WinnerPage();
-	private Scene startScene, gameScene;
+	private Scene startScene;
+	private static Scene gameScene;
 	private Scene winnerScene = new Scene(wp);
 	public static Card selectedCard = null;
 	public static int clickCount = 2;
@@ -33,13 +34,14 @@ public class Main extends Application {
 	Rectangle2D bounds = screen.getVisualBounds();
 	public static LinkedList<Player> playerList;
 	public static Player currentPlayer;
-	public static int turnTimer;
+	public static int pointCount;
 	public static int numOfCards;
 
 	private Media musicToPlay;
 	private String musicFile = "";
 	private MediaPlayer mediaPlayer;
 	public static Board board, winnerBoard;
+	static Stage mainStage;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -47,6 +49,7 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
+		mainStage = primaryStage;
 
 		musicFile = "Sound/testSound3.mp3";
 		musicToPlay = new Media(new File(musicFile).toURI().toString());
@@ -198,46 +201,6 @@ public class Main extends Application {
 				});
 			}
 
-			board.highScoreButton.setOnAction((a) -> {
-
-				if (turnTimer == numOfCards) {
-					int player1 = Integer.parseInt(board.player1Score.getText());
-					int player2 = Integer.parseInt(board.player2Score.getText());
-
-					if (player1 > player2) {
-						wp.playerName.setText(board.player1.getText());
-					} else if (player1 == player2) {
-						wp.playerName.setText(board.player1.getText() + "" + board.player2.getText());
-					} else if (player1 < player2) {
-						wp.playerName.setText(board.player2.getText());
-					}
-
-					primaryStage.setScene(winnerScene);
-					primaryStage.setMaxHeight(450);
-					primaryStage.setMinHeight(450);
-					primaryStage.setMaxWidth(1000);
-					primaryStage.setMinWidth(1000);
-					mediaPlayer.stop();
-					musicFile = "Sound/winnerSong.mp3";
-					musicToPlay = new Media(new File(musicFile).toURI().toString());
-					mediaPlayer = new MediaPlayer(musicToPlay);
-					mediaPlayer.play();
-					turnTimer = 0;
-
-				}
-
-			});
-
-		});
-
-		wp.returnButton.setOnAction(event -> {
-
-			primaryStage.setScene(startScene);
-			primaryStage.setMinHeight(bounds.getHeight() * 0.7 + 25);
-			primaryStage.setMaxHeight(bounds.getHeight() * 0.7 + 25);
-			primaryStage.setMinWidth(bounds.getWidth() * 0.7);
-			primaryStage.setMaxWidth(bounds.getWidth() * 0.7);
-
 		});
 
 	}
@@ -268,4 +231,26 @@ public class Main extends Application {
 
 	}
 
+	public static void startWinnerScene() {
+
+		WinnerPage winnerPage = new WinnerPage();
+		gameScene = new Scene(winnerPage);
+		mainStage.setMaxHeight(450);
+		mainStage.setMinHeight(450);
+		mainStage.setMaxWidth(1000);
+		mainStage.setMinWidth(1000);
+		mainStage.setScene(gameScene);
+		if (pointCount == numOfCards) {
+			int player1 = Integer.parseInt(board.player1Score.getText());
+			int player2 = Integer.parseInt(board.player2Score.getText());
+			if (player1 > player2) {
+				winnerPage.playerName.setText(board.player1.getText());
+			} else if (player1 == player2) {
+				winnerPage.playerName.setText("DRAW!");
+			} else if (player1 < player2) {
+				winnerPage.playerName.setText(board.player2.getText());
+			}
+		}
+
+	}
 }
