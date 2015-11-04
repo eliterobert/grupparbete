@@ -36,7 +36,7 @@ public class StartPage extends VBox {
 	HBox boxLabel;
 	TextField player1, player2;
 	String testp1;
-	ImageView phantasyStartButton,starWarsButton,lotrButton;
+	ImageView phantasyStartButton,starWarsButton,lotrButton,twelveButton,sixteenButton,twentyButton;
 	
 	Screen screen = Screen.getPrimary();
 	Rectangle2D bounds = screen.getVisualBounds();
@@ -82,11 +82,20 @@ public class StartPage extends VBox {
 		player2.setPromptText("Player 2");
 		player2.setStyle("-fx-background-color: rgba(7%,5%,5%,1); -fx-text-fill: white;");
 
-		cardsChoise12 = new ToggleButton("12 Cards");
+		twelveButton = new ImageView(new Image("Backgroundpictures/12.jpg"));
+		twelveButton.setFitHeight(50);
+		twelveButton.setFitWidth(100);
+		cardsChoise12 = new ToggleButton("",twelveButton);
 		cardsChoise12.setPrefSize(100, 50);
-		cardsChoise16 = new ToggleButton("16 Cards");
+		sixteenButton = new ImageView(new Image("Backgroundpictures/16.jpg"));
+		sixteenButton.setFitHeight(50);
+		sixteenButton.setFitWidth(100);
+		cardsChoise16 = new ToggleButton("",sixteenButton);
 		cardsChoise16.setPrefSize(100, 50);
-		cardsChoise32 = new ToggleButton("20 Cards");
+		twentyButton = new ImageView(new Image("Backgroundpictures/20.jpg"));
+		twentyButton.setFitHeight(50);
+		twentyButton.setFitWidth(100);
+		cardsChoise32 = new ToggleButton("",twentyButton);
 		cardsChoise32.setPrefSize(100, 50);
 
 		tg = new ToggleGroup();
