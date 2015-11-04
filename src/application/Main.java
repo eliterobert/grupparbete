@@ -1,6 +1,12 @@
 package application;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.LinkedList;
 
 import javafx.application.Application;
@@ -96,6 +102,7 @@ public class Main extends Application {
 				col = 4;
 			}
 			if (startPage.theme1.isSelected()) {
+				
 
 				mediaPlayer.stop();
 				musicFile = "Sound/DeathPlace.mp3";
@@ -242,6 +249,24 @@ public class Main extends Application {
 		bloomButton.setEffect(bloom);
 		nullButton1.setEffect(null);
 		nullButton2.setEffect(null);
+	}
+	
+	public void HighScore (String result) {
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+		Calendar cal = Calendar.getInstance();
+		
+	try {
+		
+		BufferedWriter bf = new BufferedWriter(new FileWriter("src/Highscore/Highscore.txt"));
+		bf.write(result + dateFormat.format(cal.getTime()));
+		
+		bf.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	
 	}
 
 }

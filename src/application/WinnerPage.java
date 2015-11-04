@@ -1,5 +1,9 @@
 package application;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,6 +25,8 @@ import javafx.scene.text.FontWeight;
 
 public class WinnerPage extends BorderPane {
 
+	String result;
+	
 	HBox hbox1 = new HBox();
 	HBox hbox2 = new HBox();
 	HBox hbox3 = new HBox();
@@ -66,6 +72,7 @@ public class WinnerPage extends BorderPane {
 		shadow.setRadius(10);
 		shadow.setWidth(3);
 		winner.setEffect(shadow);
+		
 		
 
 	}
