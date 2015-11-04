@@ -52,12 +52,11 @@ public class Main extends Application {
 		musicFile = "Sound/testSound3.mp3";
 		musicToPlay = new Media(new File(musicFile).toURI().toString());
 		mediaPlayer = new MediaPlayer(musicToPlay);
-		// mediaPlayer.play();
+		mediaPlayer.play();
 
 		startPage = new StartPage();
 		startScene = new Scene(startPage, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 
-		startScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
 		primaryStage.setMinHeight(bounds.getHeight() * 0.7 + 25);
 		primaryStage.setMaxHeight(bounds.getHeight() * 0.7 + 25);
