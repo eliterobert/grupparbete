@@ -213,15 +213,42 @@ public class Main extends Application {
 		nullButton2.setEffect(null);
 	}
 
-	public void HighScore(String result) {
-
+	public static void HighScoreInput() {
+		
+		// Player 1
+		int scoreP1 = playerList.get(0).getScore();
+		String Scorep1S = Integer.toString(scoreP1);
+		String nameP1 = playerList.get(0).getName();
+		String totaltP1 = nameP1 + " " + Scorep1S;
+		
+		// Player 2
+		
+		int scoreP2 = playerList.get(1).getScore();
+		String Scorep2S = Integer.toString(scoreP2);
+		String nameP2 = playerList.get(1).getName();
+		String totaltP2 = nameP2 + " " + Scorep2S;
+		
+		// Test person 1
+		
+		System.out.println("Scorep1S" + Scorep1S);
+		System.out.println("namep1" + nameP1);
+		System.out.println("totaltP1" + totaltP1);
+		
+		// Test person 2
+		
+		System.out.println("Scorep2S" + Scorep2S);
+		System.out.println("nameP2" + nameP2);
+		System.err.println("totaltP2" + totaltP2);
+		
+		
+		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 		Calendar cal = Calendar.getInstance();
 
 		try {
 
 			BufferedWriter bf = new BufferedWriter(new FileWriter("src/Highscore/Highscore.txt"));
-			bf.write(result + dateFormat.format(cal.getTime()));
+			bf.append(totaltP1 + " " + totaltP2 + " " + dateFormat.format(cal.getTime()));
 
 			bf.close();
 

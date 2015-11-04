@@ -81,6 +81,7 @@ public class Card extends StackPane {
 				{
 					
 					Main.startWinnerScene();
+					Main.HighScoreInput();
 				}
 				Main.selectedCard = null;
 				Main.clickCount = 2;
