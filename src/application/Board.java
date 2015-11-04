@@ -28,13 +28,12 @@ import javafx.stage.Screen;
 
 public class Board extends BorderPane {
 
-	HBox hBox1, hBox2;
+	HBox hBox1, hBox2, hBox3, hBox4;
 	VBox vBox1, vBox2;
-	Label player1, player2, turn, player1Score, player2Score, menu;
+	Label player1, player2, turn, player1Score, player2Score, menu, scoreText1, scoreText2;
 	GridPane gridpane;
 	Image backImage;
 	public ArrayList<Image> imageList;
-	Button highScoreButton;
 
 	Screen screen = Screen.getPrimary();
 	Rectangle2D bounds = screen.getVisualBounds();
@@ -43,6 +42,8 @@ public class Board extends BorderPane {
 			int row) {
 		hBox1 = new HBox();
 		hBox2 = new HBox();
+		hBox3 = new HBox();
+		hBox4 = new HBox();
 		vBox1 = new VBox();
 		vBox2 = new VBox();
 
@@ -52,9 +53,8 @@ public class Board extends BorderPane {
 		player1Score = new Label("0");
 		player2Score = new Label("0");
 		menu = new Label("Menu");
-
-		highScoreButton = new Button("Go to highscore");
-
+		scoreText1 = new Label("Score: ");
+		scoreText2 = new Label("Score: ");
 		gridpane = new GridPane();
 
 		BackgroundImage backgroundImage = new BackgroundImage(
@@ -75,6 +75,8 @@ public class Board extends BorderPane {
 		menu.setAlignment(Pos.TOP_CENTER);
 		player1Score.setTextFill(Color.AQUA);
 		player2Score.setTextFill(Color.AQUA);
+		scoreText1.setTextFill(Color.AQUA);
+		scoreText2.setTextFill(Color.AQUA);
 
 		gridpane.setHgap(bounds.getWidth() * 0.02);
 		gridpane.setVgap(bounds.getHeight() * 0.03);
@@ -88,11 +90,14 @@ public class Board extends BorderPane {
 		vBox2.setMaxWidth(150);
 		// player2.setAlignment(Pos.CENTER_RIGHT);
 		// player2.setTextAlignment(TextAlignment.RIGHT);
-
-		vBox1.getChildren().addAll(player1, player1Score);
-		vBox2.getChildren().addAll(player2, player2Score);
+		
+		hBox3.getChildren().addAll(scoreText1, player1Score);
+		hBox4.getChildren().addAll(scoreText2, player2Score);
+		
+		vBox1.getChildren().addAll(player1, hBox3);
+		vBox2.getChildren().addAll(player2, hBox4);
 		// hBox1.getChildren().addAll(vBox1, gridpane, vBox2);
-		hBox2.getChildren().addAll(menu, highScoreButton);
+		hBox2.getChildren().addAll(menu);
 
 		// hBox1.setTranslateY(bounds.getHeight()*0.065);
 		// hBox1.setAlignment(Pos.BASELINE_CENTER);
