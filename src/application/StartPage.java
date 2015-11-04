@@ -77,10 +77,10 @@ public class StartPage extends VBox {
 		
 		player1 = new TextField();
 		player1.setPromptText("Player 1");
-		player1.setStyle("-fx-background-color: rgba(7%,5%,5%,1)}");
+		player1.setStyle("-fx-background-color: rgba(7%,5%,5%,1); -fx-text-fill: white;");
 		player2 = new TextField();
 		player2.setPromptText("Player 2");
-		player2.setStyle("-fx-background-color: rgba(7%,5%,5%,1)}");
+		player2.setStyle("-fx-background-color: rgba(7%,5%,5%,1); -fx-text-fill: white;");
 
 		cardsChoise12 = new ToggleButton("12 Cards");
 		cardsChoise12.setPrefSize(100, 50);
