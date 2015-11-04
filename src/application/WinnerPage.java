@@ -26,7 +26,7 @@ import javafx.scene.text.FontWeight;
 public class WinnerPage extends BorderPane {
 
 	String result;
-	
+
 	HBox hbox1 = new HBox();
 	HBox hbox2 = new HBox();
 	HBox hbox3 = new HBox();
@@ -55,7 +55,7 @@ public class WinnerPage extends BorderPane {
 
 		hbox1.setAlignment(Pos.BOTTOM_LEFT);
 		hbox1.getChildren().add(returnButton);
-		hbox2.getChildren().addAll(winner,playerName);
+		hbox2.getChildren().addAll(winner, playerName);
 
 		setTop(hbox2);
 		setBottom(hbox1);
@@ -72,10 +72,7 @@ public class WinnerPage extends BorderPane {
 		shadow.setRadius(10);
 		shadow.setWidth(3);
 		winner.setEffect(shadow);
-		
-		
 
 	}
-	
 
 }

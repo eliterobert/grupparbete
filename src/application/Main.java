@@ -51,7 +51,7 @@ public class Main extends Application {
 		musicFile = "Sound/testSound3.mp3";
 		musicToPlay = new Media(new File(musicFile).toURI().toString());
 		mediaPlayer = new MediaPlayer(musicToPlay);
-		//mediaPlayer.play();
+		// mediaPlayer.play();
 
 		startPage = new StartPage();
 		startScene = new Scene(startPage, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
@@ -102,7 +102,6 @@ public class Main extends Application {
 				col = 4;
 			}
 			if (startPage.theme1.isSelected()) {
-				
 
 				mediaPlayer.stop();
 				musicFile = "Sound/DeathPlace.mp3";
@@ -250,23 +249,23 @@ public class Main extends Application {
 		nullButton1.setEffect(null);
 		nullButton2.setEffect(null);
 	}
-	
-	public void HighScore (String result) {
-		
+
+	public void HighScore(String result) {
+
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 		Calendar cal = Calendar.getInstance();
-		
-	try {
-		
-		BufferedWriter bf = new BufferedWriter(new FileWriter("src/Highscore/Highscore.txt"));
-		bf.write(result + dateFormat.format(cal.getTime()));
-		
-		bf.close();
-			
+
+		try {
+
+			BufferedWriter bf = new BufferedWriter(new FileWriter("src/Highscore/Highscore.txt"));
+			bf.write(result + dateFormat.format(cal.getTime()));
+
+			bf.close();
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	
+
 	}
 
 }

@@ -44,7 +44,7 @@ public class Card extends StackPane {
 	private void handleMouseClick(MouseEvent event) {
 		if (isOpen() && Main.clickCount != 0)
 			return;
-		
+
 		Main.clickCount--;
 
 		if (Main.selectedCard == null) {
@@ -58,13 +58,13 @@ public class Card extends StackPane {
 					this.close();
 					Main.playerList.add(Main.currentPlayer);
 					Main.currentPlayer = Main.playerList.poll();
-					
+
 					if (Main.currentPlayer.getPlayerNr() == 1) {
 						Main.board.highligtPlayer1();
 					} else {
 						Main.board.highligtPlayer2();
 					}
-					
+
 				} else {
 					Main.currentPlayer.increaseScore();
 					Main.turnTimer++;
@@ -81,7 +81,6 @@ public class Card extends StackPane {
 			});
 		}
 	}
-
 
 	public boolean isOpen() {
 		return getRotate() > 0;
@@ -108,10 +107,11 @@ public class Card extends StackPane {
 			System.out.println("NullPointerEx Occurred!!");
 		}
 
-		// Undvik division med noll samt kolla så acceptans nivån är över 90 %
+		// Undvik division med noll samt kolla så acceptans nivån är över 90
+		// %
 		if (((totalPixels == 0 ? -1 : machingPixels / totalPixels) * 100) > levelOfAcceptance)
 			isOfSameKind = true;
-		
+
 		return isOfSameKind;
 	}
 

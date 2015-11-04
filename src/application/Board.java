@@ -39,7 +39,8 @@ public class Board extends BorderPane {
 	Screen screen = Screen.getPrimary();
 	Rectangle2D bounds = screen.getVisualBounds();
 
-	public Board(String cardsPath, String cardsPath2, String imgBgPath, String bgPath, int numOfPics, int col, int row){
+	public Board(String cardsPath, String cardsPath2, String imgBgPath, String bgPath, int numOfPics, int col,
+			int row) {
 		hBox1 = new HBox();
 		hBox2 = new HBox();
 		vBox1 = new VBox();
@@ -51,17 +52,19 @@ public class Board extends BorderPane {
 		player1Score = new Label("0");
 		player2Score = new Label("0");
 		menu = new Label("Menu");
-		
+
 		highScoreButton = new Button("Go to highscore");
 
 		gridpane = new GridPane();
 
-		BackgroundImage backgroundImage = new BackgroundImage(new Image(bgPath, bounds.getWidth()*0.7, bounds.getHeight()*0.7,false,true),
-				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+		BackgroundImage backgroundImage = new BackgroundImage(
+				new Image(bgPath, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7, false, true),
+				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+				BackgroundSize.DEFAULT);
 
-		backImage = new Image(imgBgPath, bounds.getWidth()*0.06, bounds.getWidth()*0.06, true, true);
+		backImage = new Image(imgBgPath, bounds.getWidth() * 0.06, bounds.getWidth() * 0.06, true, true);
 
-//		setSpacing(5);
+		// setSpacing(5);
 
 		setBackground(new Background(backgroundImage));
 
@@ -73,79 +76,79 @@ public class Board extends BorderPane {
 		player1Score.setTextFill(Color.AQUA);
 		player2Score.setTextFill(Color.AQUA);
 
-		gridpane.setHgap(bounds.getWidth()*0.02);
-		gridpane.setVgap(bounds.getHeight()*0.03);
-//		gridpane.setAlignment(Pos.CENTER);
+		gridpane.setHgap(bounds.getWidth() * 0.02);
+		gridpane.setVgap(bounds.getHeight() * 0.03);
+		// gridpane.setAlignment(Pos.CENTER);
 
-		//gridpane.setPrefWidth(1000);
-		//vBox1.setPrefWidth(500);		//test
+		// gridpane.setPrefWidth(1000);
+		// vBox1.setPrefWidth(500); //test
 		vBox1.setMinWidth(150);
 		vBox1.setMaxWidth(150);
 		vBox2.setMinWidth(150);
 		vBox2.setMaxWidth(150);
-		//player2.setAlignment(Pos.CENTER_RIGHT);
-		//player2.setTextAlignment(TextAlignment.RIGHT);
-
+		// player2.setAlignment(Pos.CENTER_RIGHT);
+		// player2.setTextAlignment(TextAlignment.RIGHT);
 
 		vBox1.getChildren().addAll(player1, player1Score);
 		vBox2.getChildren().addAll(player2, player2Score);
-//		hBox1.getChildren().addAll(vBox1, gridpane, vBox2);
-		hBox2.getChildren().addAll(menu,highScoreButton);
+		// hBox1.getChildren().addAll(vBox1, gridpane, vBox2);
+		hBox2.getChildren().addAll(menu, highScoreButton);
 
-//		hBox1.setTranslateY(bounds.getHeight()*0.065);
-//		hBox1.setAlignment(Pos.BASELINE_CENTER);
-		//hBox1.setSpacing(bounds.getWidth()*0.012);
-//		gridpane.setPadding(new Insets(0,bounds.getWidth()*0.08,0,bounds.getWidth()*0.012));
-//		hBox1.setPadding(new Insets(0,40,0,40));
-//		hBox2.setTranslateX(bounds.getWidth()*0.7/2);
-//		hBox2.setTranslateY(bounds.getHeight()*0.10);
+		// hBox1.setTranslateY(bounds.getHeight()*0.065);
+		// hBox1.setAlignment(Pos.BASELINE_CENTER);
+		// hBox1.setSpacing(bounds.getWidth()*0.012);
+		// gridpane.setPadding(new
+		// Insets(0,bounds.getWidth()*0.08,0,bounds.getWidth()*0.012));
+		// hBox1.setPadding(new Insets(0,40,0,40));
+		// hBox2.setTranslateX(bounds.getWidth()*0.7/2);
+		// hBox2.setTranslateY(bounds.getHeight()*0.10);
 
-		menu.setOnMouseEntered((event)->{
+		menu.setOnMouseEntered((event) -> {
 			Bloom bloom = new Bloom();
 			bloom.setThreshold(0.2);
 			menu.setEffect(bloom);
 		});
-		menu.setOnMouseExited((event)->{
+		menu.setOnMouseExited((event) -> {
 			menu.setEffect(null);
 		});
 
 		highligtPlayer1();
-		
-		//borderpane
+
+		// borderpane
 		hBox2.setAlignment(Pos.CENTER);
 		gridpane.setAlignment(Pos.BASELINE_CENTER);
-		this.setPadding(new Insets(55,0,25,55));
-		
+		this.setPadding(new Insets(55, 0, 25, 55));
+
 		this.setCenter(gridpane);
 		this.setLeft(vBox1);
 		this.setRight(vBox2);
 		this.setBottom(hBox2);
 
-//		getChildren().addAll(hBox1, hBox2);
+		// getChildren().addAll(hBox1, hBox2);
 		getPictures(cardsPath, cardsPath2, numOfPics, col, row);
 		Collections.shuffle(imageList);
 	}
-	
+
 	private void getPictures(String cardsPath, String cardsPath2, int numOfPics, int col, int row) {
 		imageList = new ArrayList<>();
 
 		File imageDirectory = new File(cardsPath);
 		String[] directoryList = imageDirectory.list();
 
-			for (int i = 0; i < numOfPics; i++) {
-				imageList.add(new Image(cardsPath2 + directoryList[i], bounds.getWidth() * 0.06,
-						bounds.getWidth() * 0.06, true, true));
-				imageList.add(new Image(cardsPath2 + directoryList[i], bounds.getWidth() * 0.06,
-						bounds.getWidth() * 0.06, true, true));
+		for (int i = 0; i < numOfPics; i++) {
+			imageList.add(new Image(cardsPath2 + directoryList[i], bounds.getWidth() * 0.06, bounds.getWidth() * 0.06,
+					true, true));
+			imageList.add(new Image(cardsPath2 + directoryList[i], bounds.getWidth() * 0.06, bounds.getWidth() * 0.06,
+					true, true));
+		}
+		Collections.shuffle(imageList);
+		int cnt = 0;
+		for (int i = 0; i < col; i++) {
+			for (int j = 0; j < row; j++) {
+				gridpane.add(new Card(imageList.get(cnt), backImage), i, j);
+				cnt++;
 			}
-			Collections.shuffle(imageList);
-			int cnt = 0;
-			for (int i = 0; i < col; i++) {
-				for (int j = 0; j < row; j++) {
-					gridpane.add(new Card(imageList.get(cnt), backImage), i, j);
-					cnt++;
-				}
-			}
+		}
 	}
 
 	public void highligtPlayer1() {
@@ -172,6 +175,6 @@ public class Board extends BorderPane {
 	}
 
 	public void setScorePlayer2(String score) {
-		player2Score.setText(score);		
+		player2Score.setText(score);
 	}
 }

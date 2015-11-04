@@ -12,7 +12,7 @@ public class Player {
 		this.playerNr = playerNr;
 		score = 0;
 	}
-	
+
 	public boolean isTurn() {
 		return isTurn;
 	}
