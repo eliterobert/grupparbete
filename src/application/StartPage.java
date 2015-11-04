@@ -30,7 +30,7 @@ public class StartPage extends VBox {
 	Label antalSpelare;
 	Button startButton;
 	ToggleGroup tg, themeGroup;
-	ToggleButton cardsChoise8, cardsChoise16, cardsChoise32;
+	ToggleButton cardsChoise12, cardsChoise16, cardsChoise32;
 	ToggleButton theme1, theme2, theme3;
 	HBox toggleButtonBox, themeGroupBox;
 	HBox boxLabel;
@@ -82,15 +82,15 @@ public class StartPage extends VBox {
 		player2.setPromptText("Player 2");
 		player2.setStyle("-fx-background-color: rgba(7%,5%,5%,1)}");
 
-		cardsChoise8 = new ToggleButton("12 Cards");
-		cardsChoise8.setPrefSize(100, 50);
+		cardsChoise12 = new ToggleButton("12 Cards");
+		cardsChoise12.setPrefSize(100, 50);
 		cardsChoise16 = new ToggleButton("16 Cards");
 		cardsChoise16.setPrefSize(100, 50);
 		cardsChoise32 = new ToggleButton("20 Cards");
 		cardsChoise32.setPrefSize(100, 50);
 
 		tg = new ToggleGroup();
-		cardsChoise8.setToggleGroup(tg);
+		cardsChoise12.setToggleGroup(tg);
 		cardsChoise16.setToggleGroup(tg);
 		cardsChoise16.setSelected(true);
 		cardsChoise32.setToggleGroup(tg);
@@ -131,7 +131,7 @@ public class StartPage extends VBox {
 		toggleButtonBox = new HBox();
 		toggleButtonBox.setSpacing(20);
 		toggleButtonBox.setAlignment(Pos.CENTER);
-		toggleButtonBox.getChildren().addAll(cardsChoise8, cardsChoise16, cardsChoise32);
+		toggleButtonBox.getChildren().addAll(cardsChoise12, cardsChoise16, cardsChoise32);
 
 		boxLabel = new HBox();
 		boxLabel.setAlignment(Pos.CENTER);
