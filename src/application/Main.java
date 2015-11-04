@@ -218,25 +218,25 @@ public class Main extends Application {
 		String Scorep1S = Integer.toString(scoreP1);
 		String nameP1 = playerList.get(0).getName();
 		String totaltP1 = nameP1 + " " + Scorep1S;
-		
-		// Player 2
-		
-		int scoreP2 = playerList.get(1).getScore();
-		String Scorep2S = Integer.toString(scoreP2);
-		String nameP2 = playerList.get(1).getName();
-		String totaltP2 = nameP2 + " " + Scorep2S;
-		
-		// Test person 1
-		
-		System.out.println("Scorep1S" + Scorep1S);
-		System.out.println("namep1" + nameP1);
-		System.out.println("totaltP1" + totaltP1);
-		
-		// Test person 2
-		
-		System.out.println("Scorep2S" + Scorep2S);
-		System.out.println("nameP2" + nameP2);
-		System.err.println("totaltP2" + totaltP2);
+//		
+//		// Player 2
+//		
+////		int scoreP2 = playerList.get(1).getScore();
+////		String Scorep2S = Integer.toString(scoreP2);
+////		String nameP2 = playerList.get(1).getName();
+////		String totaltP2 = nameP2 + " " + Scorep2S;
+////		
+//		// Test person 1
+//		
+//		System.out.println("Scorep1S" + Scorep1S);
+//		System.out.println("namep1" + nameP1);
+//		System.out.println("totaltP1" + totaltP1);
+//		
+//		// Test person 2
+//		
+////		System.out.println("Scorep2S" + Scorep2S);
+////		System.out.println("nameP2" + nameP2);
+////		System.err.println("totaltP2" + totaltP2);
 		
 		
 		
@@ -245,8 +245,8 @@ public class Main extends Application {
 
 		try {
 
-			BufferedWriter bf = new BufferedWriter(new FileWriter("src/Highscore/Highscore.txt"));
-			bf.append(totaltP1 + " " + totaltP2 + " " + dateFormat.format(cal.getTime()));
+			FileWriter bf = new FileWriter(new File("src/Highscore/Highscore.txt"), true);
+			bf.append('\n' + totaltP1 +  " " + dateFormat.format(cal.getTime()));
 
 			bf.close();
 
