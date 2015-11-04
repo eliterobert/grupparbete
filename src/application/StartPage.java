@@ -59,13 +59,28 @@ public class StartPage extends VBox {
 		topLabel.setEffect(r);
 
 		antalSpelare = new Label("Antal Spelare");
-		startButton = new Button("Start");
+		ImageView startBackground = new ImageView(new Image("Backgroundpictures/StartButtonBlack.png"));
+		startBackground.setFitHeight(80);
+		startBackground.setFitWidth(180);
+		startButton = new Button("",startBackground);
+		startButton.setStyle("-fx-background-color: rgba(7%,5%,5%,1)}");
 		startButton.setPrefSize(180, 80);
-
+		startButton.setOnMouseEntered((event)->{
+			Bloom bloom = new Bloom();
+			bloom.setThreshold(0.2);
+			startButton.setEffect(bloom);
+		});
+		startButton.setOnMouseExited((event)->{
+			startButton.setEffect(null);
+		});
+		
+		
 		player1 = new TextField();
 		player1.setPromptText("Player 1");
+		player1.setStyle("-fx-background-color: rgba(7%,5%,5%,1)}");
 		player2 = new TextField();
 		player2.setPromptText("Player 2");
+		player2.setStyle("-fx-background-color: rgba(7%,5%,5%,1)}");
 
 		cardsChoise8 = new ToggleButton("12 Cards");
 		cardsChoise8.setPrefSize(100, 50);
@@ -82,21 +97,21 @@ public class StartPage extends VBox {
 
 		phantasyStartButton = new ImageView(new Image("Backgroundpictures/phantStartButt.png"));
 		phantasyStartButton.setFitHeight(75);
-		phantasyStartButton.setFitWidth(75);
+		phantasyStartButton.setFitWidth(150);
 		theme1 = new ToggleButton("", phantasyStartButton);
 		theme1.setStyle("-fx-background-color: rgba(0%,0%,0%,0)}");
 		theme1.setPrefSize(100, 50);
 
 		starWarsButton = new ImageView(new Image("Backgroundpictures/starwarsbutton.png"));
 		starWarsButton.setFitHeight(75);
-		starWarsButton.setFitWidth(75);
+		starWarsButton.setFitWidth(150);
 		theme2 = new ToggleButton("", starWarsButton);
 		theme2.setStyle("-fx-background-color: rgba(0%,0%,0%,0)}");
 		theme2.setPrefSize(100, 50);
 
 		lotrButton = new ImageView(new Image("Backgroundpictures/lotrbutton.png"));
 		lotrButton.setFitHeight(75);
-		lotrButton.setFitWidth(75);
+		lotrButton.setFitWidth(150);
 		theme3 = new ToggleButton("", lotrButton);
 		theme3.setStyle("-fx-background-color: rgba(0%,0%,0%,0)}");
 		theme3.setPrefSize(100, 50);
@@ -112,8 +127,6 @@ public class StartPage extends VBox {
 		themeGroupBox.getChildren().addAll(theme1, theme2, theme3);
 
 		antalSpelare.setTextFill(Color.AQUA);
-
-		startButton.setTextFill(Color.BLACK);
 
 		toggleButtonBox = new HBox();
 		toggleButtonBox.setSpacing(20);

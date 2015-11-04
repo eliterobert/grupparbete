@@ -8,7 +8,9 @@ import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.effect.Bloom;
+import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -43,7 +45,7 @@ public class Main extends Application {
 		musicFile = "Sound/testSound3.mp3";
 		musicToPlay = new Media(new File(musicFile).toURI().toString());
 		mediaPlayer = new MediaPlayer(musicToPlay);
-		mediaPlayer.play();
+		//mediaPlayer.play();
 
 		startPage = new StartPage();
 		startScene = new Scene(startPage, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
@@ -60,27 +62,15 @@ public class Main extends Application {
 		primaryStage.show();
 
 		startPage.theme1.setOnMouseClicked((evet) -> {
-			Bloom bloom = new Bloom();
-			bloom.setThreshold(0.2);
-			startPage.phantasyStartButton.setEffect(bloom);
-			startPage.starWarsButton.setEffect(null);
-			startPage.lotrButton.setEffect(null);
+			bloomEffect(startPage.phantasyStartButton, startPage.starWarsButton, startPage.lotrButton);
 
 		});
 		startPage.theme2.setOnMouseClicked((evet) -> {
-			Bloom bloom = new Bloom();
-			bloom.setThreshold(0.2);
-			startPage.starWarsButton.setEffect(bloom);
-			startPage.phantasyStartButton.setEffect(null);
-			startPage.lotrButton.setEffect(null);
+			bloomEffect(startPage.starWarsButton, startPage.lotrButton, startPage.phantasyStartButton);
 		});
 
 		startPage.theme3.setOnMouseClicked((evet) -> {
-			Bloom bloom = new Bloom();
-			bloom.setThreshold(0.2);
-			startPage.lotrButton.setEffect(bloom);
-			startPage.phantasyStartButton.setEffect(null);
-			startPage.starWarsButton.setEffect(null);
+			bloomEffect(startPage.lotrButton, startPage.phantasyStartButton, startPage.starWarsButton);
 		});
 
 		startPage.startButton.setOnAction(event -> {
@@ -202,7 +192,7 @@ public class Main extends Application {
 				});
 			}
 
-			board.button1.setOnAction((a) -> {
+			board.highScoreButton.setOnAction((a) -> {
 
 				if (turnTimer == numOfCards) {
 					int player1 = Integer.parseInt(board.player1Score.getText());
@@ -226,6 +216,7 @@ public class Main extends Application {
 					musicToPlay = new Media(new File(musicFile).toURI().toString());
 					mediaPlayer = new MediaPlayer(musicToPlay);
 					mediaPlayer.play();
+					turnTimer = 0;
 
 				}
 
@@ -243,6 +234,14 @@ public class Main extends Application {
 
 		});
 
+	}
+
+	private void bloomEffect(ImageView bloomButton, ImageView nullButton1, ImageView nullButton2) {
+		Bloom bloom = new Bloom();
+		bloom.setThreshold(0.2);
+		bloomButton.setEffect(bloom);
+		nullButton1.setEffect(null);
+		nullButton2.setEffect(null);
 	}
 
 }

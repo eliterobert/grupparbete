@@ -34,7 +34,7 @@ public class Board extends BorderPane {
 	GridPane gridpane;
 	Image backImage;
 	public ArrayList<Image> imageList;
-	Button button1;
+	Button highScoreButton;
 
 	Screen screen = Screen.getPrimary();
 	Rectangle2D bounds = screen.getVisualBounds();
@@ -52,7 +52,7 @@ public class Board extends BorderPane {
 		player2Score = new Label("0");
 		menu = new Label("Menu");
 		
-		button1 = new Button("Done");
+		highScoreButton = new Button("Go to highscore");
 
 		gridpane = new GridPane();
 
@@ -90,7 +90,7 @@ public class Board extends BorderPane {
 		vBox1.getChildren().addAll(player1, player1Score);
 		vBox2.getChildren().addAll(player2, player2Score);
 //		hBox1.getChildren().addAll(vBox1, gridpane, vBox2);
-		hBox2.getChildren().addAll(menu,button1);
+		hBox2.getChildren().addAll(menu,highScoreButton);
 
 //		hBox1.setTranslateY(bounds.getHeight()*0.065);
 //		hBox1.setAlignment(Pos.BASELINE_CENTER);
