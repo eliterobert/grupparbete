@@ -23,10 +23,8 @@ import javafx.scene.media.MediaPlayer;
 public class Main extends Application {
 
 	public static StartPage startPage;
-	public static WinnerPage wp = new WinnerPage();
 	private Scene startScene;
 	private static Scene gameScene;
-	private Scene winnerScene = new Scene(wp);
 	public static Card selectedCard = null;
 	public static int clickCount = 2;
 
