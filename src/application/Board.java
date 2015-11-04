@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
@@ -15,15 +16,17 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
 
-public class Board extends VBox {
+public class Board extends BorderPane {
 
 	HBox hBox1, hBox2;
 	VBox vBox1, vBox2;
@@ -58,7 +61,7 @@ public class Board extends VBox {
 
 		backImage = new Image(imgBgPath, bounds.getWidth()*0.06, bounds.getWidth()*0.06, true, true);
 
-		setSpacing(5);
+//		setSpacing(5);
 
 		setBackground(new Background(backgroundImage));
 
@@ -72,23 +75,30 @@ public class Board extends VBox {
 
 		gridpane.setHgap(bounds.getWidth()*0.02);
 		gridpane.setVgap(bounds.getHeight()*0.03);
-		gridpane.setAlignment(Pos.CENTER);
+//		gridpane.setAlignment(Pos.CENTER);
 
-		
-		vBox1.setPrefWidth(100);
-		vBox2.setPrefWidth(100);
+		//gridpane.setPrefWidth(1000);
+		//vBox1.setPrefWidth(500);		//test
+		vBox1.setMinWidth(150);
+		vBox1.setMaxWidth(150);
+		vBox2.setMinWidth(150);
+		vBox2.setMaxWidth(150);
+		//player2.setAlignment(Pos.CENTER_RIGHT);
+		//player2.setTextAlignment(TextAlignment.RIGHT);
 
 
 		vBox1.getChildren().addAll(player1, player1Score);
 		vBox2.getChildren().addAll(player2, player2Score);
-		hBox1.getChildren().addAll(vBox1, gridpane, vBox2);
+//		hBox1.getChildren().addAll(vBox1, gridpane, vBox2);
 		hBox2.getChildren().addAll(menu,button1);
 
-		hBox1.setTranslateY(bounds.getHeight()*0.065);
-		hBox1.setAlignment(Pos.BASELINE_CENTER);
-		hBox1.setSpacing(bounds.getWidth()*0.11);
-		hBox2.setTranslateX(bounds.getWidth()*0.7/2);
-		hBox2.setTranslateY(bounds.getHeight()*0.10);
+//		hBox1.setTranslateY(bounds.getHeight()*0.065);
+//		hBox1.setAlignment(Pos.BASELINE_CENTER);
+		//hBox1.setSpacing(bounds.getWidth()*0.012);
+//		gridpane.setPadding(new Insets(0,bounds.getWidth()*0.08,0,bounds.getWidth()*0.012));
+//		hBox1.setPadding(new Insets(0,40,0,40));
+//		hBox2.setTranslateX(bounds.getWidth()*0.7/2);
+//		hBox2.setTranslateY(bounds.getHeight()*0.10);
 
 		menu.setOnMouseEntered((event)->{
 			Bloom bloom = new Bloom();
@@ -100,8 +110,18 @@ public class Board extends VBox {
 		});
 
 		highligtPlayer1();
+		
+		//borderpane
+		hBox2.setAlignment(Pos.CENTER);
+		gridpane.setAlignment(Pos.BASELINE_CENTER);
+		this.setPadding(new Insets(55,0,25,55));
+		
+		this.setCenter(gridpane);
+		this.setLeft(vBox1);
+		this.setRight(vBox2);
+		this.setBottom(hBox2);
 
-		getChildren().addAll(hBox1, hBox2);
+//		getChildren().addAll(hBox1, hBox2);
 		getPictures(cardsPath, cardsPath2, numOfPics, col, row);
 		Collections.shuffle(imageList);
 	}
