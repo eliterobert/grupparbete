@@ -46,10 +46,10 @@ public class WinnerPage extends BorderPane {
 		buttonImage.setFitWidth(100);
 
 		returnButton.setStyle("-fx-background-color: rgba(0%,0%,0%,0)}");
-		returnButton.setOnAction(action ->  { 	mainRef.mediaPlayer.stop();
+		returnButton.setOnAction(action ->  { 	mainRef.getMediaPlayer().stop();
 												mainRef.setBounds();
-												mainRef.mainStage.setScene(mainRef.startScene); 
-												mainRef.pointCount = 0; });
+												mainRef.getMainStage().setScene(mainRef.getStartScene()); 
+												mainRef.setPointCount(0); });
 
 		setBackground(new Background(pic));
 

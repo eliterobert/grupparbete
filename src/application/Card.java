@@ -18,7 +18,6 @@ import javafx.util.Duration;
 public class Card extends StackPane {
 	
 	Main refToMain;
-
 	RotateTransition rotation;
 	FadeTransition fade;
 	ImageView faceView, backView;
@@ -45,49 +44,49 @@ public class Card extends StackPane {
 	}
 
 	private void handleMouseClick(MouseEvent event) {
-		if (isOpen() && refToMain.clickCount != 0)
+		if (isOpen() && refToMain.getClickCount() != 0)
 			return;
 
-		refToMain.clickCount--;
+		refToMain.setClickCount(refToMain.getClickCount()-1);
 
-		if (refToMain.selectedCard == null) {
-			refToMain.selectedCard = this;
+		if (refToMain.getSelectedCard() == null) {
+			refToMain.setSelectedCard(this);
 			open(() -> {
 			});
 		} else {
 			open(() -> {
-				if (!this.isOfSameKind(refToMain.selectedCard)) {
-					refToMain.selectedCard.close();
+				if (!this.isOfSameKind(refToMain.getSelectedCard())) {
+					refToMain.getSelectedCard().close();
 					this.close();
-					refToMain.playerList.add(refToMain.currentPlayer);
-					refToMain.currentPlayer = refToMain.playerList.poll();
+					refToMain.getPlayerList().add(refToMain.getCurrentPlayer());
+					refToMain.setCurrentPlayer(refToMain.getPlayerList().poll());
 
-					if (refToMain.currentPlayer.getPlayerNr() == 1) {
-						refToMain.board.highligtPlayer1();
+					if (refToMain.getCurrentPlayer().getPlayerNr() == 1) {
+						refToMain.getBoard().highligtPlayer1();
 					} else {
-						refToMain.board.highligtPlayer2();
+						refToMain.getBoard().highligtPlayer2();
 					}
 
 				} else {
-					refToMain.currentPlayer.increaseScore();
-					refToMain.pointCount++;
-					if (refToMain.currentPlayer.getPlayerNr() == 1) {
-						refToMain.board.highligtPlayer1();
-						refToMain.board.setScorePlayer1(refToMain.currentPlayer.getScore() + "");
+					refToMain.getCurrentPlayer().increaseScore();
+					refToMain.setPointCount(refToMain.getPointCount()+1);
+					if (refToMain.getCurrentPlayer().getPlayerNr() == 1) {
+						refToMain.getBoard().highligtPlayer1();
+						refToMain.getBoard().setScorePlayer1(refToMain.getCurrentPlayer().getScore() + "");
 					} else {
-						refToMain.board.highligtPlayer2();
-						refToMain.board.setScorePlayer2(refToMain.currentPlayer.getScore() + "");
+						refToMain.getBoard().highligtPlayer2();
+						refToMain.getBoard().setScorePlayer2(refToMain.getCurrentPlayer().getScore() + "");
 					}
 					
 				}
-				if (refToMain.pointCount == refToMain.numOfCards)
+				if (refToMain.getPointCount() == refToMain.getNumOfCards())
 				{
 					
 					refToMain.startWinnerScene();
 					refToMain.HighScoreInput();
 				}
-				refToMain.selectedCard = null;
-				refToMain.clickCount = 2;
+				refToMain.setSelectedCard(null);
+				refToMain.setClickCount(2);
 			});
 		}
 	}

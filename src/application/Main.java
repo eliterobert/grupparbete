@@ -22,25 +22,25 @@ public class Main extends Application {
 	
 	public Main main;
 
-	public StartPage startPage;
-	public Scene startScene;
+	private StartPage startPage;
+	private Scene startScene;
 	private Scene gameScene;
-	public Card selectedCard = null;
-	public int clickCount = 2;
+	private Card selectedCard = null;
+	private int clickCount = 2;
 
 	Screen screen = Screen.getPrimary();
 	Rectangle2D bounds = screen.getVisualBounds();
 	
-	public LinkedList<Player> playerList;
-	public Player currentPlayer;
-	public int pointCount;
-	public int numOfCards;
+	private LinkedList<Player> playerList;
+	private Player currentPlayer;
+	private int pointCount;
+	private int numOfCards;
 
 	private Media musicToPlay;
 	private String musicFile = "";
-	public MediaPlayer mediaPlayer;
-	public Board board, winnerBoard;
-	public Stage mainStage;
+	private MediaPlayer mediaPlayer;
+	private Board board, winnerBoard;
+	private Stage mainStage;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -271,5 +271,141 @@ public class Main extends Application {
 			}
 		}
 
+	}
+
+	public StartPage getStartPage() {
+		return startPage;
+	}
+
+	public void setStartPage(StartPage startPage) {
+		this.startPage = startPage;
+	}
+
+	public Scene getStartScene() {
+		return startScene;
+	}
+
+	public void setStartScene(Scene startScene) {
+		this.startScene = startScene;
+	}
+
+	public Scene getGameScene() {
+		return gameScene;
+	}
+
+	public void setGameScene(Scene gameScene) {
+		this.gameScene = gameScene;
+	}
+
+	public Card getSelectedCard() {
+		return selectedCard;
+	}
+
+	public void setSelectedCard(Card selectedCard) {
+		this.selectedCard = selectedCard;
+	}
+
+	public int getClickCount() {
+		return clickCount;
+	}
+
+	public void setClickCount(int clickCount) {
+		this.clickCount = clickCount;
+	}
+
+	public Screen getScreen() {
+		return screen;
+	}
+
+	public void setScreen(Screen screen) {
+		this.screen = screen;
+	}
+
+	public Rectangle2D getBounds() {
+		return bounds;
+	}
+
+	public void setBounds(Rectangle2D bounds) {
+		this.bounds = bounds;
+	}
+
+	public LinkedList<Player> getPlayerList() {
+		return playerList;
+	}
+
+	public void setPlayerList(LinkedList<Player> playerList) {
+		this.playerList = playerList;
+	}
+
+	public Player getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	public void setCurrentPlayer(Player currentPlayer) {
+		this.currentPlayer = currentPlayer;
+	}
+
+	public int getPointCount() {
+		return pointCount;
+	}
+
+	public void setPointCount(int pointCount) {
+		this.pointCount = pointCount;
+	}
+
+	public int getNumOfCards() {
+		return numOfCards;
+	}
+
+	public void setNumOfCards(int numOfCards) {
+		this.numOfCards = numOfCards;
+	}
+
+	public Media getMusicToPlay() {
+		return musicToPlay;
+	}
+
+	public void setMusicToPlay(Media musicToPlay) {
+		this.musicToPlay = musicToPlay;
+	}
+
+	public String getMusicFile() {
+		return musicFile;
+	}
+
+	public void setMusicFile(String musicFile) {
+		this.musicFile = musicFile;
+	}
+
+	public MediaPlayer getMediaPlayer() {
+		return mediaPlayer;
+	}
+
+	public void setMediaPlayer(MediaPlayer mediaPlayer) {
+		this.mediaPlayer = mediaPlayer;
+	}
+
+	public Board getBoard() {
+		return board;
+	}
+
+	public void setBoard(Board board) {
+		this.board = board;
+	}
+
+	public Board getWinnerBoard() {
+		return winnerBoard;
+	}
+
+	public void setWinnerBoard(Board winnerBoard) {
+		this.winnerBoard = winnerBoard;
+	}
+
+	public Stage getMainStage() {
+		return mainStage;
+	}
+
+	public void setMainStage(Stage mainStage) {
+		this.mainStage = mainStage;
 	}
 }
