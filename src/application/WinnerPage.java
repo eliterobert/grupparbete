@@ -1,8 +1,13 @@
 package application;
 
+import java.io.BufferedReader;
+import java.util.LinkedList;
+
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.MotionBlur;
 import javafx.scene.effect.Shadow;
 import javafx.scene.image.Image;
@@ -22,6 +27,8 @@ import javafx.scene.text.FontWeight;
 public class WinnerPage extends BorderPane {
 
 	String result;
+	TextField textField;
+	LinkedList<String> scores;
 
 	HBox hbox1 = new HBox();
 	HBox hbox2 = new HBox();
@@ -37,6 +44,14 @@ public class WinnerPage extends BorderPane {
 
 	public WinnerPage(Main mainRef) {
 
+		textField = new TextField();
+		textField.setMaxHeight(350);
+		textField.setMaxWidth(200);
+
+		hbox3.getChildren().add(textField);
+		hbox3.setAlignment(Pos.CENTER_RIGHT);
+		hbox3.setPadding(new Insets(0, 60, 0, 0));
+		textField.setText("HEjsan");
 		playerName.setTextFill(Color.YELLOW);
 		playerName.setFont(Font.font("Verdana", FontWeight.NORMAL, FontPosture.ITALIC, 60));
 		winner.setTextFill(Color.YELLOWGREEN);
@@ -46,20 +61,18 @@ public class WinnerPage extends BorderPane {
 		buttonImage.setFitWidth(100);
 
 		returnButton.setStyle("-fx-background-color: rgba(0%,0%,0%,0)}");
-		returnButton.setOnAction(action ->  { 	mainRef.getMediaPlayer().stop();
-												mainRef.setBounds();
-												mainRef.getMainStage().setScene(mainRef.getStartScene()); 
-												mainRef.setPointCount(0); });
+		returnButton.setOnAction(action -> {
+			mainRef.getMediaPlayer().stop();
+			mainRef.setBounds();
+			mainRef.getMainStage().setScene(mainRef.getStartScene());
+			mainRef.setPointCount(0);
+		});
 
 		setBackground(new Background(pic));
 
 		hbox1.setAlignment(Pos.BOTTOM_LEFT);
 		hbox1.getChildren().add(returnButton);
 		hbox2.getChildren().addAll(winner, playerName);
-
-		setTop(hbox2);
-		setBottom(hbox1);
-		setCenter(buttonImage);
 
 		MotionBlur blur = new MotionBlur();
 
@@ -72,6 +85,9 @@ public class WinnerPage extends BorderPane {
 		shadow.setRadius(10);
 		shadow.setWidth(3);
 		winner.setEffect(shadow);
+		setTop(hbox2);
+		setBottom(hbox1);
+		setCenter(hbox3);
 
 	}
 

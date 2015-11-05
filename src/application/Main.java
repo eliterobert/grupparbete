@@ -1,5 +1,6 @@
 package application;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -19,7 +20,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 public class Main extends Application {
-	
+
 	public Main main;
 
 	private StartPage startPage;
@@ -30,7 +31,7 @@ public class Main extends Application {
 
 	Screen screen = Screen.getPrimary();
 	Rectangle2D bounds = screen.getVisualBounds();
-	
+
 	private LinkedList<Player> playerList;
 	private Player currentPlayer;
 	private int pointCount;
@@ -48,9 +49,9 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		
+
 		main = this;
-		
+
 		mainStage = primaryStage;
 
 		musicFile = "Sound/testSound3.mp3";
@@ -62,7 +63,7 @@ public class Main extends Application {
 		startScene = new Scene(startPage, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 
 		setBounds();
-		
+
 		primaryStage.setTitle("Memory Game");
 		primaryStage.setScene(startScene);
 		primaryStage.show();
@@ -101,7 +102,7 @@ public class Main extends Application {
 				row = 5;
 				col = 4;
 			}
-			
+
 			if (startPage.theme1.isSelected()) {
 
 				mediaPlayer.stop();
@@ -212,37 +213,33 @@ public class Main extends Application {
 	}
 
 	public void HighScoreInput() {
-		
+
 		// Player 1
 		int scoreP1 = playerList.get(0).getScore();
 		String Scorep1S = Integer.toString(scoreP1);
 		String nameP1 = playerList.get(0).getName();
 		String totaltP1 = nameP1 + " Score: " + Scorep1S;
-		
+
 		// Player 2
-		
+
 		int scoreP2 = currentPlayer.getScore();
 		String Scorep2s = Integer.toString(scoreP2);
 		String nameP2 = currentPlayer.getName();
 		String totaltP2 = nameP2 + " Score: " + Scorep2s;
-		
-		
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+
+		DateFormat dateFormat = new SimpleDateFormat("yy/MM/dd HH:mm");
 		Calendar cal = Calendar.getInstance();
 
-		try {
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File("src/Highscore/Highscore.txt"), true))) {
+			bw.append(dateFormat.format(cal.getTime()) + "\n" + totaltP1 + " vs " + totaltP2 + "\n\n");
 
-			FileWriter bf = new FileWriter(new File("src/Highscore/Highscore.txt"), true);
-			bf.append('\n' + totaltP1 +  " versus " + totaltP2 + " " + dateFormat.format(cal.getTime()));
-
-			bf.close();
-
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 
 	}
-	
+
 	public void setBounds() {
 		mainStage.setMinHeight(bounds.getHeight() * 0.7 + 25);
 		mainStage.setMaxHeight(bounds.getHeight() * 0.7 + 25);

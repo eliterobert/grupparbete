@@ -16,7 +16,7 @@ import javafx.util.Duration;
  *         a back.
  */
 public class Card extends StackPane {
-	
+
 	Main refToMain;
 	RotateTransition rotation;
 	FadeTransition fade;
@@ -47,7 +47,7 @@ public class Card extends StackPane {
 		if (isOpen() && refToMain.getClickCount() != 0)
 			return;
 
-		refToMain.setClickCount(refToMain.getClickCount()-1);
+		refToMain.setClickCount(refToMain.getClickCount() - 1);
 
 		if (refToMain.getSelectedCard() == null) {
 			refToMain.setSelectedCard(this);
@@ -69,7 +69,7 @@ public class Card extends StackPane {
 
 				} else {
 					refToMain.getCurrentPlayer().increaseScore();
-					refToMain.setPointCount(refToMain.getPointCount()+1);
+					refToMain.setPointCount(refToMain.getPointCount() + 1);
 					if (refToMain.getCurrentPlayer().getPlayerNr() == 1) {
 						refToMain.getBoard().highligtPlayer1();
 						refToMain.getBoard().setScorePlayer1(refToMain.getCurrentPlayer().getScore() + "");
@@ -77,11 +77,10 @@ public class Card extends StackPane {
 						refToMain.getBoard().highligtPlayer2();
 						refToMain.getBoard().setScorePlayer2(refToMain.getCurrentPlayer().getScore() + "");
 					}
-					
+
 				}
-				if (refToMain.getPointCount() == refToMain.getNumOfCards())
-				{
-					
+				if (refToMain.getPointCount() == refToMain.getNumOfCards()) {
+
 					refToMain.startWinnerScene();
 					refToMain.HighScoreInput();
 				}
