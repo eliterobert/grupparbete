@@ -17,10 +17,10 @@ import javafx.util.Duration;
  */
 public class Card extends StackPane {
 
-	Main refToMain;
-	RotateTransition rotation;
-	FadeTransition fade;
-	ImageView faceView, backView;
+	private Main refToMain;
+	private RotateTransition rotation;
+	private FadeTransition fade;
+	private ImageView faceView, backView;
 
 	// Constructor for Card
 	public Card(Image faceImg, Image backImg, Main mainRef) {
@@ -90,11 +90,11 @@ public class Card extends StackPane {
 		}
 	}
 
-	public boolean isOpen() {
+	private boolean isOpen() {
 		return getRotate() > 0;
 	}
 
-	public boolean isOfSameKind(Card otherCard) {
+	private boolean isOfSameKind(Card otherCard) {
 
 		PixelReader faceImg = faceView.getImage().getPixelReader();
 		PixelReader otherFaceImg = otherCard.faceView.getImage().getPixelReader();
@@ -123,7 +123,7 @@ public class Card extends StackPane {
 		return isOfSameKind;
 	}
 
-	public void open(Runnable action) {
+	private void open(Runnable action) {
 		rotation = new RotateTransition(Duration.millis(500), this);
 		rotation.setToAngle(90);
 		rotation.play();
@@ -132,7 +132,7 @@ public class Card extends StackPane {
 		});
 	}
 
-	public void moveFaceToFront(Runnable action) {
+	private void moveFaceToFront(Runnable action) {
 		getChildren().clear();
 		getChildren().addAll(backView, faceView);
 		rotation.setToAngle(180);
@@ -143,7 +143,7 @@ public class Card extends StackPane {
 
 	}
 
-	public void close() {
+	private void close() {
 		rotation.setToAngle(90);
 		rotation.play();
 		rotation.setOnFinished((a) -> {

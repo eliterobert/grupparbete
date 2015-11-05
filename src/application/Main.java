@@ -32,8 +32,8 @@ public class Main extends Application {
 	private Card selectedCard = null;
 	private int clickCount = 2;
 
-	Screen screen = Screen.getPrimary();
-	Rectangle2D bounds = screen.getVisualBounds();
+	private Screen screen;
+	private Rectangle2D bounds;
 
 	private LinkedList<Player> playerList;
 	private Player currentPlayer;
@@ -52,6 +52,8 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
+		screen = Screen.getPrimary();
+		bounds = screen.getVisualBounds();
 
 		main = this;
 
@@ -60,6 +62,7 @@ public class Main extends Application {
 		musicFile = "Sound/testSound3.mp3";
 		musicToPlay = new Media(new File(musicFile).toURI().toString());
 		mediaPlayer = new MediaPlayer(musicToPlay);
+		mediaPlayer.setVolume(0.1);
 		mediaPlayer.play();
 
 		startPage = new StartPage();
@@ -71,47 +74,48 @@ public class Main extends Application {
 		primaryStage.setScene(startScene);
 		primaryStage.show();
 
-		startPage.theme1.setOnMouseClicked((evet) -> {
-			bloomEffect(startPage.phantasyStartButton, startPage.starWarsButton, startPage.lotrButton);
+		startPage.getTheme1().setOnMouseClicked((evet) -> {
+			bloomEffect(startPage.getPhantasyStartButton(), startPage.getStarWarsButton(), startPage.getLotrButton());
 
 		});
-		startPage.theme2.setOnMouseClicked((evet) -> {
-			bloomEffect(startPage.starWarsButton, startPage.lotrButton, startPage.phantasyStartButton);
+		startPage.getTheme2().setOnMouseClicked((evet) -> {
+			bloomEffect(startPage.getStarWarsButton(), startPage.getLotrButton(), startPage.getPhantasyStartButton());
 		});
 
-		startPage.theme3.setOnMouseClicked((evet) -> {
-			bloomEffect(startPage.lotrButton, startPage.phantasyStartButton, startPage.starWarsButton);
+		startPage.getTheme3().setOnMouseClicked((evet) -> {
+			bloomEffect(startPage.getLotrButton(), startPage.getPhantasyStartButton(), startPage.getStarWarsButton());
 		});
 
-		startPage.startButton.setOnAction(event -> {
+		startPage.getStartButton().setOnAction(event -> {
 
 			playerList = new LinkedList<>();
-			playerList.add(new Player(startPage.player1.getText(), 1));
-			playerList.add(new Player(startPage.player2.getText(), 2));
+			playerList.add(new Player(startPage.getPlayer1().getText(), 1));
+			playerList.add(new Player(startPage.getPlayer2().getText(), 2));
 
 			numOfCards = 0;
 			int row = 0;
 			int col = 0;
-			if (startPage.cardsChoise12.isSelected()) {
-				numOfCards = 6;
-				row = 3;
-				col = 4;
-			} else if (startPage.cardsChoise16.isSelected()) {
+			if (startPage.getCardsChoise12().isSelected()) {
+				numOfCards = 1;
+				row = 2;
+				col = 1;
+			} else if (startPage.getCardsChoise16().isSelected()) {
 				numOfCards = 8;
 				row = 4;
 				col = 4;
-			} else if (startPage.cardsChoise32.isSelected()) {
+			} else if (startPage.getCardsChoise32().isSelected()) {
 				numOfCards = 10;
 				row = 5;
 				col = 4;
 			}
 
-			if (startPage.theme1.isSelected()) {
+			if (startPage.getTheme1().isSelected()) {
 
 				mediaPlayer.stop();
 				musicFile = "Sound/DeathPlace.mp3";
 				musicToPlay = new Media(new File(musicFile).toURI().toString());
 				mediaPlayer = new MediaPlayer(musicToPlay);
+				mediaPlayer.setVolume(0.4);
 				mediaPlayer.play();
 
 				board = new Board("src/PhantasyStarTheme", "PhantasyStarTheme/",
@@ -120,26 +124,27 @@ public class Main extends Application {
 
 				gameScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 				gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-				board.player1.setText(playerList.get(0).getName());
-				board.player2.setText(playerList.get(1).getName());
+				board.getPlayer1().setText(playerList.get(0).getName());
+				board.getPlayer2().setText(playerList.get(1).getName());
 
 				primaryStage.setScene(gameScene);
 
 				currentPlayer = playerList.poll();
 
 				primaryStage.setScene(gameScene);
-				board.menu.setOnMouseClicked((a) -> {
+				board.getMenu().setOnMouseClicked((a) -> {
 
 					mediaPlayer.stop();
 					musicFile = "Sound/testSound3.mp3";
 					musicToPlay = new Media(new File(musicFile).toURI().toString());
 					mediaPlayer = new MediaPlayer(musicToPlay);
+					mediaPlayer.setVolume(0.1);
 					mediaPlayer.play();
 					primaryStage.setScene(startScene);
 				});
 			}
 
-			else if (startPage.theme2.isSelected()) {
+			else if (startPage.getTheme2().isSelected()) {
 
 				mediaPlayer.stop();
 				musicFile = "Sound/TestSound1.mp3";
@@ -152,27 +157,28 @@ public class Main extends Application {
 
 				gameScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 				gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-				board.player1.setText(playerList.get(0).getName());
-				board.player2.setText(playerList.get(1).getName());
+				board.getPlayer1().setText(playerList.get(0).getName());
+				board.getPlayer2().setText(playerList.get(1).getName());
 
 				primaryStage.setScene(gameScene);
 
 				currentPlayer = playerList.poll();
 
 				primaryStage.setScene(gameScene);
-				board.menu.setOnMouseClicked((a) -> {
+				board.getMenu().setOnMouseClicked((a) -> {
 
 					mediaPlayer.stop();
 					musicFile = "Sound/testSound3.mp3";
 					musicToPlay = new Media(new File(musicFile).toURI().toString());
 					mediaPlayer = new MediaPlayer(musicToPlay);
+					mediaPlayer.setVolume(0.1);
 					mediaPlayer.play();
 
 					primaryStage.setScene(startScene);
 				});
 			}
 
-			else if (startPage.theme3.isSelected()) {
+			else if (startPage.getTheme3().isSelected()) {
 
 				mediaPlayer.stop();
 				musicFile = "Sound/LOTR.mp3";
@@ -185,18 +191,19 @@ public class Main extends Application {
 
 				gameScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 				gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-				board.player1.setText(playerList.get(0).getName());
-				board.player2.setText(playerList.get(1).getName());
+				board.getPlayer1().setText(playerList.get(0).getName());
+				board.getPlayer2().setText(playerList.get(1).getName());
 
 				primaryStage.setScene(gameScene);
 
 				currentPlayer = playerList.poll();
-				board.menu.setOnMouseClicked((a) -> {
+				board.getMenu().setOnMouseClicked((a) -> {
 
 					mediaPlayer.stop();
 					musicFile = "Sound/testSound3.mp3";
 					musicToPlay = new Media(new File(musicFile).toURI().toString());
 					mediaPlayer = new MediaPlayer(musicToPlay);
+					mediaPlayer.setVolume(0.1);
 					mediaPlayer.play();
 
 					primaryStage.setScene(startScene);
@@ -237,7 +244,6 @@ public class Main extends Application {
 			bw.append(dateFormat.format(cal.getTime()) + "\n" + totaltP1 + " vs " + totaltP2 + "\n\n");
 
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -253,10 +259,8 @@ public class Main extends Application {
 				wholeText += textToRead + System.lineSeparator();
 			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return wholeText;
@@ -272,6 +276,14 @@ public class Main extends Application {
 	public void startWinnerScene() {
 
 		WinnerPage winnerPage = new WinnerPage(main);
+
+		mediaPlayer.stop();
+		musicFile = "Sound/winnerSong.mp3";
+		musicToPlay = new Media(new File(musicFile).toURI().toString());
+		mediaPlayer = new MediaPlayer(musicToPlay);
+
+		mediaPlayer.play();
+
 		gameScene = new Scene(winnerPage);
 		mainStage.setMaxHeight(450);
 		mainStage.setMinHeight(450);
@@ -279,15 +291,15 @@ public class Main extends Application {
 		mainStage.setMinWidth(1000);
 		mainStage.setScene(gameScene);
 		if (pointCount == numOfCards) {
-			int player1 = Integer.parseInt(board.player1Score.getText());
-			int player2 = Integer.parseInt(board.player2Score.getText());
+			int player1 = Integer.parseInt(board.getPlayer1Score().getText());
+			int player2 = Integer.parseInt(board.getPlayer2Score().getText());
 			if (player1 > player2) {
-				winnerPage.playerName.setText(board.player1.getText());
+				winnerPage.getPlayerName().setText(board.getPlayer1().getText());
 			} else if (player1 == player2) {
-				winnerPage.winner.setText("NO ONE WON!");
-				winnerPage.playerName.setText("PlaYAGAIN!");
+				winnerPage.getWinner().setText("NO ONE WON!");
+				winnerPage.getPlayerName().setText("PlaYAGAIN!");
 			} else if (player1 < player2) {
-				winnerPage.playerName.setText(board.player2.getText());
+				winnerPage.getPlayerName().setText(board.getPlayer2().getText());
 			}
 		}
 	}

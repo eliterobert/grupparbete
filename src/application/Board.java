@@ -25,37 +25,39 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Screen;
 
 public class Board extends BorderPane {
-	
-	Main refToMain;
 
-	HBox hBox1, hBox2, hBox3, hBox4;
-	VBox vBox1, vBox2;
-	Label player1, player2, turn, player1Score, player2Score, menu, scoreText1, scoreText2;
-	GridPane gridpane;
-	Image backImage;
-	public ArrayList<Image> imageList;
+	private Main refToMain;
 
-	Screen screen = Screen.getPrimary();
-	Rectangle2D bounds = screen.getVisualBounds();
+	private HBox hBox2, hBox3, hBox4;
+	private VBox vBox1, vBox2;
+	private Label player1, player2, turn, player1Score, player2Score, menu, scoreText1, scoreText2;
+	private GridPane gridpane;
+	private Image backImage;
+	private ArrayList<Image> imageList;
 
-	public Board(String cardsPath, String cardsPath2, String imgBgPath, String bgPath, int numOfPics, int col,
-			int row, Main mainRef) {
-		
+	private Screen screen;
+	private Rectangle2D bounds;
+
+	public Board(String cardsPath, String cardsPath2, String imgBgPath, String bgPath, int numOfPics, int col, int row,
+			Main mainRef) {
+
+		screen = Screen.getPrimary();
+		bounds = screen.getVisualBounds();
+
 		refToMain = mainRef;
-		
-		hBox1 = new HBox();
+
 		hBox2 = new HBox();
 		hBox3 = new HBox();
 		hBox4 = new HBox();
 		vBox1 = new VBox();
 		vBox2 = new VBox();
 
-		player1 = new Label("Player 1");
-		player2 = new Label("Player 2");
+		setPlayer1(new Label("Player 1"));
+		setPlayer2(new Label("Player 2"));
 		turn = new Label("Turn: 15");
-		player1Score = new Label("0");
-		player2Score = new Label("0");
-		menu = new Label("Menu");
+		setPlayer1Score(new Label("0"));
+		setPlayer2Score(new Label("0"));
+		setMenu(new Label("Menu"));
 		scoreText1 = new Label("Score: ");
 		scoreText2 = new Label("Score: ");
 		gridpane = new GridPane();
@@ -67,40 +69,35 @@ public class Board extends BorderPane {
 
 		backImage = new Image(imgBgPath, bounds.getWidth() * 0.06, bounds.getWidth() * 0.06, true, true);
 
-		// setSpacing(5);
-
 		setBackground(new Background(backgroundImage));
 
-		player1.setTextFill(Color.AQUA);
-		player2.setTextFill(Color.AQUA);
+		getPlayer1().setTextFill(Color.AQUA);
+		getPlayer2().setTextFill(Color.AQUA);
 		turn.setTextFill(Color.AQUA);
-		menu.setTextFill(Color.AQUA);
-		menu.setAlignment(Pos.TOP_CENTER);
-		player1Score.setTextFill(Color.AQUA);
-		player2Score.setTextFill(Color.AQUA);
+		getMenu().setTextFill(Color.AQUA);
+		getMenu().setAlignment(Pos.TOP_CENTER);
+		getPlayer1Score().setTextFill(Color.AQUA);
+		getPlayer2Score().setTextFill(Color.AQUA);
 		scoreText1.setTextFill(Color.AQUA);
 		scoreText2.setTextFill(Color.AQUA);
 
 		gridpane.setHgap(bounds.getWidth() * 0.02);
 		gridpane.setVgap(bounds.getHeight() * 0.03);
-		// gridpane.setAlignment(Pos.CENTER);
 
-		// gridpane.setPrefWidth(1000);
-		// vBox1.setPrefWidth(500); //test
 		vBox1.setMinWidth(150);
 		vBox1.setMaxWidth(150);
 		vBox2.setMinWidth(150);
 		vBox2.setMaxWidth(150);
 		// player2.setAlignment(Pos.CENTER_RIGHT);
 		// player2.setTextAlignment(TextAlignment.RIGHT);
-		
-		hBox3.getChildren().addAll(scoreText1, player1Score);
-		hBox4.getChildren().addAll(scoreText2, player2Score);
-		
-		vBox1.getChildren().addAll(player1, hBox3);
-		vBox2.getChildren().addAll(player2, hBox4);
+
+		hBox3.getChildren().addAll(scoreText1, getPlayer1Score());
+		hBox4.getChildren().addAll(scoreText2, getPlayer2Score());
+
+		vBox1.getChildren().addAll(getPlayer1(), hBox3);
+		vBox2.getChildren().addAll(getPlayer2(), hBox4);
 		// hBox1.getChildren().addAll(vBox1, gridpane, vBox2);
-		hBox2.getChildren().addAll(menu);
+		hBox2.getChildren().addAll(getMenu());
 
 		// hBox1.setTranslateY(bounds.getHeight()*0.065);
 		// hBox1.setAlignment(Pos.BASELINE_CENTER);
@@ -111,18 +108,17 @@ public class Board extends BorderPane {
 		// hBox2.setTranslateX(bounds.getWidth()*0.7/2);
 		// hBox2.setTranslateY(bounds.getHeight()*0.10);
 
-		menu.setOnMouseEntered((event) -> {
+		getMenu().setOnMouseEntered((event) -> {
 			Bloom bloom = new Bloom();
 			bloom.setThreshold(0.2);
-			menu.setEffect(bloom);
+			getMenu().setEffect(bloom);
 		});
-		menu.setOnMouseExited((event) -> {
-			menu.setEffect(null);
+		getMenu().setOnMouseExited((event) -> {
+			getMenu().setEffect(null);
 		});
 
 		highligtPlayer1();
 
-		// borderpane
 		hBox2.setAlignment(Pos.CENTER);
 		gridpane.setAlignment(Pos.BASELINE_CENTER);
 		this.setPadding(new Insets(55, 0, 25, 55));
@@ -132,7 +128,6 @@ public class Board extends BorderPane {
 		this.setRight(vBox2);
 		this.setBottom(hBox2);
 
-		// getChildren().addAll(hBox1, hBox2);
 		getPictures(cardsPath, cardsPath2, numOfPics, col, row);
 		Collections.shuffle(imageList);
 	}
@@ -162,27 +157,67 @@ public class Board extends BorderPane {
 	public void highligtPlayer1() {
 		Bloom bloom = new Bloom();
 		bloom.setThreshold(0.3);
-		player1.setFont(Font.font("Verdant", FontWeight.BOLD, 20));
-		player2.setFont(Font.font("Verdant", FontWeight.NORMAL, 20));
-		player1.setEffect(bloom);
-		player2.setEffect(null);
+		getPlayer1().setFont(Font.font("Verdant", FontWeight.BOLD, 20));
+		getPlayer2().setFont(Font.font("Verdant", FontWeight.NORMAL, 20));
+		getPlayer1().setEffect(bloom);
+		getPlayer2().setEffect(null);
 	}
 
 	public void highligtPlayer2() {
 		Bloom bloom = new Bloom();
 		bloom.setThreshold(0.3);
-		player1.setFont(Font.font("Verdant", FontWeight.NORMAL, 20));
-		player2.setFont(Font.font("Verdant", FontWeight.BOLD, 20));
-		player1.setEffect(null);
-		player2.setEffect(bloom);
+		getPlayer1().setFont(Font.font("Verdant", FontWeight.NORMAL, 20));
+		getPlayer2().setFont(Font.font("Verdant", FontWeight.BOLD, 20));
+		getPlayer1().setEffect(null);
+		getPlayer2().setEffect(bloom);
 
 	}
 
 	public void setScorePlayer1(String score) {
-		player1Score.setText(score);
+		getPlayer1Score().setText(score);
 	}
 
 	public void setScorePlayer2(String score) {
-		player2Score.setText(score);
+		getPlayer2Score().setText(score);
+	}
+
+	public Label getPlayer1() {
+		return player1;
+	}
+
+	public void setPlayer1(Label player1) {
+		this.player1 = player1;
+	}
+
+	public Label getPlayer2() {
+		return player2;
+	}
+
+	public void setPlayer2(Label player2) {
+		this.player2 = player2;
+	}
+
+	public Label getMenu() {
+		return menu;
+	}
+
+	public void setMenu(Label menu) {
+		this.menu = menu;
+	}
+
+	public Label getPlayer1Score() {
+		return player1Score;
+	}
+
+	public void setPlayer1Score(Label player1Score) {
+		this.player1Score = player1Score;
+	}
+
+	public Label getPlayer2Score() {
+		return player2Score;
+	}
+
+	public void setPlayer2Score(Label player2Score) {
+		this.player2Score = player2Score;
 	}
 }
