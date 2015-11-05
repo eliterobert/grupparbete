@@ -93,9 +93,9 @@ public class Main extends Application {
 			int row = 0;
 			int col = 0;
 			if (startPage.cardsChoise12.isSelected()) {
-				numOfCards = 2;
-				row = 2;
-				col = 2;
+				numOfCards = 6;
+				row = 3;
+				col = 4;
 			} else if (startPage.cardsChoise16.isSelected()) {
 				numOfCards = 8;
 				row = 4;
@@ -284,7 +284,8 @@ public class Main extends Application {
 			if (player1 > player2) {
 				winnerPage.playerName.setText(board.player1.getText());
 			} else if (player1 == player2) {
-				winnerPage.playerName.setText("DRAW!");
+				winnerPage.winner.setText("NO ONE WON!");
+				winnerPage.playerName.setText("PlaYAGAIN!");
 			} else if (player1 < player2) {
 				winnerPage.playerName.setText(board.player2.getText());
 			}
