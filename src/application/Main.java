@@ -242,6 +242,23 @@ public class Main extends Application {
 		}
 
 	}
+	
+	public LinkedList<String> readScores() {
+		LinkedList<String> scores = new LinkedList<>();
+
+		try (BufferedReader buff = new BufferedReader(new FileReader("src/Highscore/Highscore.txt"))) {
+			while (buff.readLine() != null) {
+				scores.addFirst(buff.readLine());
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return scores;
+	}
 
 	public void setBounds() {
 		mainStage.setMinHeight(bounds.getHeight() * 0.7 + 25);
@@ -270,24 +287,6 @@ public class Main extends Application {
 				winnerPage.playerName.setText(board.player2.getText());
 			}
 		}
-
-	}
-	
-	public LinkedList<String> readScores() {
-		LinkedList<String> scores = new LinkedList<>();
-
-		try (BufferedReader buff = new BufferedReader(new FileReader("src/Highscore/Highscore.txt"))) {
-			while (buff.readLine() != null) {
-				scores.addFirst(buff.readLine());
-			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return scores;
 	}
 
 	public StartPage getStartPage() {
