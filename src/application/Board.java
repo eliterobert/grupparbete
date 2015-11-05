@@ -7,7 +7,6 @@ import java.util.Collections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.Bloom;
 import javafx.scene.image.Image;
@@ -23,10 +22,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
 
 public class Board extends BorderPane {
+	
+	Main refToMain;
 
 	HBox hBox1, hBox2, hBox3, hBox4;
 	VBox vBox1, vBox2;
@@ -39,7 +39,10 @@ public class Board extends BorderPane {
 	Rectangle2D bounds = screen.getVisualBounds();
 
 	public Board(String cardsPath, String cardsPath2, String imgBgPath, String bgPath, int numOfPics, int col,
-			int row) {
+			int row, Main mainRef) {
+		
+		refToMain = mainRef;
+		
 		hBox1 = new HBox();
 		hBox2 = new HBox();
 		hBox3 = new HBox();
@@ -150,7 +153,7 @@ public class Board extends BorderPane {
 		int cnt = 0;
 		for (int i = 0; i < col; i++) {
 			for (int j = 0; j < row; j++) {
-				gridpane.add(new Card(imageList.get(cnt), backImage), i, j);
+				gridpane.add(new Card(imageList.get(cnt), backImage, refToMain), i, j);
 				cnt++;
 			}
 		}

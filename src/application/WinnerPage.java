@@ -1,9 +1,5 @@
 package application;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -39,7 +35,7 @@ public class WinnerPage extends BorderPane {
 	Label playerName = new Label("PLAYER");
 	BorderPane root = new BorderPane();
 
-	public WinnerPage() {
+	public WinnerPage(Main mainRef) {
 
 		playerName.setTextFill(Color.YELLOW);
 		playerName.setFont(Font.font("Verdana", FontWeight.NORMAL, FontPosture.ITALIC, 60));
@@ -50,6 +46,10 @@ public class WinnerPage extends BorderPane {
 		buttonImage.setFitWidth(100);
 
 		returnButton.setStyle("-fx-background-color: rgba(0%,0%,0%,0)}");
+		returnButton.setOnAction(action ->  { 	mainRef.mediaPlayer.stop();
+												mainRef.setBounds();
+												mainRef.mainStage.setScene(mainRef.startScene); 
+												mainRef.pointCount = 0; });
 
 		setBackground(new Background(pic));
 

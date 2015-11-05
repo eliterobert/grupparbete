@@ -1,6 +1,5 @@
 package application;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,32 +13,34 @@ import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.effect.Bloom;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 public class Main extends Application {
+	
+	public Main main;
 
-	public static StartPage startPage;
-	private Scene startScene;
-	private static Scene gameScene;
-	public static Card selectedCard = null;
-	public static int clickCount = 2;
+	public StartPage startPage;
+	public Scene startScene;
+	private Scene gameScene;
+	public Card selectedCard = null;
+	public int clickCount = 2;
 
 	Screen screen = Screen.getPrimary();
 	Rectangle2D bounds = screen.getVisualBounds();
-	public static LinkedList<Player> playerList;
-	public static Player currentPlayer;
-	public static int pointCount;
-	public static int numOfCards;
+	
+	public LinkedList<Player> playerList;
+	public Player currentPlayer;
+	public int pointCount;
+	public int numOfCards;
 
 	private Media musicToPlay;
 	private String musicFile = "";
-	private MediaPlayer mediaPlayer;
-	public static Board board, winnerBoard;
-	static Stage mainStage;
+	public MediaPlayer mediaPlayer;
+	public Board board, winnerBoard;
+	public Stage mainStage;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -47,6 +48,9 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
+		
+		main = this;
+		
 		mainStage = primaryStage;
 
 		musicFile = "Sound/testSound3.mp3";
@@ -57,13 +61,9 @@ public class Main extends Application {
 		startPage = new StartPage();
 		startScene = new Scene(startPage, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 
-
-		primaryStage.setMinHeight(bounds.getHeight() * 0.7 + 25);
-		primaryStage.setMaxHeight(bounds.getHeight() * 0.7 + 25);
-		primaryStage.setMinWidth(bounds.getWidth() * 0.7);
-		primaryStage.setMaxWidth(bounds.getWidth() * 0.7);
-		primaryStage.setTitle("Mamory Game");
-
+		setBounds();
+		
+		primaryStage.setTitle("Memory Game");
 		primaryStage.setScene(startScene);
 		primaryStage.show();
 
@@ -89,9 +89,9 @@ public class Main extends Application {
 			int row = 0;
 			int col = 0;
 			if (startPage.cardsChoise12.isSelected()) {
-				numOfCards = 6;
-				row = 4;
-				col = 3;
+				numOfCards = 2;
+				row = 2;
+				col = 2;
 			} else if (startPage.cardsChoise16.isSelected()) {
 				numOfCards = 8;
 				row = 4;
@@ -101,6 +101,7 @@ public class Main extends Application {
 				row = 5;
 				col = 4;
 			}
+			
 			if (startPage.theme1.isSelected()) {
 
 				mediaPlayer.stop();
@@ -111,7 +112,7 @@ public class Main extends Application {
 
 				board = new Board("src/PhantasyStarTheme", "PhantasyStarTheme/",
 						"/Backgroundpictures/phantasyBackCard.png", "/Backgroundpictures/backgroud.jpg", numOfCards,
-						row, col);
+						row, col, main);
 
 				gameScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 				gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -143,7 +144,7 @@ public class Main extends Application {
 				mediaPlayer.play();
 
 				board = new Board("src/Pictures", "Pictures/", "Backgroundpictures/backgroundCard.png",
-						"Backgroundpictures/javaNewBackground.jpg", numOfCards, row, col);
+						"Backgroundpictures/javaNewBackground.jpg", numOfCards, row, col, main);
 
 				gameScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 				gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -176,7 +177,7 @@ public class Main extends Application {
 				mediaPlayer.play();
 
 				board = new Board("src/LOTRThemePics", "LOTRThemePics/", "Backgroundpictures/BackgroundCardLOTR.png",
-						"Backgroundpictures/BackgroundLOTR.jpg", numOfCards, row, col);
+						"Backgroundpictures/BackgroundLOTR.jpg", numOfCards, row, col, main);
 
 				gameScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 				gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -210,7 +211,7 @@ public class Main extends Application {
 		nullButton2.setEffect(null);
 	}
 
-	public static void HighScoreInput() {
+	public void HighScoreInput() {
 		
 		// Player 1
 		int scoreP1 = playerList.get(0).getScore();
@@ -241,10 +242,17 @@ public class Main extends Application {
 		}
 
 	}
+	
+	public void setBounds() {
+		mainStage.setMinHeight(bounds.getHeight() * 0.7 + 25);
+		mainStage.setMaxHeight(bounds.getHeight() * 0.7 + 25);
+		mainStage.setMinWidth(bounds.getWidth() * 0.7);
+		mainStage.setMaxWidth(bounds.getWidth() * 0.7);
+	}
 
-	public static void startWinnerScene() {
+	public void startWinnerScene() {
 
-		WinnerPage winnerPage = new WinnerPage();
+		WinnerPage winnerPage = new WinnerPage(main);
 		gameScene = new Scene(winnerPage);
 		mainStage.setMaxHeight(450);
 		mainStage.setMinHeight(450);
