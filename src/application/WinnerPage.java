@@ -1,18 +1,21 @@
 package application;
 
 import java.io.BufferedReader;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.MotionBlur;
 import javafx.scene.effect.Shadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
@@ -27,8 +30,8 @@ import javafx.scene.text.FontWeight;
 public class WinnerPage extends BorderPane {
 
 	String result;
-	TextField textField;
-	LinkedList<String> scores;
+	TextArea textArea;
+	String scores;
 
 	HBox hbox1 = new HBox();
 	HBox hbox2 = new HBox();
@@ -44,14 +47,16 @@ public class WinnerPage extends BorderPane {
 
 	public WinnerPage(Main mainRef) {
 
-		textField = new TextField();
-		textField.setMaxHeight(350);
-		textField.setMaxWidth(200);
+		textArea = new TextArea();
+		textArea.setMaxHeight(350);
+		textArea.setMaxWidth(220);
+		scores = mainRef.readScores();
 
-		hbox3.getChildren().add(textField);
+		textArea.setText(scores);
+
+		hbox3.getChildren().add(textArea);
 		hbox3.setAlignment(Pos.CENTER_RIGHT);
 		hbox3.setPadding(new Insets(0, 60, 0, 0));
-		textField.setText("HEjsan");
 		playerName.setTextFill(Color.YELLOW);
 		playerName.setFont(Font.font("Verdana", FontWeight.NORMAL, FontPosture.ITALIC, 60));
 		winner.setTextFill(Color.YELLOWGREEN);

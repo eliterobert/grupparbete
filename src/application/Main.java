@@ -242,13 +242,15 @@ public class Main extends Application {
 		}
 
 	}
-	
-	public LinkedList<String> readScores() {
-		LinkedList<String> scores = new LinkedList<>();
+
+	public String readScores() {
+
+		String wholeText = "";
+		String textToRead = null;
 
 		try (BufferedReader buff = new BufferedReader(new FileReader("src/Highscore/Highscore.txt"))) {
-			while (buff.readLine() != null) {
-				scores.addFirst(buff.readLine());
+			while ((textToRead = buff.readLine()) != null) {
+				wholeText += textToRead + System.lineSeparator();
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -257,7 +259,7 @@ public class Main extends Application {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return scores;
+		return wholeText;
 	}
 
 	public void setBounds() {
