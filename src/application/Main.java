@@ -96,9 +96,9 @@ public class Main extends Application {
 			int row = 0;
 			int col = 0;
 			if (startPage.getCardsChoise12().isSelected()) {
-				numOfCards = 1;
-				row = 2;
-				col = 1;
+				numOfCards = 6;
+				row = 3;
+				col = 4;
 			} else if (startPage.getCardsChoise16().isSelected()) {
 				numOfCards = 8;
 				row = 4;
@@ -123,7 +123,6 @@ public class Main extends Application {
 						row, col, main);
 
 				gameScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
-				gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				board.getPlayer1().setText(playerList.get(0).getName());
 				board.getPlayer2().setText(playerList.get(1).getName());
 
@@ -285,6 +284,7 @@ public class Main extends Application {
 		mediaPlayer.play();
 
 		gameScene = new Scene(winnerPage);
+		gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		mainStage.setMaxHeight(450);
 		mainStage.setMinHeight(450);
 		mainStage.setMaxWidth(1000);

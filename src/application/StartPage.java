@@ -9,7 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.Bloom;
-import javafx.scene.effect.Reflection;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -21,12 +20,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Screen;
 
 public class StartPage extends VBox {
 
 	private Label topLabel;
+	private Label startGameLabel;
 	private Label antalSpelare;
 	private Button startButton;
 	private ToggleGroup tg, themeGroup;
@@ -56,19 +55,15 @@ public class StartPage extends VBox {
 		setSpacing(50);
 
 		topLabel = new Label("Memory Game");
-		topLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 40));
-		topLabel.setTextFill(Color.RED);
-		Reflection r = new Reflection();
-		r.setFraction(0.7f);
-		topLabel.setEffect(r);
+		topLabel.setFont(Font.font("Segoe Script", 55));
 
 		antalSpelare = new Label("Antal Spelare");
-		ImageView startBackground = new ImageView(new Image("Backgroundpictures/StartButtonBlack.png"));
-		startBackground.setFitHeight(80);
-		startBackground.setFitWidth(180);
-		setStartButton(new Button("", startBackground));
+		startGameLabel = new Label("Start Game");
+		startGameLabel.setFont(Font.font("Segoe Script", 20));
+		startGameLabel.setTextFill(Color.YELLOW);
+		setStartButton(new Button("",startGameLabel));
 		getStartButton().setStyle("-fx-background-color: rgba(7%,5%,5%,1)}");
-		getStartButton().setPrefSize(180, 80);
+		getStartButton().setPrefSize(140, 60);
 		getStartButton().setOnMouseEntered((event) -> {
 			Bloom bloom = new Bloom();
 			bloom.setThreshold(0.2);

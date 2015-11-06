@@ -7,8 +7,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.effect.MotionBlur;
-import javafx.scene.effect.Shadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -58,15 +56,17 @@ public class WinnerPage extends BorderPane {
 		scores = mainRef.readScores();
 
 		textArea.setText(scores);
-		textArea.setOpacity(0.4);
+		textArea.setStyle("-fx-background-color: transparent");
+		
 
 		hbox3.getChildren().add(textArea);
 		hbox3.setAlignment(Pos.CENTER_RIGHT);
-		hbox3.setPadding(new Insets(0, 60, 0, 0));
-		getPlayerName().setTextFill(Color.YELLOW);
-		getPlayerName().setFont(Font.font("Verdana", FontWeight.NORMAL, FontPosture.ITALIC, 60));
-		getWinner().setTextFill(Color.YELLOWGREEN);
-		getWinner().setFont(Font.font("Verdana", FontWeight.NORMAL, FontPosture.ITALIC, 60));
+		hbox3.setPadding(new Insets(0, 30, 0, 0));
+		
+		getPlayerName().setTextFill(Color.CORAL);
+		getPlayerName().setFont(Font.font("Segoe Script", FontWeight.NORMAL, FontPosture.ITALIC, 60));
+		getWinner().setTextFill(Color.CORAL);
+		getWinner().setFont(Font.font("Segoe Script", FontWeight.NORMAL, FontPosture.ITALIC, 60));
 
 		buttonImage.setFitHeight(50);
 		buttonImage.setFitWidth(100);
@@ -90,17 +90,7 @@ public class WinnerPage extends BorderPane {
 		hbox1.getChildren().add(returnButton);
 		hbox2.getChildren().addAll(getWinner(), getPlayerName());
 
-		MotionBlur blur = new MotionBlur();
-
-		blur.setAngle(-15);
-		blur.setRadius(16);
-		getPlayerName().setEffect(blur);
-
-		Shadow shadow = new Shadow();
-		shadow.setColor(Color.YELLOW);
-		shadow.setRadius(10);
-		shadow.setWidth(3);
-		getWinner().setEffect(shadow);
+		
 		setTop(hbox2);
 		setBottom(hbox1);
 		setCenter(hbox3);
