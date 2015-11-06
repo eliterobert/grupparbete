@@ -1,6 +1,8 @@
 package application;
 
 import java.io.File;
+import java.util.Collections;
+import java.util.LinkedList;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -26,7 +28,7 @@ import javafx.scene.text.FontWeight;
 public class WinnerPage extends BorderPane {
 
 	private TextArea textArea;
-	private String scores;
+	private LinkedList<String> scores;
 	private HBox hbox1, hbox2, hbox3;;
 	private ImageView buttonImage;
 	private Button returnButton;
@@ -52,17 +54,20 @@ public class WinnerPage extends BorderPane {
 
 		textArea = new TextArea();
 		textArea.setMaxHeight(350);
-		textArea.setMaxWidth(220);
+		textArea.setMaxWidth(240);
 		scores = mainRef.readScores();
 
-		textArea.setText(scores);
+		Collections.reverse(scores);
+		for (int i = 0; i < scores.size(); i++) {
+			textArea.setText(scores.get(i) + textArea.getText());
+
+		}
 		textArea.setStyle("-fx-background-color: transparent");
-		
 
 		hbox3.getChildren().add(textArea);
 		hbox3.setAlignment(Pos.CENTER_RIGHT);
 		hbox3.setPadding(new Insets(0, 30, 0, 0));
-		
+
 		getPlayerName().setTextFill(Color.CORAL);
 		getPlayerName().setFont(Font.font("Segoe Script", FontWeight.NORMAL, FontPosture.ITALIC, 60));
 		getWinner().setTextFill(Color.CORAL);
@@ -90,7 +95,6 @@ public class WinnerPage extends BorderPane {
 		hbox1.getChildren().add(returnButton);
 		hbox2.getChildren().addAll(getWinner(), getPlayerName());
 
-		
 		setTop(hbox2);
 		setBottom(hbox1);
 		setCenter(hbox3);

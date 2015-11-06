@@ -248,21 +248,21 @@ public class Main extends Application {
 
 	}
 
-	public String readScores() {
-
-		String wholeText = "";
-		String textToRead = null;
+	public LinkedList<String> readScores() {
+		LinkedList<String> scores = new LinkedList<>();
 
 		try (BufferedReader buff = new BufferedReader(new FileReader("src/Highscore/Highscore.txt"))) {
-			while ((textToRead = buff.readLine()) != null) {
-				wholeText += textToRead + System.lineSeparator();
+			while (buff.readLine() != null) {
+				scores.addFirst(buff.readLine() + "\n");
 			}
 		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return wholeText;
+		return scores;
 	}
 
 	public void setBounds() {
@@ -273,6 +273,8 @@ public class Main extends Application {
 	}
 
 	public void startWinnerScene() {
+		
+		
 
 		WinnerPage winnerPage = new WinnerPage(main);
 
