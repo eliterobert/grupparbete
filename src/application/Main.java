@@ -97,9 +97,9 @@ public class Main extends Application {
 			int row = 0;
 			int col = 0;
 			if (startPage.getCardsChoise12().isSelected()) {
-				numOfCards = 1;
-				row = 2;
-				col = 1;
+				numOfCards = 6;
+				row = 4;
+				col = 3;
 			} else if (startPage.getCardsChoise16().isSelected()) {
 				numOfCards = 8;
 				row = 4;
