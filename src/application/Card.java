@@ -1,5 +1,7 @@
 package application;
 
+import org.junit.Test;
+
 import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
 import javafx.geometry.Pos;

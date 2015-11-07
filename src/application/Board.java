@@ -53,11 +53,14 @@ public class Board extends BorderPane {
 		vBox2 = new VBox();
 
 		setPlayer1(new Label("Player 1"));
+		
 		setPlayer2(new Label("Player 2"));
+		
 		turn = new Label("Turn: 15");
 		setPlayer1Score(new Label("0"));
 		setPlayer2Score(new Label("0"));
-		setMenu(new Label("Menu"));
+		setMenu(new Label("Back to Start"));
+		getMenu().setFont(Font.font("Segoe Script", 30));
 		scoreText1 = new Label("Score: ");
 		scoreText2 = new Label("Score: ");
 		gridpane = new GridPane();
@@ -157,8 +160,10 @@ public class Board extends BorderPane {
 	public void highligtPlayer1() {
 		Bloom bloom = new Bloom();
 		bloom.setThreshold(0.3);
-		getPlayer1().setFont(Font.font("Verdant", FontWeight.BOLD, 20));
-		getPlayer2().setFont(Font.font("Verdant", FontWeight.NORMAL, 20));
+		
+		getPlayer1().setFont(Font.font("Segoe Script", FontWeight.BOLD, 20));
+		getPlayer2().setFont(Font.font("Segoe Script", FontWeight.NORMAL,20));
+		
 		getPlayer1().setEffect(bloom);
 		getPlayer2().setEffect(null);
 	}
@@ -166,8 +171,10 @@ public class Board extends BorderPane {
 	public void highligtPlayer2() {
 		Bloom bloom = new Bloom();
 		bloom.setThreshold(0.3);
-		getPlayer1().setFont(Font.font("Verdant", FontWeight.NORMAL, 20));
-		getPlayer2().setFont(Font.font("Verdant", FontWeight.BOLD, 20));
+		
+		getPlayer1().setFont(Font.font("Segoe Script", FontWeight.NORMAL, 20));
+		getPlayer2().setFont(Font.font("Segoe Script", FontWeight.BOLD,20));
+		
 		getPlayer1().setEffect(null);
 		getPlayer2().setEffect(bloom);
 

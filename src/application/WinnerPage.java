@@ -80,6 +80,7 @@ public class WinnerPage extends BorderPane {
 		returnButton.setOnAction(action -> {
 			mainRef.getMediaPlayer().stop();
 			mainRef.setMusicFile("Sound/testSound3.mp3");
+			mainRef.getMediaPlayer().setCycleCount(10);
 			mainRef.setMusicToPlay(new Media(new File(mainRef.getMusicFile()).toURI().toString()));
 			mainRef.setMediaPlayer(new MediaPlayer(mainRef.getMusicToPlay()));
 			mainRef.getMediaPlayer().setVolume(0.1);

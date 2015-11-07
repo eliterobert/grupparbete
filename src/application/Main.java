@@ -21,6 +21,7 @@ import javafx.scene.effect.Bloom;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.text.Font;
 
 public class Main extends Application {
 
@@ -121,10 +122,14 @@ public class Main extends Application {
 				board = new Board("src/PhantasyStarTheme", "PhantasyStarTheme/",
 						"/Backgroundpictures/phantasyBackCard.png", "/Backgroundpictures/backgroud.jpg", numOfCards,
 						row, col, main);
+				
+				
 
 				gameScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
 				board.getPlayer1().setText(playerList.get(0).getName());
 				board.getPlayer2().setText(playerList.get(1).getName());
+				board.getPlayer1().setFont(Font.font("Segoe Script", 30));
+				board.getPlayer2().setFont(Font.font("Segoe Script", 30));
 
 				primaryStage.setScene(gameScene);
 
@@ -138,6 +143,7 @@ public class Main extends Application {
 					musicToPlay = new Media(new File(musicFile).toURI().toString());
 					mediaPlayer = new MediaPlayer(musicToPlay);
 					mediaPlayer.setVolume(0.1);
+					mediaPlayer.setCycleCount(10);
 					mediaPlayer.play();
 					primaryStage.setScene(startScene);
 				});
@@ -171,6 +177,7 @@ public class Main extends Application {
 					musicToPlay = new Media(new File(musicFile).toURI().toString());
 					mediaPlayer = new MediaPlayer(musicToPlay);
 					mediaPlayer.setVolume(0.1);
+					mediaPlayer.setCycleCount(10);
 					mediaPlayer.play();
 
 					primaryStage.setScene(startScene);
@@ -203,6 +210,7 @@ public class Main extends Application {
 					musicToPlay = new Media(new File(musicFile).toURI().toString());
 					mediaPlayer = new MediaPlayer(musicToPlay);
 					mediaPlayer.setVolume(0.1);
+					mediaPlayer.setCycleCount(10);
 					mediaPlayer.play();
 
 					primaryStage.setScene(startScene);
@@ -256,10 +264,8 @@ public class Main extends Application {
 				scores.addFirst(buff.readLine() + "\n");
 			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return scores;
@@ -273,8 +279,6 @@ public class Main extends Application {
 	}
 
 	public void startWinnerScene() {
-		
-		
 
 		WinnerPage winnerPage = new WinnerPage(main);
 
@@ -282,6 +286,7 @@ public class Main extends Application {
 		musicFile = "Sound/winnerSong.mp3";
 		musicToPlay = new Media(new File(musicFile).toURI().toString());
 		mediaPlayer = new MediaPlayer(musicToPlay);
+		mediaPlayer.setCycleCount(10);
 
 		mediaPlayer.play();
 
