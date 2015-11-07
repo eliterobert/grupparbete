@@ -94,10 +94,6 @@ public class Main extends Application {
 			playerList.add(new Player(startPage.getPlayer1().getText(), 1));
 			playerList.add(new Player(startPage.getPlayer2().getText(), 2));
 
-			numOfCards = 0;
-			row = 0;
-			col = 0;
-
 			if (startPage.getTheme1().isSelected()) {
 
 				setSizeOnBoard();
@@ -133,7 +129,6 @@ public class Main extends Application {
 			row = 4;
 			col = 3;
 		}
-
 		else if (startPage.getCardsChoise16().isSelected()) {
 			numOfCards = 8;
 			row = 4;
