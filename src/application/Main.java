@@ -39,6 +39,8 @@ public class Main extends Application {
 	private Player currentPlayer;
 	private int pointCount;
 	private int numOfCards;
+	private int row;
+	private int col;
 
 	private Media musicToPlay;
 	private String musicFile = "";
@@ -93,127 +95,87 @@ public class Main extends Application {
 			playerList.add(new Player(startPage.getPlayer2().getText(), 2));
 
 			numOfCards = 0;
-			int row = 0;
-			int col = 0;
-			if (startPage.getCardsChoise12().isSelected()) {
-				numOfCards = 6;
-				row = 4;
-				col = 3;
-			} else if (startPage.getCardsChoise16().isSelected()) {
-				numOfCards = 8;
-				row = 4;
-				col = 4;
-			} else if (startPage.getCardsChoise32().isSelected()) {
-				numOfCards = 10;
-				row = 5;
-				col = 4;
-			}
+			row = 0;
+			col = 0;
 
 			if (startPage.getTheme1().isSelected()) {
 
-				mediaPlayer.stop();
-				musicFile = "Sound/DeathPlace.mp3";
-				musicToPlay = new Media(new File(musicFile).toURI().toString());
-				mediaPlayer = new MediaPlayer(musicToPlay);
-				mediaPlayer.setVolume(0.4);
-				mediaPlayer.play();
+				setSizeOnBoard();
+				setSelectedTheme("Sound/DeathPlace.mp3", "Sound/testSound3.mp3", "src/PhantasyStarTheme",
+						"PhantasyStarTheme/", "/Backgroundpictures/phantasyBackCard.png",
+						"/Backgroundpictures/backgroud.jpg", numOfCards, row, col, main, primaryStage);
 
-				board = new Board("src/PhantasyStarTheme", "PhantasyStarTheme/",
-						"/Backgroundpictures/phantasyBackCard.png", "/Backgroundpictures/backgroud.jpg", numOfCards,
-						row, col, main);
+			} else if (startPage.getTheme2().isSelected()) {
 
-				gameScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
-				board.getPlayer1().setText(playerList.get(0).getName());
-				board.getPlayer2().setText(playerList.get(1).getName());
-				board.getPlayer1().setFont(Font.font("Segoe Script", 30));
-				board.getPlayer2().setFont(Font.font("Segoe Script", 30));
+				setSizeOnBoard();
+				setSelectedTheme("Sound/TestSound1.mp3", "Sound/testSound3.mp3", "src/Pictures", "Pictures/",
+						"Backgroundpictures/backgroundCard.png", "Backgroundpictures/javaNewBackground.jpg", numOfCards,
+						row, col, main, primaryStage);
 
-				primaryStage.setScene(gameScene);
-
-				currentPlayer = playerList.poll();
-
-				primaryStage.setScene(gameScene);
-				board.getMenu().setOnMouseClicked((a) -> {
-
-					mediaPlayer.stop();
-					musicFile = "Sound/testSound3.mp3";
-					musicToPlay = new Media(new File(musicFile).toURI().toString());
-					mediaPlayer = new MediaPlayer(musicToPlay);
-					mediaPlayer.setVolume(0.1);
-					mediaPlayer.setCycleCount(10);
-					mediaPlayer.play();
-					primaryStage.setScene(startScene);
-				});
-			}
-
-			else if (startPage.getTheme2().isSelected()) {
-
-				mediaPlayer.stop();
-				musicFile = "Sound/TestSound1.mp3";
-				musicToPlay = new Media(new File(musicFile).toURI().toString());
-				mediaPlayer = new MediaPlayer(musicToPlay);
-				mediaPlayer.play();
-
-				board = new Board("src/Pictures", "Pictures/", "Backgroundpictures/backgroundCard.png",
-						"Backgroundpictures/javaNewBackground.jpg", numOfCards, row, col, main);
-
-				gameScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
-				gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-				board.getPlayer1().setText(playerList.get(0).getName());
-				board.getPlayer2().setText(playerList.get(1).getName());
-
-				primaryStage.setScene(gameScene);
-
-				currentPlayer = playerList.poll();
-
-				primaryStage.setScene(gameScene);
-				board.getMenu().setOnMouseClicked((a) -> {
-
-					mediaPlayer.stop();
-					musicFile = "Sound/testSound3.mp3";
-					musicToPlay = new Media(new File(musicFile).toURI().toString());
-					mediaPlayer = new MediaPlayer(musicToPlay);
-					mediaPlayer.setVolume(0.1);
-					mediaPlayer.setCycleCount(10);
-					mediaPlayer.play();
-
-					primaryStage.setScene(startScene);
-				});
 			}
 
 			else if (startPage.getTheme3().isSelected()) {
 
-				mediaPlayer.stop();
-				musicFile = "Sound/LOTR.mp3";
-				musicToPlay = new Media(new File(musicFile).toURI().toString());
-				mediaPlayer = new MediaPlayer(musicToPlay);
-				mediaPlayer.play();
-
-				board = new Board("src/LOTRThemePics", "LOTRThemePics/", "Backgroundpictures/BackgroundCardLOTR.png",
-						"Backgroundpictures/BackgroundLOTR.jpg", numOfCards, row, col, main);
-
-				gameScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
-				gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-				board.getPlayer1().setText(playerList.get(0).getName());
-				board.getPlayer2().setText(playerList.get(1).getName());
-
-				primaryStage.setScene(gameScene);
-
-				currentPlayer = playerList.poll();
-				board.getMenu().setOnMouseClicked((a) -> {
-
-					mediaPlayer.stop();
-					musicFile = "Sound/testSound3.mp3";
-					musicToPlay = new Media(new File(musicFile).toURI().toString());
-					mediaPlayer = new MediaPlayer(musicToPlay);
-					mediaPlayer.setVolume(0.1);
-					mediaPlayer.setCycleCount(10);
-					mediaPlayer.play();
-
-					primaryStage.setScene(startScene);
-				});
+				setSizeOnBoard();
+				setSelectedTheme("Sound/LOTR.mp3", "Sound/testSound3.mp3", "src/LOTRThemePics", "LOTRThemePics/",
+						"Backgroundpictures/BackgroundCardLOTR.png", "Backgroundpictures/BackgroundLOTR.jpg",
+						numOfCards, row, col, main, primaryStage);
 			}
 
+		});
+
+	}
+
+	private void setSizeOnBoard() {
+
+		if (startPage.getCardsChoise12().isSelected()) {
+			numOfCards = 6;
+			row = 4;
+			col = 3;
+		}
+
+		else if (startPage.getCardsChoise16().isSelected()) {
+			numOfCards = 8;
+			row = 4;
+			col = 4;
+		} else if (startPage.getCardsChoise32().isSelected()) {
+			numOfCards = 10;
+			row = 5;
+			col = 4;
+		}
+
+	}
+
+	private void setSelectedTheme(String soundPath, String soundPathStartPage, String cardPath1, String cardPath2,
+			String backGroundCardPath, String boardBackgroundPath, int numOfCards, int row, int col, Main main,
+			Stage primaryStage) {
+
+		mediaPlayer.stop();
+		musicFile = soundPath;
+		musicToPlay = new Media(new File(musicFile).toURI().toString());
+		mediaPlayer = new MediaPlayer(musicToPlay);
+		mediaPlayer.play();
+
+		board = new Board(cardPath1, cardPath2, backGroundCardPath, boardBackgroundPath, numOfCards, row, col, main);
+
+		gameScene = new Scene(board, bounds.getWidth() * 0.7, bounds.getHeight() * 0.7);
+		gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		board.getPlayer1().setText(playerList.get(0).getName());
+		board.getPlayer2().setText(playerList.get(1).getName());
+
+		primaryStage.setScene(gameScene);
+
+		currentPlayer = playerList.poll();
+		board.getMenu().setOnMouseClicked((a) -> {
+
+			mediaPlayer.stop();
+			musicFile = soundPathStartPage;
+			musicToPlay = new Media(new File(musicFile).toURI().toString());
+			mediaPlayer = new MediaPlayer(musicToPlay);
+			mediaPlayer.setVolume(0.1);
+			mediaPlayer.setCycleCount(10);
+			mediaPlayer.play();
+			primaryStage.setScene(startScene);
 		});
 
 	}
