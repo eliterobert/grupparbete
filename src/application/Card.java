@@ -124,7 +124,6 @@ public class Card extends StackPane {
 		}
 		if (((totalPixels == 0 ? -1 : machingPixels / totalPixels) * 100) > levelOfAcceptance)
 			isOfSameKind = true;
-
 		return isOfSameKind;
 	}
 
@@ -143,7 +142,13 @@ public class Card extends StackPane {
 		rotation.setToAngle(180);
 		rotation.play();
 		rotation.setOnFinished((a) -> {
+			try{
 			action.run();
+			}
+			catch(NullPointerException e)
+			{
+				System.out.println("Not so fast!");
+			}
 		});
 
 	}
