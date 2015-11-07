@@ -30,7 +30,7 @@ public class Board extends BorderPane {
 
 	private HBox hBox2, hBox3, hBox4;
 	private VBox vBox1, vBox2;
-	private Label player1, player2, turn, player1Score, player2Score, menu, scoreText1, scoreText2, notSoFast;
+	private Label player1, player2, turn, player1Score, player2Score, menu, scoreText1, scoreText2;
 	private GridPane gridpane;
 	private Image backImage;
 	private ArrayList<Image> imageList;

@@ -21,7 +21,6 @@ import javafx.scene.effect.Bloom;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.text.Font;
 
 public class Main extends Application {
 
