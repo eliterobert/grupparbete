@@ -99,7 +99,13 @@ public class Card extends StackPane {
 	private boolean isOfSameKind(Card otherCard) {
 
 		PixelReader faceImg = faceView.getImage().getPixelReader();
-		PixelReader otherFaceImg = otherCard.faceView.getImage().getPixelReader();
+		PixelReader otherFaceImg = null;
+		try {
+			otherFaceImg = otherCard.faceView.getImage().getPixelReader();
+		} catch (Exception e) {
+			close();
+		}
+
 		int levelOfAcceptance = 90;
 		boolean isOfSameKind = false;
 
