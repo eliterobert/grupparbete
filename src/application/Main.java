@@ -31,7 +31,6 @@ public class Main extends Application {
 	private Scene startScene;
 	private Scene gameScene;
 	private Card selectedCard = null;
-	private int clickCount = 2;
 
 	private Screen screen;
 	private Rectangle2D bounds;
@@ -44,7 +43,7 @@ public class Main extends Application {
 	private Media musicToPlay;
 	private String musicFile = "";
 	private MediaPlayer mediaPlayer;
-	private Board board, winnerBoard;
+	private Board board;
 	private Stage mainStage;
 
 	public static void main(String[] args) {
@@ -309,14 +308,6 @@ public class Main extends Application {
 		}
 	}
 
-	public StartPage getStartPage() {
-		return startPage;
-	}
-
-	public void setStartPage(StartPage startPage) {
-		this.startPage = startPage;
-	}
-
 	public Scene getStartScene() {
 		return startScene;
 	}
@@ -325,44 +316,12 @@ public class Main extends Application {
 		this.startScene = startScene;
 	}
 
-	public Scene getGameScene() {
-		return gameScene;
-	}
-
-	public void setGameScene(Scene gameScene) {
-		this.gameScene = gameScene;
-	}
-
 	public Card getSelectedCard() {
 		return selectedCard;
 	}
 
 	public void setSelectedCard(Card selectedCard) {
 		this.selectedCard = selectedCard;
-	}
-
-	public int getClickCount() {
-		return clickCount;
-	}
-
-	public void setClickCount(int clickCount) {
-		this.clickCount = clickCount;
-	}
-
-	public Screen getScreen() {
-		return screen;
-	}
-
-	public void setScreen(Screen screen) {
-		this.screen = screen;
-	}
-
-	public Rectangle2D getBounds() {
-		return bounds;
-	}
-
-	public void setBounds(Rectangle2D bounds) {
-		this.bounds = bounds;
 	}
 
 	public LinkedList<Player> getPlayerList() {
@@ -427,14 +386,6 @@ public class Main extends Application {
 
 	public void setBoard(Board board) {
 		this.board = board;
-	}
-
-	public Board getWinnerBoard() {
-		return winnerBoard;
-	}
-
-	public void setWinnerBoard(Board winnerBoard) {
-		this.winnerBoard = winnerBoard;
 	}
 
 	public Stage getMainStage() {

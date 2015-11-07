@@ -22,3 +22,39 @@ E Score: 0 vs R Score: 1
 15/11/07 12:39
 Emma Score: 2 vs Robert Score: 6
 
+15/11/07 12:41
+Robert Score: 2 vs Emma Score: 4
+
+15/11/07 12:49
+Robert Score: 5 vs Emma Score: 5
+
+15/11/07 12:52
+R Score: 2 vs E Score: 4
+
+15/11/07 12:53
+R Score: 2 vs E Score: 4
+
+15/11/07 12:57
+Robert Score: 2 vs Emma Score: 4
+
+15/11/07 12:57
+R Score: 3 vs E Score: 3
+
+15/11/07 12:58
+E Score: 2 vs R Score: 4
+
+15/11/07 13:03
+Robert Score: 2 vs Emma Score: 6
+
+15/11/07 13:05
+Robert Score: 2 vs Emma Score: 4
+
+15/11/07 13:06
+R Score: 4 vs E Score: 2
+
+15/11/07 13:08
+E Score: 4 vs R Score: 2
+
+15/11/07 13:10
+R Score: 1 vs E Score: 5
+

@@ -1,7 +1,5 @@
 package application;
 
-import org.junit.Test;
-
 import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
 import javafx.geometry.Pos;
@@ -13,10 +11,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
-/**
- * @author Ajmal Bahawodin This class represents a playing card with a face and
- *         a back.
- */
 public class Card extends StackPane {
 
 	private Main refToMain;
@@ -46,10 +40,8 @@ public class Card extends StackPane {
 	}
 
 	private void handleMouseClick(MouseEvent event) {
-		if (isOpen() && refToMain.getClickCount() != 0)
+		if (isOpen())
 			return;
-
-		refToMain.setClickCount(refToMain.getClickCount() - 1);
 
 		if (refToMain.getSelectedCard() == null) {
 			refToMain.setSelectedCard(this);
@@ -58,8 +50,13 @@ public class Card extends StackPane {
 		} else {
 			open(() -> {
 				if (!this.isOfSameKind(refToMain.getSelectedCard())) {
-					refToMain.getSelectedCard().close();
-					this.close();
+
+					try {
+						refToMain.getSelectedCard().close();
+					} finally {
+						this.close();
+					}
+
 					refToMain.getPlayerList().add(refToMain.getCurrentPlayer());
 					refToMain.setCurrentPlayer(refToMain.getPlayerList().poll());
 
@@ -82,12 +79,15 @@ public class Card extends StackPane {
 
 				}
 				if (refToMain.getPointCount() == refToMain.getNumOfCards()) {
-
+					try {
+						Thread.sleep(2000);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 					refToMain.startWinnerScene();
 					refToMain.HighScoreInput();
 				}
 				refToMain.setSelectedCard(null);
-				refToMain.setClickCount(2);
 			});
 		}
 	}
@@ -122,9 +122,6 @@ public class Card extends StackPane {
 		} catch (NullPointerException e) {
 			System.out.println("NullPointerEx Occurred!!");
 		}
-
-		// Undvik division med noll samt kolla så acceptans nivån är över 90
-		// %
 		if (((totalPixels == 0 ? -1 : machingPixels / totalPixels) * 100) > levelOfAcceptance)
 			isOfSameKind = true;
 

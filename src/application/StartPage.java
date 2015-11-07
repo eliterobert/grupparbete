@@ -61,7 +61,7 @@ public class StartPage extends VBox {
 		startGameLabel = new Label("Start Game");
 		startGameLabel.setFont(Font.font("Segoe Script", 20));
 		startGameLabel.setTextFill(Color.YELLOW);
-		setStartButton(new Button("",startGameLabel));
+		setStartButton(new Button("", startGameLabel));
 		getStartButton().setStyle("-fx-background-color: rgba(7%,5%,5%,1)}");
 		getStartButton().setPrefSize(140, 60);
 		getStartButton().setOnMouseEntered((event) -> {

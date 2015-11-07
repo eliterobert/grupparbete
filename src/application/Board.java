@@ -53,9 +53,8 @@ public class Board extends BorderPane {
 		vBox2 = new VBox();
 
 		setPlayer1(new Label("Player 1"));
-		
 		setPlayer2(new Label("Player 2"));
-		
+
 		turn = new Label("Turn: 15");
 		setPlayer1Score(new Label("0"));
 		setPlayer2Score(new Label("0"));
@@ -91,25 +90,13 @@ public class Board extends BorderPane {
 		vBox1.setMaxWidth(150);
 		vBox2.setMinWidth(150);
 		vBox2.setMaxWidth(150);
-		// player2.setAlignment(Pos.CENTER_RIGHT);
-		// player2.setTextAlignment(TextAlignment.RIGHT);
 
 		hBox3.getChildren().addAll(scoreText1, getPlayer1Score());
 		hBox4.getChildren().addAll(scoreText2, getPlayer2Score());
 
 		vBox1.getChildren().addAll(getPlayer1(), hBox3);
 		vBox2.getChildren().addAll(getPlayer2(), hBox4);
-		// hBox1.getChildren().addAll(vBox1, gridpane, vBox2);
 		hBox2.getChildren().addAll(getMenu());
-
-		// hBox1.setTranslateY(bounds.getHeight()*0.065);
-		// hBox1.setAlignment(Pos.BASELINE_CENTER);
-		// hBox1.setSpacing(bounds.getWidth()*0.012);
-		// gridpane.setPadding(new
-		// Insets(0,bounds.getWidth()*0.08,0,bounds.getWidth()*0.012));
-		// hBox1.setPadding(new Insets(0,40,0,40));
-		// hBox2.setTranslateX(bounds.getWidth()*0.7/2);
-		// hBox2.setTranslateY(bounds.getHeight()*0.10);
 
 		getMenu().setOnMouseEntered((event) -> {
 			Bloom bloom = new Bloom();
@@ -160,10 +147,10 @@ public class Board extends BorderPane {
 	public void highligtPlayer1() {
 		Bloom bloom = new Bloom();
 		bloom.setThreshold(0.3);
-		
+
 		getPlayer1().setFont(Font.font("Segoe Script", FontWeight.BOLD, 20));
-		getPlayer2().setFont(Font.font("Segoe Script", FontWeight.NORMAL,20));
-		
+		getPlayer2().setFont(Font.font("Segoe Script", FontWeight.NORMAL, 20));
+
 		getPlayer1().setEffect(bloom);
 		getPlayer2().setEffect(null);
 	}
@@ -171,10 +158,10 @@ public class Board extends BorderPane {
 	public void highligtPlayer2() {
 		Bloom bloom = new Bloom();
 		bloom.setThreshold(0.3);
-		
+
 		getPlayer1().setFont(Font.font("Segoe Script", FontWeight.NORMAL, 20));
-		getPlayer2().setFont(Font.font("Segoe Script", FontWeight.BOLD,20));
-		
+		getPlayer2().setFont(Font.font("Segoe Script", FontWeight.BOLD, 20));
+
 		getPlayer1().setEffect(null);
 		getPlayer2().setEffect(bloom);
 
